@@ -6,9 +6,9 @@ WhatsGNU utilizes the natural variation in public databases to rank protein seq
 WhatsGNU compresses proteins database based on exact match to much fewer number of proteins that differ by at least one amino acid. WhatsGNU will save a copy of the compressed database in two formats; database.txt and database.pickle for faster subsequent uses.<br/>
 
 Three precompressed databases (.pickle) are available to download and use:
-1. [_Mycobacterium tuberculosis_](https://drive.google.com/drive/folders/1U2S6OUVJ6o3Q8dhilj2A97Kj4SHH56gT?usp=sharing) current version: 01/30/2019.
-2. [_Pseudomonas aeruginosa_](https://drive.google.com/drive/folders/1bZtgzMQWvRnrZ33aq6RAECOZKYSCKylA?usp=sharing) current version: 01/27/2019.
-3. [_Staphylococcus aureus_](https://drive.google.com/drive/folders/1cusXLqOEa2K3XhnCstuuWWVcPhI9deth?usp=sharing) current version: 01/21/2019.<br/>
+1. [_Mycobacterium tuberculosis_](https://drive.google.com/drive/folders/1U2S6OUVJ6o3Q8dhilj2A97Kj4SHH56gT?usp=sharing) current version is 01/30/2019 has 4497 genomes. 
+2. [_Pseudomonas aeruginosa_](https://drive.google.com/drive/folders/1bZtgzMQWvRnrZ33aq6RAECOZKYSCKylA?usp=sharing) current version is 01/27/2019 and has 2329 genomes.
+3. [_Staphylococcus aureus_](https://drive.google.com/drive/folders/1cusXLqOEa2K3XhnCstuuWWVcPhI9deth?usp=sharing) current version is 01/21/2019 and has 8524 genomes.<br/>
 
 These three databases contain all available annotated genomes for the species from GenBank. The databases for these 3 organisms will be updated 3 times per year to include new sequenced genomes.
 
@@ -27,6 +27,9 @@ $chmod +x WhatsGNU.py
 ## Input
 1. database (precompressed (.pickle or .txt) or raw (.faa)).
 2. Query protein FASTA file (.faa) or folder of query files.
+
+Optional for _S. aureus_:
+CSV file of CC/ST frequencies in the database.
 ## Usage
 ### Use precompressed databases with basic function
 ```
@@ -61,6 +64,10 @@ Get MLST CC/ST composition of your hits in the report(**Only works for _S. aureu
 ```
 $WhatsGNU.py -d Sau_012119_database.pickle -c Saureus_CC_ST_names_frequencies_012119.csv query.faa
 ```
+### Use all features together
+```
+$WhatsGNU.py -d Sau_012119_database.pickle -o results_WhatsGNU -b -t -s -c Saureus_CC_ST_names_frequencies_012119.csv query.faa
+```
 ### Use your own database
 #### First time use with unprocessed database (-m with one concatenated (.faa) file of all genomes of a species)
 ```
@@ -72,7 +79,7 @@ $WhatsGNU.py -d database.pickle query.faa
 or
 $WhatsGNU.py -d database.txt query.faa
 ```
-**Command line options**
+### Command line options
 ```
 $WhatsGNU.py -h
 ```
@@ -111,16 +118,18 @@ optional arguments:
                         only for Saureus)
   -v, --version         print version and exit
 ```
-# Output
+## Output
 **query_exact_hits_report.txt** <br/>
 tab delimited file of protein and number_of_hits
-# Instructions for creating a database
+## Instructions for creating a database
 put somehting here
-# Bugs
+## Requests for creating a database
+Requests to process a database for a specific species are welcomed and will be assessed
+## Bugs
 Please submit via the GitHub issues page: https://github.com/ahmedmagds/WhatsGNU/issues
-# Software Licence
+## Software Licence
 GPLv3: https://github.com/ahmedmagds/WhatsGNU/blob/master/LICENSE
-# Author
+## Author
 Ahmed M. Moustafa: [ahmedmagds](https://github.com/ahmedmagds)<br/>
 Twitter: [Ahmed_Microbes](https://twitter.com/Ahmed_Microbes)
 
