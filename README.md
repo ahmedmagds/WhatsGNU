@@ -58,7 +58,7 @@ $WhatsGNU.py -d Sau_012119_database.pickle -t query.faa
 ```
 Check how many hits you get from a particular genome in the database (**It has to be used with -t**)
 ```
-$WhatsGNU.py -d Sau_012119_database.pickle -t -s strain_name query.faa
+$WhatsGNU.py -d Sau_012119_database.pickle -t -s USA300_FPR3757_CC8_GCA_000013465.1 query.faa
 ```
 Get MLST CC/ST composition of your hits in the report (**Only for _S. aureus_ and you will need to download [CC/ST database frequencies](https://drive.google.com/file/d/1PaxWdKAyHOO_pAM0-Knx-6G5HYKoXcKU/view?usp=sharing) to be used with -c**)
 ```
@@ -66,7 +66,7 @@ $WhatsGNU.py -d Sau_012119_database.pickle -c Saureus_CC_ST_names_frequencies_01
 ```
 ### Use all features together
 ```
-$WhatsGNU.py -d Sau_012119_database.pickle -o results_WhatsGNU -b -t -s -c Saureus_CC_ST_names_frequencies_012119.csv query.faa
+$WhatsGNU.py -d Sau_012119_database.pickle -o results_WhatsGNU -b -t -s USA300_FPR3757_CC8_GCA_000013465.1 -c Saureus_CC_ST_names_frequencies_012119.csv query.faa
 ```
 ### Use your own database
 #### First time use with unprocessed database (-m with one concatenated (.faa) file of all genomes of a species)
@@ -86,7 +86,7 @@ $WhatsGNU.py -h
 ```
 usage: WhatsGNU.py [-h] [-m MKDATABASE | -d DATABASE] [-o OUTPUT_FOLDER] [-t]
                    [-s STRAINHITS] [-b] [-c [CCST_TYPING]] [-v]
-                   fastafile_faa
+                   query.faa
 
 WhatsGNU v1.0 utilizes the natural variation in public databases to rank
 protein sequences based on the number of observed exact protein matches
@@ -94,7 +94,7 @@ protein sequences based on the number of observed exact protein matches
 whole protein reports
 
 positional arguments:
-  fastafile_faa         protein FASTA file to analyse (.faa)
+  query.faa             Query protein FASTA file to analyze (.faa)
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -110,7 +110,7 @@ optional arguments:
   -t, --tophits         create a file of top 10 genomes with hits
   -s STRAINHITS, --strainhits STRAINHITS
                         check how many hits you get from a particular
-                        strain,you have to use it with -t
+                        strain,it has to be used with -t
   -b, --hits            create a file of each protein with all hits from the
                         database,large file (~ 1 Gb for 3000 pts)
   -c [CCST_TYPING], --CCST_typing [CCST_TYPING]
