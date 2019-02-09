@@ -35,11 +35,19 @@ $WhatsGNU.py -d Pa_012719_database.pickle query.faa
 or
 $WhatsGNU.py -d Sau_012119_database.pickle query.faa
 ```
+You can use a folder of multiple .faa files as input (e.g. folder_faa has all .faa files to be processed)
+```
+WhatsGNU.py -d Sau_012119_database.pickle folder_faa/
+```
+You can assign output folder name using -o instead of default (WhatsGNU_results_v1_timestamp)
+```
+WhatsGNU.py -d Sau_012119_database.pickle -o output_results_folder query.faa
+```
 **First time use with your own database**
 ```
 $WhatsGNU.py -m database.faa query.faa
 ```
-**Subsequent uses**
+**Subsequent uses with your database**
 ```
 $WhatsGNU.py -d database.pickle query.faa
 or
