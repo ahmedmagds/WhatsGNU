@@ -1,15 +1,16 @@
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 # WhatsGNU
 What's Gene Novelty Unit: A Tool For Identifying Proteomic Novelty.
 # Introduction
 WhatsGNU utilizes the natural variation in public databases to rank protein sequences based on the number of observed exact protein matches (the GNU score) in all known genomes of a certain species & can quickly create whole protein reports.<br/>
 WhatsGNU compresses proteins database based on exact match to much fewer number of proteins that differ by at least one amino acid. WhatsGNU will save a copy of the compressed database in two formats; database.txt and database.pickle for faster subsequent uses.<br/>
 
-Three preprocessed compressed databases (.pickle) are available to download and use:
+Three precompressed databases (.pickle) are available to download and use:
 1. [_Mycobacterium tuberculosis_](https://drive.google.com/drive/folders/1U2S6OUVJ6o3Q8dhilj2A97Kj4SHH56gT?usp=sharing) current version: 01/30/2019.
 2. [_Pseudomonas aeruginosa_]() current version: 01/27/2019.
 3. [_Staphylococcus aureus_]() current version: 01/21/2019.<br/>
 
-These three databases contain all available annotated genomes for the species from GenBank. The databases for these 3 organisms will be updated 3 times per year.
+These three databases contain all available annotated genomes for the species from GenBank. The databases for these 3 organisms will be updated 3 times per year to include new sequenced genomes.
 
 # Dependencies
 [Python3.x](https://www.python.org/downloads/)<br/>
@@ -26,13 +27,23 @@ $chmod +x WhatsGNU.py
 # Input
 The program accepts for analysis protein FASTA files (.faa).
 # Usage
-**First time use**
+**Use with our precompressed database**
+```
+$WhatsGNU.py -d TB_013019_database.pickle query.faa
+or
+$WhatsGNU.py -d Pa_012719_database.pickle query.faa
+or
+$WhatsGNU.py -d Sau_012119_database.pickle query.faa
+```
+**First time use with your own database**
 ```
 $WhatsGNU.py -m database.faa query.faa
 ```
 **Subsequent uses**
 ```
 $WhatsGNU.py -d database.pickle query.faa
+or
+$WhatsGNU.py -d database.txt query.faa
 ```
 **Command line options**
 ```
