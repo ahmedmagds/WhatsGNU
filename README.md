@@ -29,7 +29,7 @@ $chmod +x WhatsGNU.py
 2. Query protein FASTA file (.faa) or folder of query files.
 
 Optional for _S. aureus_:
-CSV file of CC/ST frequencies in the database.
+Download the CSV file of [CC/ST frequencies](https://drive.google.com/file/d/1PaxWdKAyHOO_pAM0-Knx-6G5HYKoXcKU/view?usp=sharing) in the _S. aureus_ database.
 ## Usage
 ### Use precompressed databases with basic function
 ```
@@ -124,7 +124,7 @@ tab delimited file of protein and number_of_hits
 ## Instructions for creating a database
 put somehting here
 ## Requests for creating a database
-Requests to process a database for a specific species are welcomed and will be assessed
+Requests to process a database for a specific species are welcomed and will be considered
 ## Bugs
 Please submit via the GitHub issues page: https://github.com/ahmedmagds/WhatsGNU/issues
 ## Software Licence
