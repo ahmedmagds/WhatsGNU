@@ -120,8 +120,8 @@ optional arguments:
 ```
 ## Output
 ### Always
-query_WhatsGNU_report_v1.txt (tab-separated output file)
-protein | length  | function | sequence | GNU score
+query_WhatsGNU_report_v1.txt (tab-separated output file)<br/>
+protein | length | function | sequence | GNU score
 ------------ | ------------- | ------------ | ------------- |-------------
 protein_id | 261 | hydrolase | MKVQIYQLP | 1918
 query_WhatsGNU_report_v1.txt | tab-separated output file
