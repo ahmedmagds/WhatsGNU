@@ -8,6 +8,7 @@ Three preprocessed compressed databases (.pickle) are available to download and 
 1. [_Mycobacterium tuberculosis_]() current version: 01/30/2019.
 2. [_Pseudomonas aeruginosa_]() current version: 01/27/2019.
 3. [_Staphylococcus aureus_]() current version: 01/21/2019.<br/>
+
 These three databases contain all available annotated genomes for the species from GenBank. The databases for these 3 organisms will be updated 3 times per year.
 
 # Dependencies
