@@ -119,8 +119,10 @@ optional arguments:
   -v, --version         print version and exit
 ```
 ## Output
-**query_exact_hits_report.txt** <br/>
-tab delimited file of protein and number_of_hits
+File | Description
+------------ | -------------
+query_WhatsGNU_report_v1.txt | tab-separated output file
+query_WhatsGNU_hits_v1.txt | tab-separated output file
 ## Instructions for creating a database
 put somehting here
 ## Requests for creating a database
