@@ -60,7 +60,7 @@ Check how many hits you get from a particular genome in the database (**It has t
 ```
 $WhatsGNU.py -d Sau_012119_database.pickle -t -s strain_name query.faa
 ```
-Get MLST CC/ST composition of your hits in the report(**Only works for _S. aureus_ and you will need to download [CC/ST database frequencies](https://github.com/ahmedmagds/WhatsGNU/blob/master/Saureus_CC_ST_names_frequencies_012119.csv)**)
+Get MLST CC/ST composition of your hits in the report(**Only works for _S. aureus_ and you will need to download [CC/ST database frequencies](https://drive.google.com/file/d/1PaxWdKAyHOO_pAM0-Knx-6G5HYKoXcKU/view?usp=sharing)**)
 ```
 $WhatsGNU.py -d Sau_012119_database.pickle -c Saureus_CC_ST_names_frequencies_012119.csv query.faa
 ```
