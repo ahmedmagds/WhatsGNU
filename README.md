@@ -119,8 +119,7 @@ optional arguments:
   -v, --version         print version and exit
 ```
 ## Output
-### Always
-query_WhatsGNU_report_v1.txt (tab-separated output file)<br/>
+### Always (query_WhatsGNU_report_v1.txt (tab-separated output file))
 First Header | Second Header
 ------------ | -------------
 Content from cell 1 | Content from cell 2
