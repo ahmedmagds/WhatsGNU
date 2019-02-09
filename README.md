@@ -2,6 +2,9 @@
 WhatsGNU: a tool for identifying proteomic novelty
 # Usage
 ```
+$WhatsGNU_v1.0.py -h
+```
+```
 usage: WhatsGNU.py [-h] [-m MKDATABASE | -d DATABASE] [-o OUTPUT_FOLDER] [-t]
                    [-s STRAINHITS] [-b] [-c [CCST_TYPING]] [-v]
                    fastafile_faa
