@@ -9,8 +9,8 @@ usage: WhatsGNU.py [-h] [-m MKDATABASE | -d DATABASE] [-o OUTPUT_FOLDER] [-t]
                    [-s STRAINHITS] [-b] [-c [CCST_TYPING]] [-v]
                    fastafile_faa
 
-WhatsGNU v1.0 utilizes the naturalvariation in public databases to rank
-protein sequences based on the number of observed exact proteinmatches
+WhatsGNU v1.0 utilizes the natural variation in public databases to rank
+protein sequences based on the number of observed exact protein matches
 (the GNU score) in all known genomes of certain species & can quickly create
 whole protein reports
 
@@ -38,4 +38,4 @@ optional arguments:
                         get the CC/ST composition of your hits (Note: Works
                         only for Saureus)
   -v, --version         print version and exit
-  ```
+```
