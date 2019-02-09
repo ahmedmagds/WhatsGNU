@@ -27,7 +27,7 @@ $chmod +x WhatsGNU.py
 # Input
 The program accepts for analysis protein FASTA files (.faa).
 # Usage
-**Use with our precompressed database**
+**Use with our precompressed databases**
 ```
 $WhatsGNU.py -d TB_013019_database.pickle query.faa
 or
