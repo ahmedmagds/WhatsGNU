@@ -6,11 +6,11 @@ WhatsGNU utilizes the natural variation in public databases to rank protein seq
 WhatsGNU compresses proteins database based on exact match to much fewer number of proteins that differ by at least one amino acid. WhatsGNU will save a copy of the compressed database in two formats; database.txt and database.pickle for faster subsequent uses.<br/>
 
 Three precompressed databases (.pickle) are available to download and use:
-1. [_Mycobacterium tuberculosis_](https://drive.google.com/drive/folders/1U2S6OUVJ6o3Q8dhilj2A97Kj4SHH56gT?usp=sharing) current version is 01/30/2019 has 4497 genomes. 
+1. [_Mycobacterium tuberculosis_](https://drive.google.com/drive/folders/1U2S6OUVJ6o3Q8dhilj2A97Kj4SHH56gT?usp=sharing) current version is 01/30/2019 and has 4497 genomes. 
 2. [_Pseudomonas aeruginosa_](https://drive.google.com/drive/folders/1bZtgzMQWvRnrZ33aq6RAECOZKYSCKylA?usp=sharing) current version is 01/27/2019 and has 2329 genomes.
 3. [_Staphylococcus aureus_](https://drive.google.com/drive/folders/1cusXLqOEa2K3XhnCstuuWWVcPhI9deth?usp=sharing) current version is 01/21/2019 and has 8524 genomes.<br/>
 
-These three databases contain all available annotated genomes for the species from GenBank. The databases for these 3 organisms will be updated 3 times per year to include new sequenced genomes.
+These three databases contain all available annotated genomes for the species from GenBank as per version day. The databases for these 3 organisms will be updated 3 times per year to include new sequenced genomes.
 
 ## Dependencies
 [Python3.x](https://www.python.org/downloads/)<br/>
@@ -62,7 +62,7 @@ $WhatsGNU.py -d Sau_012119_database.pickle -t -s strain_name query.faa
 ```
 Get MLST CC/ST composition of your hits in the report(**Only works for _S. aureus_**)
 ```
-$WhatsGNU.py -d Sau_012119_database.pickle -c Saureus_CC_ST_names_frequencies_012119.csv query.faa
+$WhatsGNU.py -d Sau_012119_database.pickle -c [Saureus_CC_ST_names_frequencies_012119.csv](https://drive.google.com/drive/my-drive) query.faa
 ```
 ### Use all features together
 ```
