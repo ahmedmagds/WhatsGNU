@@ -61,7 +61,7 @@ Get MLST CC/ST composition of your hits in the report(**Only works for _S. aureu
 $WhatsGNU.py -d Sau_012119_database.pickle -c Saureus_CC_ST_names_frequencies_012119.csv query.faa
 ```
 ### Use your own database
-#### First time use (-m with one concatenated (.faa) file of all genomes of a species, usually from GenBank)
+#### First time use with unprocessed database (-m with one concatenated (.faa) file of all genomes of a species)
 ```
 $WhatsGNU.py -m database.faa query.faa
 ```
