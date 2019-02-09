@@ -12,8 +12,8 @@ $cd WhatsGNU
 $chmod +x WhatsGNU_v1.0.py
 ```
 # Test
-*Type WhatsGNU_v1.0.py -h and it should output help screen.
-*Type WhatsGNU_v1.0.py -v and you should see an output like WhatsGNU.py 1.0.
+* Type WhatsGNU_v1.0.py -h and it should output help screen.
+* Type WhatsGNU_v1.0.py -v and you should see an output like WhatsGNU.py 1.0.
 # Usage
 ```
 $WhatsGNU_v1.0.py -h
