@@ -1,5 +1,15 @@
 # WhatsGNU
-WhatsGNU: a tool for identifying proteomic novelty
+What's Gene Novelty Unit: A Tool For Identifying Proteomic Novelty.
+# Introduction
+WhatsGNU utilizes the natural variation in public databases to rank protein sequences based on the number of observed exact protein matches (the GNU score) in all known genomes of a certain species & can quickly create whole protein reports.<br/>
+WhatsGNU compresses proteins database based on exact match to much fewer number of proteins that differ by at least one amino acid. WhatsGNU will save a copy of the compressed database in two formats; database.txt and database.pickle for faster subsequent uses.<br/>
+
+Three preprocessed compressed databases (.pickle) are available to download and use:
+1. [_Mycobacterium tuberculosis_]() current version: 01/30/2019.
+2. [_Pseudomonas aeruginosa_]() current version: 01/27/2019.
+3. [_Staphylococcus aureus_]() current version: 01/21/2019.<br/>
+These three databases contain all available annotated genomes for the species from GenBank. The databases for these 3 organisms will be updated 3 times per year.
+
 # Dependencies
 [Python3.x](https://www.python.org/downloads/)<br/>
 # Installation
@@ -12,8 +22,17 @@ $chmod +x WhatsGNU.py
 # Test
 * Type WhatsGNU.py -h and it should output help screen.
 * Type WhatsGNU.py -v and you should see an output like WhatsGNU.py 1.0.
+# Input
+The program accepts for analysis protein FASTA files (.faa).
 # Usage
-**
+**First time use**
+```
+$WhatsGNU.py -m database.faa query.faa
+```
+**Subsequent uses**
+```
+$WhatsGNU.py -d database.pickle query.faa
+```
 **Command line options**
 ```
 $WhatsGNU.py -h
@@ -56,6 +75,8 @@ optional arguments:
 # Output
 **query_exact_hits_report.txt** <br/>
 tab delimited file of protein and number_of_hits
+# Instructions for creating a database
+put somehting here
 # Bugs
 Please submit via the GitHub issues page: https://github.com/ahmedmagds/WhatsGNU/issues
 # Software Licence
