@@ -43,6 +43,18 @@ You can assign output folder name using -o instead of default (WhatsGNU_results_
 ```
 WhatsGNU.py -d Sau_012119_database.pickle -o output_results_folder query.faa
 ```
+Create a file of each protein with all associated ids from the database (Note: large file (~ 1 Gb for 3000 pts))
+```
+WhatsGNU.py -d Sau_012119_database.pickle -b -o output_results_folder query.faa
+```
+Create a file of top 10 genomes with hits
+```
+WhatsGNU.py -d Sau_012119_database.pickle -t query.faa
+```
+Check check how many hits you get from a particular genome in the database (**It has to be used with -t**)
+```
+WhatsGNU.py -d Sau_012119_database.pickle -t -s strain_name query.faa
+```
 **First time use with your own database**
 ```
 $WhatsGNU.py -m database.faa query.faa
