@@ -119,8 +119,11 @@ optional arguments:
   -v, --version         print version and exit
 ```
 ## Output
-File | Description
------------- | -------------
+### Always
+query_WhatsGNU_report_v1.txt (tab-separated output file)
+protein | length  | function | sequence | GNU score
+------------ | ------------- | ------------ | ------------- |-------------
+protein_id | 261 | hydrolase | MKVQIYQLP | 1918
 query_WhatsGNU_report_v1.txt | tab-separated output file
 query_WhatsGNU_hits_v1.txt | tab-separated output file
 ## Instructions for creating a database
