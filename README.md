@@ -1,7 +1,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 # WhatsGNU
 What's Gene Novelty Unit: A Tool For Identifying Proteomic Novelty.
-# Introduction
+## Introduction
 WhatsGNU utilizes the natural variation in public databases to rank protein sequences based on the number of observed exact protein matches (the GNU score) in all known genomes of a certain species & can quickly create whole protein reports.<br/>
 WhatsGNU compresses proteins database based on exact match to much fewer number of proteins that differ by at least one amino acid. WhatsGNU will save a copy of the compressed database in two formats; database.txt and database.pickle for faster subsequent uses.<br/>
 
@@ -12,22 +12,22 @@ Three precompressed databases (.pickle) are available to download and use:
 
 These three databases contain all available annotated genomes for the species from GenBank. The databases for these 3 organisms will be updated 3 times per year to include new sequenced genomes.
 
-# Dependencies
+## Dependencies
 [Python3.x](https://www.python.org/downloads/)<br/>
-# Installation
+## Installation
 WhatsGNU is a command-line application written in Python3, with no additional dependencies beyond the standard Python3.x package. Simply download and use!
 ```
 $git clone https://github.com/ahmedmagds/WhatsGNU
 $cd WhatsGNU
 $chmod +x WhatsGNU.py
 ```
-# Test
+## Test
 * Type WhatsGNU.py -h and it should output help screen.
 * Type WhatsGNU.py -v and you should see an output like WhatsGNU.py 1.0.
-# Input
+## Input
 The program accepts for analysis protein FASTA files (.faa).
-# Usage
-**Use basic function with our precompressed databases**
+## Usage
+### Use precompressed databases with basic function
 ```
 $WhatsGNU.py -d TB_013019_database.pickle query.faa
 or
@@ -35,11 +35,11 @@ $WhatsGNU.py -d Pa_012719_database.pickle query.faa
 or
 $WhatsGNU.py -d Sau_012119_database.pickle query.faa
 ```
-You can also use a folder of multiple .faa files as input (e.g. folder_faa has all .faa files to be processed)
+You can also use a folder of multiple .faa query files as input (e.g. folder_faa has all .faa files to be processed)
 ```
 $WhatsGNU.py -d Sau_012119_database.pickle folder_faa/
 ```
-**Other Features**
+### Use precompressed databases with more features
 You can assign output folder name using -o instead of default (WhatsGNU_results_v1_timestamp)
 ```
 $WhatsGNU.py -d Sau_012119_database.pickle -o output_results_folder query.faa
@@ -60,11 +60,12 @@ Get MLST CC/ST composition of your hits in the report(**Only works for _S. aureu
 ```
 $WhatsGNU.py -d Sau_012119_database.pickle -c Saureus_CC_ST_names_frequencies_012119.csv query.faa
 ```
-**First time use with your own database**
+### Use your own database
+#### First time use (-m with one concatenated (.faa) file of all genomes of a species, usually from GenBank)
 ```
 $WhatsGNU.py -m database.faa query.faa
 ```
-**Subsequent uses with your database**
+#### Subsequent uses (-d with the compressed database)
 ```
 $WhatsGNU.py -d database.pickle query.faa
 or
