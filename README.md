@@ -1,7 +1,8 @@
 # WhatsGNU
 WhatsGNU: a tool for identifying proteomic novelty
 # Usage
-```usage: WhatsGNU.py [-h] [-m MKDATABASE | -d DATABASE] [-o OUTPUT_FOLDER] [-t]
+```
+usage: WhatsGNU.py [-h] [-m MKDATABASE | -d DATABASE] [-o OUTPUT_FOLDER] [-t]
                    [-s STRAINHITS] [-b] [-c [CCST_TYPING]] [-v]
                    fastafile_faa
 
@@ -33,4 +34,5 @@ optional arguments:
   -c [CCST_TYPING], --CCST_typing [CCST_TYPING]
                         get the CC/ST composition of your hits (Note: Works
                         only for Saureus)
-  -v, --version         print version and exit```
+  -v, --version         print version and exit
+  ```
