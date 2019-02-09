@@ -120,9 +120,6 @@ optional arguments:
 ```
 ## Output
 ### Always (query_WhatsGNU_report_v1.txt (tab-separated output file))
-First Header | Second Header
------------- | -------------
-Content from cell 1 | Content from cell 2
 protein | length | function | sequence | GNU score
 ------- | ------ | -------- | -------- | ---------
 protein_id | 261 | hydrolase | MKVQIYQLP | 1918
