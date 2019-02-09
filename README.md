@@ -1,5 +1,16 @@
 # WhatsGNU
 WhatsGNU: a tool for identifying proteomic novelty
+# Author
+Ahmed M Moustafa :: [ahmedmagds](https://github.com/ahmedmagds)
+# Dependencies
+[Python3.x](https://www.python.org/downloads/)<br/>
+# Installation
+WhatsGNU is a command-line application written in Python3, with no additional dependencies beyond the standard Python3.x package. Simply download and use!
+```
+$git clone https://github.com/ahmedmagds/WhatsGNU
+$cd WhatsGNU
+$chmod +x WhatsGNU_v1.0.py
+```
 # Usage
 ```
 $WhatsGNU_v1.0.py -h
@@ -39,3 +50,10 @@ optional arguments:
                         only for Saureus)
   -v, --version         print version and exit
 ```
+# Output
+**query_exact_hits_report.txt** <br/>
+tab delimited file of protein and number_of_hits
+# Bugs
+Please submit via the GitHub issues page: https://github.com/ahmedmagds/WhatsGNU/issues
+# Software Licence
+GPLv3: https://github.com/ahmedmagds/WhatsGNU/blob/master/LICENSE
