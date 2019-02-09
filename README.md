@@ -1,9 +1,9 @@
 # WhatsGNU
 WhatsGNU: a tool for identifying proteomic novelty
 # Usage
-```usage: WhatsGNU [-h] [-m MKDATABASE | -d DATABASE] [-o OUTPUT_FOLDER] [-t]
-                [-s STRAINHITS] [-b] [-c [CCST_TYPING]] [-v]
-                fastafile_faa
+```usage: WhatsGNU.py [-h] [-m MKDATABASE | -d DATABASE] [-o OUTPUT_FOLDER] [-t]
+                   [-s STRAINHITS] [-b] [-c [CCST_TYPING]] [-v]
+                   fastafile_faa
 
 WhatsGNU v1.0 utilizes the naturalvariation in public databases to rank
 protein sequences based on the number of observed exact proteinmatches
