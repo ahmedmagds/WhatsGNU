@@ -27,7 +27,7 @@ $chmod +x WhatsGNU.py
 # Input
 The program accepts for analysis protein FASTA files (.faa).
 # Usage
-**Use with our precompressed databases**
+**Use basic function with our precompressed databases**
 ```
 $WhatsGNU.py -d TB_013019_database.pickle query.faa
 or
@@ -35,15 +35,16 @@ $WhatsGNU.py -d Pa_012719_database.pickle query.faa
 or
 $WhatsGNU.py -d Sau_012119_database.pickle query.faa
 ```
-You can use a folder of multiple .faa files as input (e.g. folder_faa has all .faa files to be processed)
+You can also use a folder of multiple .faa files as input (e.g. folder_faa has all .faa files to be processed)
 ```
 $WhatsGNU.py -d Sau_012119_database.pickle folder_faa/
 ```
+**Other Features**
 You can assign output folder name using -o instead of default (WhatsGNU_results_v1_timestamp)
 ```
 $WhatsGNU.py -d Sau_012119_database.pickle -o output_results_folder query.faa
 ```
-Create a file of each protein with all associated ids from the database (Note: large file (~ 1 Gb for 3000 pts))
+Create a file of each protein with all associated ids from the database (Note: large file (~ 1 Gb for 3000 proteins))
 ```
 $WhatsGNU.py -d Sau_012119_database.pickle -b -o output_results_folder query.faa
 ```
@@ -51,9 +52,13 @@ Create a file of top 10 genomes with hits
 ```
 $WhatsGNU.py -d Sau_012119_database.pickle -t query.faa
 ```
-Check check how many hits you get from a particular genome in the database (**It has to be used with -t**)
+Check how many hits you get from a particular genome in the database (**It has to be used with -t**)
 ```
 $WhatsGNU.py -d Sau_012119_database.pickle -t -s strain_name query.faa
+```
+Get MLST CC/ST composition of your hits in the report(**Only works for _S. aureus_**)
+```
+$WhatsGNU.py -d Sau_012119_database.pickle -c Saureus_CC_ST_names_frequencies_012119.csv query.faa
 ```
 **First time use with your own database**
 ```
