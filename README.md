@@ -122,7 +122,7 @@ optional arguments:
 ### Always
 query_WhatsGNU_report_v1.txt (tab-separated output file)<br/>
 protein | length | function | sequence | GNU score
------------- | ------------- | ------------ | ------------- |-------------
+------- | ------ | -------- | -------- | ---------
 protein_id | 261 | hydrolase | MKVQIYQLP | 1918
 query_WhatsGNU_report_v1.txt | tab-separated output file
 query_WhatsGNU_hits_v1.txt | tab-separated output file
