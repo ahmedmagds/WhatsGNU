@@ -25,7 +25,8 @@ $chmod +x WhatsGNU.py
 * Type WhatsGNU.py -h and it should output help screen.
 * Type WhatsGNU.py -v and you should see an output like WhatsGNU.py 1.0.
 ## Input
-The program accepts for analysis protein FASTA files (.faa).
+1. database (precompressed (.pickle or .txt) or raw (.faa)).
+2. Query protein FASTA file (.faa) or folder of query files.
 ## Usage
 ### Use precompressed databases with basic function
 ```
