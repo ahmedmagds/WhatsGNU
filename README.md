@@ -4,7 +4,7 @@ What's Gene Novelty Unit: A Tool For Identifying Proteomic Novelty.
 ## Introduction
 WhatsGNU utilizes the natural variation in public databases to rank protein sequences based on the number of observed exact protein matches (the GNU score) in all known genomes of a certain species & can quickly create whole protein reports.<br/>
 WhatsGNU compresses proteins database based on exact match to much fewer number of proteins that differ by at least one amino acid. WhatsGNU will save a copy of the compressed database in two formats; database.txt and database.pickle for faster subsequent uses.<br/>
-
+## Available Databases
 Three precompressed databases (.pickle) are available to download and use:
 1. [_Mycobacterium tuberculosis_](https://drive.google.com/drive/folders/1U2S6OUVJ6o3Q8dhilj2A97Kj4SHH56gT?usp=sharing) Version: 01/30/2019 (compressed 18,230,371 proteins in 4497 genomes to 443,237). 
 2. [_Pseudomonas aeruginosa_](https://drive.google.com/drive/folders/1bZtgzMQWvRnrZ33aq6RAECOZKYSCKylA?usp=sharing) Version: 01/27/2019 (compressed 14,475,742 proteins in 2329 genomes to 872,836).
