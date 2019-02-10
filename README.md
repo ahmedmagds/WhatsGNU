@@ -139,7 +139,7 @@ Option | File | Description
 -t | query_WhatsGNU_topgenomes_v1.txt | top 10 genomes with hits to your query
 ## Instructions for creating a database
 ### Simple
-1. Download proteomes of a bacterial species (.faa) from [GenBank FTP site](ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/bacteria/)
+1. Download proteomes of a bacterial species (.faa) from GenBank FTP site (ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/bacteria/)
 2. gunzip *.faa.gz
 3. cat *.faa > database.faa
 ## Requests for creating a database
