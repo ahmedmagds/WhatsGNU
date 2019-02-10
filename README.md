@@ -10,7 +10,7 @@ Three precompressed databases (.pickle) are available to download and use:
 2. [_Pseudomonas aeruginosa_](https://drive.google.com/drive/folders/1bZtgzMQWvRnrZ33aq6RAECOZKYSCKylA?usp=sharing) Version: 01/27/2019 (compressed 14,475,742 proteins in 2329 genomes to 872,836).
 3. [_Staphylococcus aureus_](https://drive.google.com/drive/folders/1cusXLqOEa2K3XhnCstuuWWVcPhI9deth?usp=sharing) Version: 01/21/2019 (compressed 22,738,456 proteins in 8524 genomes to 565,843).<br/>
 
-These three databases contain all available annotated genomes for the species from GenBank as per version day. The databases for these 3 organisms will be updated 3 times per year to include new sequenced genomes.
+These three databases contain all available annotated genomes for the species from GenBank as per version day. To know the genomes included in each database, download [List of Genomes included](https://drive.google.com/file/d/1zJoxYznrsUjrXs5lwSU_lg0o6r8KfSWq/view?usp=sharing). The databases for these 3 organisms will be updated 3 times per year to include new sequenced genomes.
 
 ## Dependencies
 [Python3.x](https://www.python.org/downloads/)<br/>
@@ -147,6 +147,7 @@ Option | File | Description
 1. Download proteomes of a bacterial species (.faa) in a Directory from GenBank FTP site (ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/bacteria/)
 2. cd Directory
 3. gunzip *.faa.gz
+
 When Proteome files are downloaded from GenBank and unzipped, they have the protein ids and sequences as following:
 ```
 >protein_1
@@ -162,6 +163,8 @@ MSDMF
 MRTYZ
 ```
 4. cat *.faa > database.faa
+
+At this point the database is ready to be used in WhatsGNU for the first time with -m as previously explained.
 ## Requests for creating a database
 Requests to process a database for a specific species are welcomed and will be considered
 ## Bugs
