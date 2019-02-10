@@ -138,10 +138,30 @@ Option | File | Description
 -b | query_WhatsGNU_hits_v1.txt | each protein with all hits_ids from the database,large file (~ 1 Gb for S. aureus)
 -t | query_WhatsGNU_topgenomes_v1.txt | top 10 genomes with hits to your query
 ## Instructions for creating a database
-### Simple
-1. Download proteomes of a bacterial species (.faa) from GenBank FTP site (ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/bacteria/)
-2. gunzip *.faa.gz
-3. cat *.faa > database.faa
+### Simple (works for basic report)
+1. Download proteomes of a bacterial species (.faa) in a Directory from GenBank FTP site (ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/bacteria/)
+2. cd Directory
+3. gunzip *.faa.gz
+4. cat *.faa > database.faa
+### Advanced 
+1. Download proteomes of a bacterial species (.faa) in a Directory from GenBank FTP site (ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/bacteria/)
+2. cd Directory
+3. gunzip *.faa.gz
+When Proteome files are downloaded from GenBank and unzipped, they have the protein ids and sequences as following:
+```
+>protein_1
+MSDMF
+>protein_2
+MRTYZ
+```
+The protein ids usually have little or no information about the strain so once all proteins mixed in the database, strains' information are lost. Adding strain name to the start of each protein would help to later count the top genomes. Also it will help identify protein origin. Different genomes sometimes have the same strain name so to overcome this problem we recommend using strain_GCA#. This information can be downloaded as an excel sheet from NCBI and then in excel concatenate the two columns of strain name and GCA#. Then add it to each protein in the .faa file to look as following:
+```
+>strain_GCA_12345.1_protein_1
+MSDMF
+>strain_GCA_12345.1_protein_2
+MRTYZ
+```
+4. cat *.faa > database.faa
 ## Requests for creating a database
 Requests to process a database for a specific species are welcomed and will be considered
 ## Bugs
