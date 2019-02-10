@@ -119,12 +119,22 @@ optional arguments:
   -v, --version         print version and exit
 ```
 ## Output
-### Always (query_WhatsGNU_report_v1.txt (tab-separated output file))
+### Always
+**query_WhatsGNU_report_v1.txt** (tab-separated output file)
+
 protein | length | function | sequence | GNU score
 ------- | ------ | -------- | -------- | ---------
 protein_id | 261 | hydrolase | MKVQIYQLP | 1918
-query_WhatsGNU_report_v1.txt | tab-separated output file
-query_WhatsGNU_hits_v1.txt | tab-separated output file
+
+Note: If -c option is used for _S. aureus_, CC/ST percentages' columns will be added to the report.
+
+**WhatsGNU_v1_date_time.log** (Log file, e.g. WhatsGNU_v1_20190209_183406.log)
+
+### Optional
+Option | File | Description
+------ | ---- | -----------
+-b | query_WhatsGNU_hits_v1.txt | each protein with all hits_ids from the database,large file (~ 1 Gb for 3000 pts)
+-t | query_WhatsGNU_topgenomes_v1.txt | top 10 genomes with hits to your query
 ## Instructions for creating a database
 put somehting here
 ## Requests for creating a database
