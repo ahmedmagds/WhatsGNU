@@ -20,7 +20,9 @@ WhatsGNU is a command-line application written in Python3, with no additional de
 $git clone https://github.com/ahmedmagds/WhatsGNU
 $cd WhatsGNU
 $chmod +x WhatsGNU.py
+$export PATH=$PATH:/path/to/folder/having/WhatsGNU
 ```
+If you need it permanently, you can add this last line to your .bashrc or .bash_profile 
 ## Test
 * Type WhatsGNU.py -h and it should output help screen.
 * Type WhatsGNU.py -v and you should see an output like WhatsGNU.py 1.0.
@@ -133,10 +135,13 @@ Note: If -c option is used for _S. aureus_, CC/ST percentages' columns will be a
 ### Optional
 Option | File | Description
 ------ | ---- | -----------
--b | query_WhatsGNU_hits_v1.txt | each protein with all hits_ids from the database,large file (~ 1 Gb for 3000 pts)
+-b | query_WhatsGNU_hits_v1.txt | each protein with all hits_ids from the database,large file (~ 1 Gb for S. aureus)
 -t | query_WhatsGNU_topgenomes_v1.txt | top 10 genomes with hits to your query
 ## Instructions for creating a database
-put somehting here
+### Simple
+1. Download proteomes of a bacterial species (.faa) from [GenBank FTP site](ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/bacteria/)
+2. gunzip *.faa.gz
+3. cat *.faa > database.faa
 ## Requests for creating a database
 Requests to process a database for a specific species are welcomed and will be considered
 ## Bugs
