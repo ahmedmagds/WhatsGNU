@@ -58,7 +58,7 @@ Create a file of top 10 genomes with hits
 ```
 $WhatsGNU.py -d Sau_012119_database.pickle -t query.faa
 ```
-Check how many hits you get from a particular genome in the database (**It has to be used with -t**). You can know the names of the different strains in the databases and correspond it with Genbank strain name or GCA number from [List of Genomes included](https://drive.google.com/file/d/1zJoxYznrsUjrXs5lwSU_lg0o6r8KfSWq/view?usp=sharing)
+Check how many hits you get from a particular genome in the database (**It has to be used with -t**). The names of the different strains in the databases and their corresponding Genbank strain name and GCA number are available from [List of Genomes included](https://drive.google.com/file/d/1zJoxYznrsUjrXs5lwSU_lg0o6r8KfSWq/view?usp=sharing)
 ```
 $WhatsGNU.py -d Sau_012119_database.pickle -t -s USA300_FPR3757_CC8_GCA_000013465.1 query.faa
 ```
