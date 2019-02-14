@@ -51,7 +51,7 @@ start_time = time.time()
 
 parser = argparse.ArgumentParser(prog='WhatsGNU.py', description="WhatsGNU v1.0 utilizes the natural\
  variation in public databases to rank protein sequences based on the number of observed exact protein\
- matches (the GNU score) in all known genomes of certain species & can quickly create whole protein reports")
+ matches (the GNU score) in all known genomes of a particular species. It generates a report for all the proteins in your query in seconds")
 group = parser.add_mutually_exclusive_group()
 group.add_argument("-m", "--mkdatabase", type=str, help="you have to provide path to faa file format to \
 create compressed database in txt and pickle formats")
