@@ -20,6 +20,8 @@ WhatsGNU is a command-line application written in Python3, with no additional de
 $git clone https://github.com/ahmedmagds/WhatsGNU
 $cd WhatsGNU
 $chmod +x WhatsGNU.py
+$pwd 
+#pwd will give you a path/to/folder/having/WhatsGNU which you will use in next command
 $export PATH=$PATH:/path/to/folder/having/WhatsGNU
 ```
 If you need it permanently, you can add this last line to your .bashrc or .bash_profile 
