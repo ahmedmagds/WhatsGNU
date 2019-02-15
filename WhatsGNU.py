@@ -51,7 +51,8 @@ start_time = time.time()
 
 parser = argparse.ArgumentParser(prog='WhatsGNU.py', description="WhatsGNU v1.0 utilizes the natural\
  variation in public databases to rank protein sequences based on the number of observed exact protein\
- matches (the GNU score) in all known genomes of a particular species. It generates a report for all the proteins in your query in seconds")
+ matches (the GNU score) in all known genomes of a particular species. It generates a report for all the\
+ proteins in your query in seconds")
 group = parser.add_mutually_exclusive_group()
 group.add_argument("-m", "--mkdatabase", type=str, help="you have to provide path to faa file format to \
 create compressed database in txt and pickle formats")
@@ -118,8 +119,10 @@ if args.mkdatabase:
                     db_sequence_string += line
             sequences_dict_d[db_sequence_string].append(db_sequence_info)
             if bool(sequences_dict_d):
-                print("processed database of {} proteins to compressed dictionary in --- {:.3f} seconds ---".format(len(sequences_dict_d),time.time() - start_time))
-                logging.info("processed database of {} proteins to compressed dictionary in --- {:.3f} seconds ---".format(len(sequences_dict_d),time.time() - start_time))
+                print("processed database of {} proteins to compressed dictionary in --- {:.3f} seconds ---".format(
+                len(sequences_dict_d),time.time() - start_time))
+                logging.info("processed database of {} proteins to compressed dictionary in --- {:.3f} seconds ---".format(
+                len(sequences_dict_d),time.time() - start_time))
                 databasefile_object.close()
         except:
             logging.error("Cannot process the faa file provided to a compressed dictionary")
@@ -132,11 +135,15 @@ if args.mkdatabase:
             for record in sequences_dict_d:
                 output_file_3.write("{}\t{}\n".format(record, '._/'.join(sequences_dict_d[record])))
             output_file_3.close()
-            print("saved database ({}) of {} proteins as txt file in --- {:.3f} seconds ---".format(txt_file_name,len(sequences_dict_d),time.time() - start_time))
-            logging.info("saved database ({}) of {} proteins as txt file in --- {:.3f} seconds ---".format(txt_file_name,len(sequences_dict_d),time.time() - start_time))
+            print("saved database ({}) of {} proteins as txt file in --- {:.3f} seconds ---".format(
+            txt_file_name,len(sequences_dict_d),time.time() - start_time))
+            logging.info("saved database ({}) of {} proteins as txt file in --- {:.3f} seconds ---".format(
+            txt_file_name,len(sequences_dict_d),time.time() - start_time))
         except:
-            print("cannot save compressed database as txt file, this time will be ok as the compressed dictionary will be used")
-            logging.critical("cannot save compressed database as txt file, this time will be ok as the compressed dictionary will be used")
+            print("cannot save compressed database as txt file,\ 
+            this time will be ok as the compressed dictionary will be used")
+            logging.critical("cannot save compressed database as txt file,\
+            this time will be ok as the compressed dictionary will be used")
         #########################################
         try:
             pickle_file_name = args.mkdatabase.split(".faa")[0]+"_compressed_database_"+timestr2+".pickle"
@@ -144,19 +151,23 @@ if args.mkdatabase:
             pickle.dump(sequences_dict_d, pickle_out)
             pickle_out.close()
             print("saved pickle_dict ({}) in --- {:.3f} seconds ---".format(pickle_file_name,time.time() - start_time))
-            logging.info("saved pickle_dict ({}) in --- {:.3f} seconds ---".format(pickle_file_name,time.time() - start_time))
+            logging.info("saved pickle_dict ({}) in --- {:.3f} seconds ---".format(
+            pickle_file_name,time.time() - start_time))
         except:
             print("cannot save pickle file")
             logging.warning("cannot save pickle file")
     else:
         logging.error("The file you provided to be processed as a database is not having extension .faa file")
-        parser.exit(status=0, message='The file you provided to be processed as a database is not having extension .faa file\n')
+        parser.exit(status=0, message='The file you provided to be processed as a database\
+        is not having extension .faa file\n')
 
 #####load database file#########
 if args.mkdatabase:
     sequences_dict = sequences_dict_d
-    print("As you just created a compressed database using -m, it will be used this time, next time provide the database using -d")
-    logging.info("As you just created a compressed database using -m, it will be used this time, next time provide the database using -d")
+    print("As you just created a compressed database using -m, it will be used this time, next time provide the database\
+    using -d")
+    logging.info("As you just created a compressed database using -m, it will be used this time, next time provide the\
+    database using -d")
 elif args.database:
     if args.database.endswith(".pickle"):
         try:
@@ -164,7 +175,8 @@ elif args.database:
             sequences_dict = pickle.load(pickle_in)
             if bool(sequences_dict):
                 print("opened previously created pickle_dict in --- {:.3f} seconds ---".format(time.time() - start_time))
-                logging.info("opened previously created pickle_dict in --- {:.3f} seconds ---".format(time.time() - start_time))
+                logging.info("opened previously created pickle_dict in --- {:.3f} seconds ---".format(
+                time.time() - start_time))
         except:
             logging.error("The compressed database pickle_dict file you provided is empty or corrupted")
             parser.exit(status=0, message='The compressed database pickle_dict file you provided is empty or corrupted\n')
@@ -172,16 +184,20 @@ elif args.database:
         try:
             sequences_dict = {}
             database_fo = open(args.database, 'r')
-            print('opened previously created compressed txt database in --- {:.3f} seconds ---'.format(time.time() - start_time))
-            logging.info('opened previously created compressed txt database in --- {:.3f} seconds ---'.format(time.time() - start_time))
+            print('opened previously created compressed txt database in --- {:.3f} seconds ---'.format(
+            time.time() - start_time))
+            logging.info('opened previously created compressed txt database in --- {:.3f} seconds ---'.format(
+            time.time() - start_time))
             for line in database_fo:
                 line = line.rstrip()
                 seq,ids = line.split('\t')
                 listids = ids.split('._/')
                 sequences_dict[seq] = listids
             if bool(sequences_dict):
-                print("processed compressed txt database to dictionary in --- {:.3f} seconds ---".format(time.time() - start_time))
-                logging.info("processed compressed txt database to dictionary in --- {:.3f} seconds ---".format(time.time() - start_time))
+                print("processed compressed txt database to dictionary in --- {:.3f} seconds ---".format(
+                time.time() - start_time))
+                logging.info("processed compressed txt database to dictionary in --- {:.3f} seconds ---".format(
+                time.time() - start_time))
         except:
             logging.error("The compressed database txt file you provided is empty or corrupted")
             parser.exit(status=0, message='The compressed database txt file you provided is empty or corrupted\n')
@@ -189,8 +205,10 @@ elif args.database:
         logging.error("No proper compressed database (file.pickle or file.txt) was provided using -d")
         parser.exit(status=0, message='No proper compressed database (file.pickle or file.txt) was provided using -d\n')
 else:
-    logging.error("Neither you created new database using -m (file.faa) nor proper database (file.pickle or file.txt) was provided using -d")
-    parser.exit(status=0, message='Neither you created new database using -m (file.faa) nor proper database (file.pickle or file.txt) was provided using -d\n')
+    logging.error("Neither you created new database using -m (file.faa) nor proper database (file.pickle or file.txt)\
+    was provided using -d")
+    parser.exit(status=0, message='Neither you created new database using -m (file.faa) nor proper database (file.pickle\
+    or file.txt) was provided using -d\n')
 
 #####create results folder######
 if args.output_folder:
@@ -230,7 +248,8 @@ for queryfile in query_list:
             CC_ST,CC_ST_freq = line.split(',')
             CC_ST_names_list.append(CC_ST)
             CC_ST_frequencies_list.append(int(CC_ST_freq))
-        output_file_2.write("{}\t{}\t{}\t{}\t{}\t{}\n".format('protein', 'length', 'function','sequence','GNU score', '\t'.join(CC_ST_names_list)))
+        output_file_2.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(
+        'protein', 'length', 'function','sequence','GNU score', '\t'.join(CC_ST_names_list)))
         print("processed CC/ST list")
         logging.info("processed CC/ST list")
     output_file_2.write("{}\t{}\t{}\t{}\t{}\n".format('protein', 'length', 'function','sequence','GNU score'))
@@ -238,7 +257,8 @@ for queryfile in query_list:
         output_file = open(file_hits, 'w')
         output_file.write("{}\t{}\n".format("protein_query", "hits"))
         print("opened hits file for {} as per your request of -b".format((queryfile.rsplit('/', 1)[-1]).split(".faa")[0]))
-        logging.info("opened hits file for {} as per your request of -b".format((queryfile.rsplit('/', 1)[-1]).split(".faa")[0]))
+        logging.info("opened hits file for {} as per your request of -b".format(
+        (queryfile.rsplit('/', 1)[-1]).split(".faa")[0]))
     processed_counter = 0
     CC_ST_count_list = []
     CC_ST_percentage_list = []
@@ -271,21 +291,32 @@ for queryfile in query_list:
                     if args.CCST_typing:
                         for CC_ST in CC_ST_names_list:
                             CC_ST_count_list.append(ids_tabbed_string.count('_'+CC_ST+'_'))
-                        CC_ST_percentage_list = [str('{:.2f}'.format(CC_ST_count*100/CC_ST_freq)) for CC_ST_count,CC_ST_freq in zip(CC_ST_count_list,CC_ST_frequencies_list)] #bananasplit = [int(b) / int(m) for b,m in zip(banana, monkey)]
-                        output_file_2.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(sequence_info,len(sequence_string),function_cleaned,sequence_string,len(ids_list),'\t'.join(CC_ST_percentage_list)))
+                        CC_ST_percentage_list = [str('{:.2f}'.format(
+                        CC_ST_count*100/CC_ST_freq)) for CC_ST_count,CC_ST_freq in zip(
+                        CC_ST_count_list,CC_ST_frequencies_list)]
+                        output_file_2.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(
+                        sequence_info,len(sequence_string),function_cleaned,sequence_string,len(ids_list),\
+                        '\t'.join(CC_ST_percentage_list)))
                     else:
-                        output_file_2.write("{}\t{}\t{}\t{}\t{}\n".format(sequence_info,len(sequence_string),function_cleaned,sequence_string,len(ids_list)))
-                    print("processed protein {} of {} in {:.3F}".format(processed_counter,(queryfile.rsplit('/', 1)[-1]).split(".faa")[0],time.time() - start_time))
-                    logging.info("processed protein {} of {} in {:.3F}".format(processed_counter,(queryfile.rsplit('/', 1)[-1]).split(".faa")[0],time.time() - start_time))
+                        output_file_2.write("{}\t{}\t{}\t{}\t{}\n".format(
+                        sequence_info,len(sequence_string),function_cleaned,sequence_string,len(ids_list)))
+                    print("processed protein {} of {} in {:.3F}".format(
+                    processed_counter,(queryfile.rsplit('/', 1)[-1]).split(".faa")[0],time.time() - start_time))
+                    logging.info("processed protein {} of {} in {:.3F}".format(
+                    processed_counter,(queryfile.rsplit('/', 1)[-1]).split(".faa")[0],time.time() - start_time))
                 except:
                     if args.hits:
                         output_file.write("{}\tno_hits\n".format(sequence_info))
                     if args.CCST_typing:
-                        output_file_2.write("{}\t{}\tNA\t{}\t{}\n".format(sequence_info,str(len(sequence_string)),sequence_string,'\t'.join(zeros_list)))
+                        output_file_2.write("{}\t{}\tNA\t{}\t{}\n".format(
+                        sequence_info,str(len(sequence_string)),sequence_string,'\t'.join(zeros_list)))
                     else:
-                        output_file_2.write("{}\t{}\tNA\t{}\t0\n".format(sequence_info,str(len(sequence_string)),sequence_string))
-                    print("processed protein {} of {} in {:.3F}".format(processed_counter,(queryfile.rsplit('/', 1)[-1]).split(".faa")[0], time.time() - start_time))
-                    logging.info("processed protein {} of {} in {:.3F}".format(processed_counter,(queryfile.rsplit('/', 1)[-1]).split(".faa")[0], time.time() - start_time))
+                        output_file_2.write("{}\t{}\tNA\t{}\t0\n".format(
+                        sequence_info,str(len(sequence_string)),sequence_string))
+                    print("processed protein {} of {} in {:.3F}".format(
+                    processed_counter,(queryfile.rsplit('/', 1)[-1]).split(".faa")[0], time.time() - start_time))
+                    logging.info("processed protein {} of {} in {:.3F}".format(
+                    processed_counter,(queryfile.rsplit('/', 1)[-1]).split(".faa")[0], time.time() - start_time))
                 sequence_string = ''
             sequence_info = line.lstrip('>')
         else:
@@ -309,21 +340,30 @@ for queryfile in query_list:
         if args.CCST_typing:
             for CC_ST in CC_ST_names_list:
                 CC_ST_count_list.append(ids_tabbed_string.count('_'+CC_ST+'_'))
-            CC_ST_percentage_list = [str('{:.2f}'.format(CC_ST_count*100/CC_ST_freq)) for CC_ST_count,CC_ST_freq in zip(CC_ST_count_list,CC_ST_frequencies_list)] #bananasplit = [int(b) / int(m) for b,m in zip(banana, monkey)]
-            output_file_2.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(sequence_info,len(sequence_string),function_cleaned,sequence_string,len(ids_list),'\t'.join(CC_ST_percentage_list)))
+            CC_ST_percentage_list = [str('{:.2f}'.format(
+            CC_ST_count*100/CC_ST_freq)) for CC_ST_count,CC_ST_freq in zip(CC_ST_count_list,CC_ST_frequencies_list)]
+            output_file_2.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(
+            sequence_info,len(sequence_string),function_cleaned,sequence_string,len(ids_list),\
+            '\t'.join(CC_ST_percentage_list)))
         else:
-            output_file_2.write("{}\t{}\t{}\t{}\t{}\n".format(sequence_info,len(sequence_string),function_cleaned,sequence_string,len(ids_list)))
-        print("processed protein {} of {} in {:.3F}".format(processed_counter,(queryfile.rsplit('/', 1)[-1]).split(".faa")[0],time.time() - start_time))
-        logging.info("processed protein {} of {} in {:.3F}".format(processed_counter,(queryfile.rsplit('/', 1)[-1]).split(".faa")[0],time.time() - start_time))
+            output_file_2.write("{}\t{}\t{}\t{}\t{}\n".format(
+            sequence_info,len(sequence_string),function_cleaned,sequence_string,len(ids_list)))
+        print("processed protein {} of {} in {:.3F}".format(
+        processed_counter,(queryfile.rsplit('/', 1)[-1]).split(".faa")[0],time.time() - start_time))
+        logging.info("processed protein {} of {} in {:.3F}".format(
+        processed_counter,(queryfile.rsplit('/', 1)[-1]).split(".faa")[0],time.time() - start_time))
     except:
         if args.hits:
             output_file.write("{}\tno_hits\n".format(sequence_info))
         if args.CCST_typing:
-            output_file_2.write("{}\t{}\tNA\t{}\t{}\n".format(sequence_info,str(len(sequence_string)),sequence_string,'\t'.join(zeros_list)))
+            output_file_2.write("{}\t{}\tNA\t{}\t{}\n".format(
+            sequence_info,str(len(sequence_string)),sequence_string,'\t'.join(zeros_list)))
         else:
             output_file_2.write("{}\t{}\tNA\t{}\t0\n".format(sequence_info,str(len(sequence_string)),sequence_string))
-        print("processed protein {} of {} in {:.3F}".format(processed_counter,(queryfile.rsplit('/', 1)[-1]).split(".faa")[0], time.time() - start_time))
-        logging.info("processed protein {} of {} in {:.3F}".format(processed_counter,(queryfile.rsplit('/', 1)[-1]).split(".faa")[0], time.time() - start_time))
+        print("processed protein {} of {} in {:.3F}".format(
+        processed_counter,(queryfile.rsplit('/', 1)[-1]).split(".faa")[0], time.time() - start_time))
+        logging.info("processed protein {} of {} in {:.3F}".format(
+        processed_counter,(queryfile.rsplit('/', 1)[-1]).split(".faa")[0], time.time() - start_time))
     if args.topgenomes: #get top 10 genomes with hits
         file_topgenomes = results_folder + (queryfile.rsplit('/', 1)[-1]).split(".faa")[0] + "_WhatsGNU_topgenomes_v1.txt"
         C = Counter(all_hits_list)
@@ -332,7 +372,8 @@ for queryfile in query_list:
             logging.info("No of hits from strain {} is {}".format(args.strainhits,C[args.strainhits+'_']))
         most_occur = C.most_common(10)
         with open(file_topgenomes, 'w') as output_file_4:
-            output_file_4.write("WhatsGNU found {} total hits from the database in --- {:.3f} seconds ---\n".format(len(all_hits_list),time.time() - start_time))
+            output_file_4.write("WhatsGNU found {} total hits from the database in --- {:.3f} seconds ---\n".format(
+            len(all_hits_list),time.time() - start_time))
             output_file_4.write('\n'.join('{}\t{}'.format(x[0].rstrip('_'),x[1]) for x in most_occur))
         print("Found top 10 genomes with hits")
         logging.info("Found top 10 genomes with hits")
