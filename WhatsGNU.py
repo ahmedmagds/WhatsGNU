@@ -140,10 +140,10 @@ if args.mkdatabase:
             logging.info("saved database ({}) of {} proteins as txt file in --- {:.3f} seconds ---".format(
             txt_file_name,len(sequences_dict_d),time.time() - start_time))
         except:
-            print("cannot save compressed database as txt file,\ 
-            this time will be ok as the compressed dictionary will be used")
-            logging.critical("cannot save compressed database as txt file,\
-            this time will be ok as the compressed dictionary will be used")
+            print("""cannot save compressed database as txt file, 
+            this time will be ok as the compressed dictionary will be used""")
+            logging.critical("""cannot save compressed database as txt file,
+            this time will be ok as the compressed dictionary will be used""")
         #########################################
         try:
             pickle_file_name = args.mkdatabase.split(".faa")[0]+"_compressed_database_"+timestr2+".pickle"
