@@ -164,10 +164,10 @@ if args.mkdatabase:
 #####load database file#########
 if args.mkdatabase:
     sequences_dict = sequences_dict_d
-    print("As you just created a compressed database using -m, it will be used this time, next time provide the database\
-    using -d")
-    logging.info("As you just created a compressed database using -m, it will be used this time, next time provide the\
-    database using -d")
+    print("""As you just created a compressed database using -m, it will be used this time, next time provide the database
+    using -d""")
+    logging.info("""As you just created a compressed database using -m, it will be used this time, next time provide the
+    database using -d""")
 elif args.database:
     if args.database.endswith(".pickle"):
         try:
@@ -205,10 +205,10 @@ elif args.database:
         logging.error("No proper compressed database (file.pickle or file.txt) was provided using -d")
         parser.exit(status=0, message='No proper compressed database (file.pickle or file.txt) was provided using -d\n')
 else:
-    logging.error("Neither you created new database using -m (file.faa) nor proper database (file.pickle or file.txt)\
-    was provided using -d")
-    parser.exit(status=0, message='Neither you created new database using -m (file.faa) nor proper database (file.pickle\
-    or file.txt) was provided using -d\n')
+    logging.error("""Neither you created new database using -m (file.faa) nor proper database (file.pickle or file.txt)
+    was provided using -d""")
+    parser.exit(status=0, message="""Neither you created new database using -m (file.faa) nor proper database (file.pickle
+    or file.txt) was provided using -d\n""")
 
 #####create results folder######
 if args.output_folder:
@@ -295,7 +295,7 @@ for queryfile in query_list:
                         CC_ST_count*100/CC_ST_freq)) for CC_ST_count,CC_ST_freq in zip(
                         CC_ST_count_list,CC_ST_frequencies_list)]
                         output_file_2.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(
-                        sequence_info,len(sequence_string),function_cleaned,sequence_string,len(ids_list),\
+                        sequence_info,len(sequence_string),function_cleaned,sequence_string,len(ids_list),
                         '\t'.join(CC_ST_percentage_list)))
                     else:
                         output_file_2.write("{}\t{}\t{}\t{}\t{}\n".format(
@@ -343,7 +343,7 @@ for queryfile in query_list:
             CC_ST_percentage_list = [str('{:.2f}'.format(
             CC_ST_count*100/CC_ST_freq)) for CC_ST_count,CC_ST_freq in zip(CC_ST_count_list,CC_ST_frequencies_list)]
             output_file_2.write("{}\t{}\t{}\t{}\t{}\t{}\n".format(
-            sequence_info,len(sequence_string),function_cleaned,sequence_string,len(ids_list),\
+            sequence_info,len(sequence_string),function_cleaned,sequence_string,len(ids_list),
             '\t'.join(CC_ST_percentage_list)))
         else:
             output_file_2.write("{}\t{}\t{}\t{}\t{}\n".format(
