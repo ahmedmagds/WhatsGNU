@@ -1,7 +1,12 @@
 git:
   depth: false
 language: python
-python:
-  - "3.6"
-  - "3.7"
+matrix:
+  include:
+    - python: 3.4
+    - python: 3.5
+    - python: 3.6
+    - python: 3.7
+      dist: xenial
+      sudo: true
 script: python WhatsGNU.py -h
