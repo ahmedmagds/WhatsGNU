@@ -3,4 +3,5 @@ git:
 language: python
 python:
   - "3.6"
+  - "3.7"
 script: python WhatsGNU.py -h
