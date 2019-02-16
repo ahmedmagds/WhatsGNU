@@ -100,8 +100,7 @@ except:
         logging.info("You provided one faa file to be processed")
     else:
         logging.error("You did not provide single faa file or path to directory with multiple faa files")
-        parser.exit(status=0, message='You did not provide single faa file or path to directory with\ 
-multiple faa files\n')
+        parser.exit(status=0, message='You did not provide single faa file or path to directory with multiple faa files\n')
 
 #####Run database for first time#####
 if args.mkdatabase:
@@ -140,10 +139,8 @@ if args.mkdatabase:
             logging.info("saved database ({}) of {} proteins as txt file in --- {:.3f} seconds ---".format(
             txt_file_name,len(sequences_dict_d),time.time() - start_time))
         except:
-            print("""cannot save compressed database as txt file,
-            this time will be ok as the compressed dictionary will be used""")
-            logging.critical("""cannot save compressed database as txt file,
-            this time will be ok as the compressed dictionary will be used""")
+            print("cannot save compressed database as txt file, this time will be ok as the compressed dictionary will be used")
+            logging.critical("cannot save compressed database as txt file, this time will be ok as the compressed dictionary will be used")
         #########################################
         try:
             pickle_file_name = args.mkdatabase.split(".faa")[0]+"_compressed_database_"+timestr2+".pickle"
@@ -164,10 +161,8 @@ if args.mkdatabase:
 #####load database file#########
 if args.mkdatabase:
     sequences_dict = sequences_dict_d
-    print("""As you just created a compressed database using -m, it will be used this time, next time provide the database
-    using -d""")
-    logging.info("""As you just created a compressed database using -m, it will be used this time, next time provide the
-    database using -d""")
+    print("As you just created a compressed database using -m, it will be used this time, next time provide the database using -d")
+    logging.info("As you just created a compressed database using -m, it will be used this time, next time provide the database using -d")
 elif args.database:
     if args.database.endswith(".pickle"):
         try:
@@ -205,10 +200,8 @@ elif args.database:
         logging.error("No proper compressed database (file.pickle or file.txt) was provided using -d")
         parser.exit(status=0, message='No proper compressed database (file.pickle or file.txt) was provided using -d\n')
 else:
-    logging.error("""Neither you created new database using -m (file.faa) nor proper database (file.pickle or file.txt)
-    was provided using -d""")
-    parser.exit(status=0, message="""Neither you created new database using -m (file.faa) nor proper database (file.pickle
-    or file.txt) was provided using -d\n""")
+    logging.error("Neither you created new database using -m (file.faa) nor proper database (file.pickle or file.txt) was provided using -d")
+    parser.exit(status=0, message="Neither you created new database using -m (file.faa) nor proper database (file.pickle or file.txt) was provided using -d\n")
 
 #####create results folder######
 if args.output_folder:
