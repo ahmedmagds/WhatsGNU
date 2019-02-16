@@ -100,8 +100,8 @@ except:
         logging.info("You provided one faa file to be processed")
     else:
         logging.error("You did not provide single faa file or path to directory with multiple faa files")
-        parser.exit(status=0, message='You did not provide single faa file or path to directory with\
-        multiple faa files\n')
+        parser.exit(status=0, message="""You did not provide single faa file or path to directory with 
+        multiple faa files\n""")
 
 #####Run database for first time#####
 if args.mkdatabase:
