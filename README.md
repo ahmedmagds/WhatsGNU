@@ -25,7 +25,7 @@ $pwd
 #pwd will give you a path/to/folder/having/WhatsGNU which you will use in next command
 $export PATH=$PATH:/path/to/folder/having/WhatsGNU
 ```
-If you need it permanently, you can add this last line to your .bashrc or .bash_profile 
+If you need it permanently, you can add this last line to your .bashrc or .bash_profile. 
 ## Test
 * Type WhatsGNU.py -h and it should output help screen.
 * Type WhatsGNU.py -v and you should see an output like WhatsGNU.py 1.0.
