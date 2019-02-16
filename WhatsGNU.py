@@ -140,7 +140,7 @@ if args.mkdatabase:
             logging.info("saved database ({}) of {} proteins as txt file in --- {:.3f} seconds ---".format(
             txt_file_name,len(sequences_dict_d),time.time() - start_time))
         except:
-            print("""cannot save compressed database as txt file, 
+            print("""cannot save compressed database as txt file,
             this time will be ok as the compressed dictionary will be used""")
             logging.critical("""cannot save compressed database as txt file,
             this time will be ok as the compressed dictionary will be used""")
@@ -252,7 +252,8 @@ for queryfile in query_list:
         'protein', 'length', 'function','sequence','GNU score', '\t'.join(CC_ST_names_list)))
         print("processed CC/ST list")
         logging.info("processed CC/ST list")
-    output_file_2.write("{}\t{}\t{}\t{}\t{}\n".format('protein', 'length', 'function','sequence','GNU score'))
+    else:
+        output_file_2.write("{}\t{}\t{}\t{}\t{}\n".format('protein', 'length', 'function','sequence','GNU score'))
     if args.hits: #output big (roughly 1GB) hits file
         output_file = open(file_hits, 'w')
         output_file.write("{}\t{}\n".format("protein_query", "hits"))
