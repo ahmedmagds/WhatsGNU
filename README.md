@@ -43,7 +43,7 @@ $wget -O Sau_Staphopia_basic_43914.pickle https://www.dropbox.com/s/bcs922768tjr
 ```
 $wget -O Senterica_Enterobase_basic_216642.pickle
 ```
-The three Ortholog databases contain all available genomes for the species from GenBank as per version day. To know the genomes included in each database, download [List of Genomes included](https://drive.google.com/file/d/1zJoxYznrsUjrXs5lwSU_lg0o6r8KfSWq/view?usp=sharing). The databases for these 3 Ortholog databases will be updated 3 times per year to include new sequenced genomes.
+The three Ortholog databases contain all available genomes for the species from GenBank as per version day. To know the genomes included in each database, download [List of Genomes included](https://www.dropbox.com/s/w7z6htvot8167ep/List_of_genomes_included_092019.xlsx?dl=0). The databases for these 3 Ortholog databases will be updated 3 times per year to include new sequenced genomes.
 
 ## WhatsGNU toolbox
 1. ### WhatsGNU_get_GenBank_genomes.py
@@ -89,7 +89,7 @@ If you need it permanently, you can add this last line to your .bashrc or .bash_
 2. Query protein FASTA file (.faa) or folder of query files.
 
 Optional for _S. aureus_:
-Download the CSV file of [CC/ST frequencies](https://drive.google.com/file/d/1PaxWdKAyHOO_pAM0-Knx-6G5HYKoXcKU/view?usp=sharing) in the _S. aureus_ database.
+The CSV file of Metadata (CC/ST) frequencies for the _S. aureus_ database.
 ### Use precompressed databases
 ```
 $WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog query.faa
@@ -113,11 +113,11 @@ Create a file of top 10 genomes with hits
 ```
 $WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -t query.faa
 ```
-Check how many hits you get from a particular genome in the database (**It has to be used with -t**). The names of the different strains in the databases and their corresponding Genbank strain name and GCA number are available from [List of Genomes included](https://drive.google.com/file/d/1zJoxYznrsUjrXs5lwSU_lg0o6r8KfSWq/view?usp=sharing)
+Check how many hits you get from a particular genome in the database (**It has to be used with -t**). The names of the different strains in the databases and their corresponding Genbank strain name and GCA number are available from [List of Genomes included](https://www.dropbox.com/s/w7z6htvot8167ep/List_of_genomes_included_092019.xlsx?dl=0)
 ```
 $WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -t -s FDAARGOS_31_GCA_001019015.2_CC8_ query.faa
 ```
-Get Metadata (CC/ST) composition of your hits in the report (**Only for _S. aureus_ and you will need to download [CC/ST frequencies](https://drive.google.com/file/d/1PaxWdKAyHOO_pAM0-Knx-6G5HYKoXcKU/view?usp=sharing) to be used with -e**)
+Get Metadata (CC/ST) composition of your hits in the report (**Only for _S. aureus_ and you will need to use the metadata_frequencies.csv file (available to download with the database) with -e**)
 ```
 $WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -e metadata_frequencies.csv query.faa
 ```
@@ -225,16 +225,37 @@ optional arguments:
 ```
 ### Output
 #### Always with -m or -d
-##### Basic
 **query_WhatsGNU_report_v1.txt** (tab-separated output file)
+##### Basic Mode
 
 protein | GNU score | length | function | sequence |
 ------- | --------- | ------ | -------- | -------- |
-protein_id | 1918 | 261 | hydrolase | MKVQIYQLP | 
-##### Ortholog (in addition to the previous five columns)
+strain_x_protein_1 | 2 | 3 | argG | MVM | 
+##### Ortholog Mode (in addition to the previous five columns)
+
 ortholog_group |	ortho_gp_total_sequences_number |	ortho_gp_total_variants_number	| minimum_GNU	| maximum_GNU	| average_GNU	| OVRI	| OVRI interpretation |
 -------------- | ------------------------------- | ------------------------------ | ----------- | ----------- | ----------- | ---- | ------------------- |
-group_1 | 100 | 10 | 5 | 15 | 10 | 0.02 | rare |
+argG | 100 | 5 | 2 | 50 | 38 | 0.02 | rare |
+
+Explanation for the columns in the report:
+For instance, if strain_x_protein_1 (sequence: MVM) belongs to argG orthologous group which has 5 protein variants (MMMM,MVVM, MVM, MVV and VVM) with GNU scores [50,35,10,3,2]:
+* Column 1: protein name
+* Column 2: GNU score (number of exact matches in the database)
+* Column 3: protein sequence length
+* Column 4: function from the database
+* Column 5: protein sequence
+* Column 6: name of the orthologous group
+* Column 7: total number of sequences (sum of GNU scores) in the orthologous group
+* Column 8: Number of protein variants (alleles) in the orthologous group
+* Column 5: minimum GNU score in the orthologous group
+* Column 6: maximum GNU score in the orthologous group
+* Column 7: average GNU score in the orthologous group
+* Column 8: Ortholog Variant Rarity Index (OVRI) (scale is 0-1) which is<br/>
+(GNU score of the allele + lower GNU scores)/(Sum of GNU scores in the ortholog group)<br/>
+For example for the variant that has GNU=2 it will be 2/100 = 0.02<br/>
+while for variant that has GNU=10 it will be (10+3+2)/100 = 0.15<br/>
+and finally the variant that has GNU=50 it will be (50+35+10+3+2)/100 = 1
+* Column 9: A rare/frequent tag to the protein based on its OVRI. The default cutoff value which is arbitrary is 0.045 so anything below this value is rare and above is frequent.      
 
 Note: If -e option is used for _S. aureus_, CC/ST percentages' columns will be added to the report.
 
