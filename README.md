@@ -58,9 +58,9 @@ In basic mode, this script ranks protein sequences based on the number of observ
 4. ### WhatsGNU_plotter.py
 This script plots:
 * Heatmap of GNU scores of orthologous genes in different isolates.
-* Metadata distribution bar plot of genes. 
+* Metadata distribution bar plot of proteins. 
 * Histogram of the GNU scores of all proteins in a genome.
-* Volcano plot showing genes with a lower average GNU score in one group (case) compared to the other (control). The x-axis is the delta average GNU score (Average_GNU_score_case – Average_GNU_score_control) in the ortholog group. Lower average GNU score in cases will have a negative value on the x-axis (red dots) while lower average GNU score in the control group will have positive value on the x-axis (green dots). The y-axis could be drawn as a -log10(P value) from Mann–Whitney-Wilcoxon test. In this case, lower average GNU score in one group (upper left for case or upper right for control) would be of interest as shown by a significant P value (-log10( P value) > 1.3). The y-axis can also be the average OVRI in the case group for negative values on the x-axis or average OVRI in the control group for positive values on the x-axis.
+* Volcano plot showing proteins with a lower average GNU score in one group (case) compared to the other (control). The x-axis is the delta average GNU score (Average_GNU_score_case – Average_GNU_score_control) in the ortholog group. Lower average GNU score in cases will have a negative value on the x-axis (red dots) while lower average GNU score in the control group will have positive value on the x-axis (green dots). The y-axis could be drawn as a -log10(P value) from Mann–Whitney-Wilcoxon test. In this case, lower average GNU score in one group (upper left for case or upper right for control) would be of interest as shown by a significant P value (-log10( P value) > 1.3). The y-axis can also be the average OVRI in the case group for negative values on the x-axis or average OVRI in the control group for positive values on the x-axis.
 
 ## Dependencies
 * [Python3.x](https://www.python.org/downloads/)
@@ -258,15 +258,15 @@ Option | File | Description
 A folder of query_WhatsGNU_report.txt files.<br/>
 
 ### Heatmap
-Plot a heatmap of GNU scores for these genes in genes.faa using this strains’ order. Assign a title using -t. Font size and figure size (w,h) are given by -f and -fs, respectively. Annotate the heatmap cells with OVRI rare tag using -r option.
+Plot a heatmap of GNU scores for these proteins in proteins.faa using this strains’ order. Assign a title using -t. Font size and figure size (w,h) are given by -f and -fs, respectively. Annotate the heatmap cells with OVRI rare tag using -r option.
 ```
-WhatsGNU_plotter.py -hp ortholog -q genes.faa -r -d strains_order.txt -t title -r -f 14 -fs 14 10 prefix_name WhatsGNU_reports_folder/
+WhatsGNU_plotter.py -hp ortholog -q proteins.faa -r -d strains_order.txt -t title -r -f 14 -fs 14 10 prefix_name WhatsGNU_reports_folder/
 ```
 
 ### Metadata percentage distribution
-Plot a metadata percentage bar plot for the GNU scores of the genes in genes.faa for each WhatsGNU report.
+Plot a metadata percentage bar plot for the GNU scores of the proteins in proteins.faa for each WhatsGNU report.
 ```
-WhatsGNU_plotter.py -mb basic -q genes.faa prefix_name WhatsGNU_reports_folder/
+WhatsGNU_plotter.py -mb basic -q proteins.faa prefix_name WhatsGNU_reports_folder/
 ```
 ### Histogram
 Plot a blue histogram of the GNU scores for each WhatsGNU report using 100 bins and get a text file showing novel and conserved proteins with -p option to assign cutoffs.
@@ -274,13 +274,13 @@ Plot a blue histogram of the GNU scores for each WhatsGNU report using 100 bins 
 WhatsGNU_plotter.py -x -e blue -b 100 -p 50 5000 prefix_name WhatsGNU_reports_folder/
 ```
 ### Volcano plot
-Plot two scatterplots that shows either statistical significance (P value) or average OVRI versus magnitude of change (Delta_average_GNU_Score). The case/control tag is provided in isolates_case_control_tag.csv. The option -c 100 is a percentage of isolates a gene must be in to be included. A summary statistics file is also created.
+Plot two scatterplots that shows either statistical significance (P value) or average OVRI versus magnitude of change (Delta_average_GNU_Score). The case/control tag is provided in isolates_case_control_tag.csv. The option -c 100 is a percentage of isolates a protein must be in to be included. A summary statistics file is also created.
 ```
 WhatsGNU_plotter.py -st isolates_case_control_tag.csv -c 100 prefix_name WhatsGNU_reports_folder/
 ```
 ### All features together
 ```
-WhatsGNU_plotter.py -hp ortholog -q genes.faa -d strains_order.txt -t title -r -f 16 -fs 14 10 -mb ortholog -x -e blue -b 100 -st isolates_case_control_tag.csv -c 100 prefix_name WhatsGNU_reports_folder/
+WhatsGNU_plotter.py -hp ortholog -q proteins.faa -d strains_order.txt -t title -r -f 16 -fs 14 10 -mb ortholog -x -e blue -b 100 -st isolates_case_control_tag.csv -c 100 prefix_name WhatsGNU_reports_folder/
 ```
 ### Command line options
 ```
@@ -313,7 +313,7 @@ optional arguments:
                         a txt file of ortholog group names from one of the
                         WhatsGNU reports for heatmap
   -q FASTA, --fasta FASTA
-                        a FASTA file of sequences for the genes of interest
+                        a FASTA file of sequences for the proteins of interest
                         for heatmap or metadata barplot
   -op, --output_blastp  get the output report of blastp run, it has to be used
                         with -q
@@ -352,7 +352,7 @@ optional arguments:
                         a csv file of the strains of the two groups to be
                         compared with (case/control) tag
   -c CUTOFF_VOLCANO, --cutoff_volcano CUTOFF_VOLCANO
-                        a percentage of isolates a gene must be in [Default:
+                        a percentage of isolates a protein must be in [Default:
                         100]
   -cc CASE_CONTROL_NAME CASE_CONTROL_NAME, --case_control_name CASE_CONTROL_NAME CASE_CONTROL_NAME
                         case and control groups' names [Default: case control]
