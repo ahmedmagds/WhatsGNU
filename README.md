@@ -10,11 +10,11 @@ Five precompressed databases (.pickle) are available to download and use:
 
 ### Ortholog Mode:
 1. [_Mycobacterium tuberculosis_](https://www.dropbox.com/sh/8nqowtd4fcf7dgs/AAAdXiqcxTsEqfIAyNE9TWwRa?dl=0) Version: 07/09/2019 (compressed 26,794,006 proteins in 6563 genomes to 434,725 protein variants). 
-2. [_Pseudomonas aeruginosa_](https://www.dropbox.com/sh/r0wvoig3alsz7xg/AABPoNu6FdN7zG2PP9BFezQYa?dl=0) Version: 07/06/2019 (compressed 14,475,742 proteins in 4713 genomes to 1,288,892 protein variants).
+2. [_Pseudomonas aeruginosa_](https://www.dropbox.com/sh/r0wvoig3alsz7xg/AABPoNu6FdN7zG2PP9BFezQYa?dl=0) Version: 07/06/2019 (compressed 14,475,742 proteins in 4712 genomes to 1,288,892 protein variants).
 3. [_Staphylococcus aureus_](https://www.dropbox.com/sh/p292mia4oc99hx6/AACPuv7uoYUkZ1WCBDX0XPSVa?dl=0) Version: 06/14/2019 (compressed 27,213,667 proteins in 10350 genomes to 571,848 protein variants).<br/>
 
 ### Big Data basic Mode:
-1. [_Salmonella enterica_] Enterobase Version: 08/29/2019 (compressed 975,262,506 proteins in 216,642 genomes to 5,056,335 protein variants).
+1. [_Salmonella enterica_](https://www.dropbox.com/s/gbjengikpynxo12/Senterica_Enterobase_basic_216642.pickle?dl=0) Enterobase Version: 08/29/2019 (compressed 975,262,506 proteins in 216,642 genomes to 5,056,335 protein variants).
 2. [_Staphylococcus aureus_](https://www.dropbox.com/s/bcs922768tjrwwg/Sau_Staphopia_basic_43914.pickle?dl=0) Staphopia Version: 06/27/2019 (compressed 115,178,200 proteins in 43,914 genomes to 2,228,761 protein variants).
 
 **The five databases are available to download by visiting the link or using the wget command as follows:**
@@ -82,13 +82,14 @@ If you need it permanently, you can add this last line to your .bashrc or .bash_
 ## Test
 * Type WhatsGNU_main.py -h and it should output help screen.
 * Type WhatsGNU_main.py -v and you should see an output like WhatsGNU_main.py 1.0.
-## Input
+
+## Usage for WhatsGNU_main.py
+### Input
 1. database (precompressed (.pickle or .txt) or raw (.faa)).
 2. Query protein FASTA file (.faa) or folder of query files.
 
 Optional for _S. aureus_:
 Download the CSV file of [CC/ST frequencies](https://drive.google.com/file/d/1PaxWdKAyHOO_pAM0-Knx-6G5HYKoXcKU/view?usp=sharing) in the _S. aureus_ database.
-## Usage for WhatsGNU_main.py
 ### Use precompressed databases
 ```
 $WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog query.faa
@@ -124,12 +125,14 @@ Get a fasta (.faa) file of all proteins with GNU score of zero.
 ```
 $WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -f query.faa
 ```
-**The following options work with -dm ortholog:**
+### The following options work with -dm ortholog
 
 Run blastp on the proteins with GNU score of zero and modify the report with ortholog information.
 ```
 $WhatsGNU_main.py -d Pa_Ortholog_4713.pickle -dm ortholog -b query.faa
 ```
+**Note:** If -b is used, WhatsGNU will search for compressed_db_orthologs.faa and compressed_db_orthologs_info.txt in the same path for the compressed database as they are needed for the blastp run.
+
 Get the output report of blastp run (works with -b).
 ```
 $WhatsGNU_main.py -d Pa_Ortholog_4713.pickle -dm ortholog -b -op query.faa
@@ -149,8 +152,6 @@ $WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -o output_results_fo
 ### Command line options
 ```
 $WhatsGNU_main.py -h
-```
-```
 usage: WhatsGNU_main.py [-h] [-m MKDATABASE | -d DATABASE] [-a] [-j]
                         [-r [ROARY_CLUSTERED_PROTEINS]] [-dm {ortholog,basic}]
                         [-ri [RARITY_INDEX]] [-o OUTPUT_FOLDER] [--force]
@@ -222,69 +223,245 @@ optional arguments:
   -q, --quiet           No screen output [default OFF]
   -v, --version         print version and exit
 ```
-## Output
-### Always
+### Output
+#### Always with -m or -d
+##### Basic
 **query_WhatsGNU_report_v1.txt** (tab-separated output file)
 
-protein | length | function | sequence | GNU score
-------- | ------ | -------- | -------- | ---------
-protein_id | 261 | hydrolase | MKVQIYQLP | 1918
+protein | GNU score | length | function | sequence |
+------- | --------- | ------ | -------- | -------- |
+protein_id | 1918 | 261 | hydrolase | MKVQIYQLP | 
+##### Ortholog (in addition to the previous five columns)
+ortholog_group |	ortho_gp_total_sequences_number |	ortho_gp_total_variants_number	| minimum_GNU	| maximum_GNU	| average_GNU	| OVRI	| OVRI interpretation |
+-------------- | ------------------------------- | ------------------------------ | ----------- | ----------- | ----------- | ---- | ------------------- |
+group_1 | 100 | 10 | 5 | 15 | 10 | 0.02 | rare |
 
-Note: If -c option is used for _S. aureus_, CC/ST percentages' columns will be added to the report.
+Note: If -e option is used for _S. aureus_, CC/ST percentages' columns will be added to the report.
 
 **WhatsGNU_date_time.log** (Log file, e.g. WhatsGNU_v1_20190209_183406.log)
 
-### Optional
+#### Always with -m
+* compressed_db.txt (if -a, compressed_db.pickle will be created)
+* compressed_db_orthologs.faa (if “-r clustered_proteins” is used with -m)
+* compressed_db_orthologs_info.txt (if “-r clustered_proteins” is used with -m)
+
+#### Optional
 Option | File | Description
 ------ | ---- | -----------
--b | query_WhatsGNU_hits_v1.txt | each protein with all hits_ids from the database,large file (~ 1 Gb for S. aureus)
--t | query_WhatsGNU_topgenomes_v1.txt | top 10 genomes with hits to your query
+-i | query_WhatsGNU_hits.txt | each protein with all hits_ids from the database,large file (~ 1 Gb for S. aureus)
+-t | query_WhatsGNU_topgenomes.txt | top 10 genomes with hits to your query
+-f | query_WhatsGNU_zeros.faa | file of all proteins with GNU score of zero
+-op | query_WhatsGNU_zeros_blast_report.txt | output report of blastp run
 
-### Use your own database
-#### First time use with unprocessed database (-m with one concatenated (.faa) file of all genomes of a species)
+## Usage for WhatsGNU_plotter.py
+### Input
+A folder of query_WhatsGNU_report.txt files.<br/>
+
+### Heatmap
+Plot a heatmap of GNU scores for these genes in genes.faa using this strains’ order. Assign a title using -t. Font size and figure size (w,h) are given by -f and -fs, respectively. Annotate the heatmap cells with OVRI rare tag using -r option.
 ```
-$WhatsGNU.py -m database.faa query.faa
+WhatsGNU_plotter.py -hp ortholog -q genes.faa -r -d strains_order.txt -t title -r -f 14 -fs 14 10 prefix_name WhatsGNU_reports_folder/
 ```
-#### Subsequent uses (-d with the compressed database)
+
+### Metadata percentage distribution
+Plot a metadata percentage bar plot for the GNU scores of the genes in genes.faa for each WhatsGNU report.
 ```
-$WhatsGNU.py -d database.pickle query.faa
-or
-$WhatsGNU.py -d database.txt query.faa
+WhatsGNU_plotter.py -mb basic -q genes.faa prefix_name WhatsGNU_reports_folder/
 ```
+### Histogram
+Plot a blue histogram of the GNU scores for each WhatsGNU report using 100 bins and get a text file showing novel and conserved proteins with -p option to assign cutoffs.
+```
+WhatsGNU_plotter.py -x -e blue -b 100 -p 50 5000 prefix_name WhatsGNU_reports_folder/
+```
+### Volcano plot
+Plot two scatterplots that shows either statistical significance (P value) or average OVRI versus magnitude of change (Delta_average_GNU_Score). The case/control tag is provided in isolates_case_control_tag.csv. The option -c 100 is a percentage of isolates a gene must be in to be included. A summary statistics file is also created.
+```
+WhatsGNU_plotter.py -st isolates_case_control_tag.csv -c 100 prefix_name WhatsGNU_reports_folder/
+```
+### All features together
+```
+WhatsGNU_plotter.py -hp ortholog -q genes.faa -d strains_order.txt -t title -r -f 16 -fs 14 10 -mb ortholog -x -e blue -b 100 -st isolates_case_control_tag.csv -c 100 prefix_name WhatsGNU_reports_folder/
+```
+### Command line options
+```
+$WhatsGNU_plotter.py -h
+usage: WhatsGNU_plotter.py [-h] [-hp {ortholog,basic}] [-l LIST_GENES]
+                           [-q FASTA] [-op] [-d STRAINS_ORDER] [-r]
+                           [-rc RARITY_COLOR] [-fs FIGURE_SIZE FIGURE_SIZE]
+                           [-hc HEATMAP_COLOR] [-mc MASKED_COLOR]
+                           [-f FONT_SIZE] [-t TITLE] [-mb {ortholog,basic}]
+                           [-w] [-s SELECT_METADATA] [-x] [-e HISTOGRAM_COLOR]
+                           [-b HISTOGRAM_BINS]
+                           [-p NOVEL_CONSERVED NOVEL_CONSERVED]
+                           [-st STRAINS_TAG_VOLCANO] [-c CUTOFF_VOLCANO]
+                           [-cc CASE_CONTROL_NAME CASE_CONTROL_NAME]
+                           prefix_name directory_path
+
+WhatsGNU_plotter script for WhatsGNU v1.0.
+
+positional arguments:
+  prefix_name           prefix name for the the output folder and
+                        heatmap/volcano output files
+  directory_path        path to directory of WhatsGNU reports
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -hp {ortholog,basic}, --heatmap {ortholog,basic}
+                        heatmap of GNU scores for orthologous genes in
+                        multiple isolates
+  -l LIST_GENES, --list_genes LIST_GENES
+                        a txt file of ortholog group names from one of the
+                        WhatsGNU reports for heatmap
+  -q FASTA, --fasta FASTA
+                        a FASTA file of sequences for the genes of interest
+                        for heatmap or metadata barplot
+  -op, --output_blastp  get the output report of blastp run, it has to be used
+                        with -q
+  -d STRAINS_ORDER, --strains_order STRAINS_ORDER
+                        list of strains order for heatmap
+  -r, --rarity          Annotate heatmap cells with OVRI(default: off)
+  -rc RARITY_COLOR, --rarity_color RARITY_COLOR
+                        OVRI data text color in the heatmap
+  -fs FIGURE_SIZE FIGURE_SIZE, --figure_size FIGURE_SIZE FIGURE_SIZE
+                        heatmap width and height in inches w,h, respectively
+  -hc HEATMAP_COLOR, --heatmap_color HEATMAP_COLOR
+                        heatmap color
+  -mc MASKED_COLOR, --masked_color MASKED_COLOR
+                        missing data color in heatmap
+  -f FONT_SIZE, --font_size FONT_SIZE
+                        heatmap font size
+  -t TITLE, --title TITLE
+                        title for the heatmap [Default:WhatsGNU heatmap]
+  -mb {ortholog,basic}, --metadata_barplot {ortholog,basic}
+                        Metadata percentage distribution for proteins in a
+                        FASTA file
+  -w, --all_metadata    all metadata
+  -s SELECT_METADATA, --select_metadata SELECT_METADATA
+                        select some metadata
+  -x, --histogram       histogram of GNU scores
+  -e HISTOGRAM_COLOR, --histogram_color HISTOGRAM_COLOR
+                        histogram color
+  -b HISTOGRAM_BINS, --histogram_bins HISTOGRAM_BINS
+                        number of bins for the histograms [10]
+  -p NOVEL_CONSERVED NOVEL_CONSERVED, --novel_conserved NOVEL_CONSERVED NOVEL_CONSERVED
+                        upper and lower GNU score limits for novel and
+                        conserved proteins novel_GNU_upper_limit,
+                        conserved_GNU_lower_limit, respectively [Default 10,
+                        100]
+  -st STRAINS_TAG_VOLCANO, --strains_tag_volcano STRAINS_TAG_VOLCANO
+                        a csv file of the strains of the two groups to be
+                        compared with (case/control) tag
+  -c CUTOFF_VOLCANO, --cutoff_volcano CUTOFF_VOLCANO
+                        a percentage of isolates a gene must be in [Default:
+                        100]
+  -cc CASE_CONTROL_NAME CASE_CONTROL_NAME, --case_control_name CASE_CONTROL_NAME CASE_CONTROL_NAME
+                        case and control groups' names [Default: case control]
+```
+### Output
+A heatmap, metadata percentage distribution bar plot, histogram and two volcano plots and summary statistics files.
+
 ## Instructions for creating a database
-### Simple (works for basic report)
-1. Download proteomes of a bacterial species (.faa) in a Directory from GenBank FTP site (ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/bacteria/)
-2. cd Directory
-3. gunzip *.faa.gz
-4. cat *.faa > database.faa
-### Advanced 
-1. Download proteomes of a bacterial species (.faa) in a Directory from GenBank FTP site (ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/bacteria/)
-2. cd Directory
-3. gunzip *.faa.gz
+### Simple
+1. Download proteomes of a species (.faa) in a Directory from GenBank
+```
+$WhatsGNU_get_GenBank_genomes.py -f GCAs.txt Species_faa
+```
+2. Modify the faa files to have the strains' names
+```
+$WhatsGNU_database_customizer.py -c -g Species_modified Species_faa/
+```
+3. Run WhatsGNU_main.py in basic mode
+```
+$WhatsGNU_main.py -m Species_modified_concatenated.faa query.faa
+```
+### Advanced (e.g. _S. aureus_)
+1. Download genomes of a species (.fna) in a Directory from GenBank  
+```
+$WhatsGNU_get_GenBank_genomes.py -c GCAs.txt Sau_fna
+$gunzip Sau_fna/*
+```
+2. Annotate the genomes using [Prokka](https://github.com/tseemann/prokka) 
+**An example command for _S. aureus_ is given, change it or use any other options from Prokka**
+```
+$for i in `cat file_names.list`;do prokka --kingdom Bacteria --outdir prokka_$i --gcode 11 --genus Staphylococcus --species aureus --strain $i --prefix $i --locustag $i Species_fna/$i*.fna; done
+$find ./ -name '*.faa' -exec cp -prv '{}' '/Sau_faa/' ';'
+$find ./ -name '*.gff' -exec cp -prv '{}' '/Sau_gff/' ';'
+```
+3. Modify the faa and gff files to have the strains' names
+```
+$WhatsGNU_database_customizer.py -c -p -l strain_name_list.csv Sau_modified_faa Sau_faa/
+$WhatsGNU_database_customizer.py -i -s -l strain_name_list.csv -g Sau_modified_gff Sau_gff/
+```
+The strain_name_list.csv is a comma-separated list of 3+ columns: file_name, old locustag, new locustag and optionally metadata. If metadata are provided, the script will concatenate the new locustag with metadata using ‘_’ as a separator. The new locustag in this case will be:  new_locustag_metadata_. In case of GenBank, RefSeq and RAST, use NA for the old locustag column in the list.csv file. 
 
-When Proteome files are downloaded from GenBank and unzipped, they have the protein ids and sequences as following:
+4. Run [Roary](https://sanger-pathogens.github.io/Roary/) for pangenome analysis
+**An example command for Roary is given, change it or use any other options from Roary**
 ```
->protein_1
-MSDMF
->protein_2
-MRTYZ
+$roary Sau_modified_gff/*.gff
 ```
-The protein ids usually have little or no information about the strain so once all proteins mixed in the database, strains' information are lost. Adding strain name to the start of each protein would help to later count the top genomes. Also it will help identify protein origin. Different genomes sometimes have the same strain name so to overcome this problem we recommend using strain_GCA#. This information can be downloaded as an excel sheet from NCBI and then in excel concatenate the two columns of strain name and GCA#. Then add it to each protein in the .faa file to look as following:
+5.Run WhatsGNU_main.py in Ortholog mode using clustered_proteins output file from Roary
 ```
->strain_GCA_12345.1_protein_1
-MSDMF
->strain_GCA_12345.1_protein_2
-MRTYZ
+$WhatsGNU_main.py -m Sau_modified_concatenated.faa -r clustered_proteins query.faa
 ```
-4. cat *.faa > database.faa
+## Command line options for WhatsGNU_get_GenBank_genomes.py
+```
+$WhatsGNU_get_GenBank_genomes.py -h
+usage: WhatsGNU_get_GenBank_assemblies.py [-h] [-f] [-c] [-r]
+                                          list output_folder
 
-At this point the database is ready to be used in WhatsGNU for the first time with -m as previously explained.
+Get GenBank assemblies (faa or/and fna) for WhatsGNU v1.0
+
+positional arguments:
+  list           a list.txt file of GenBank accession numbers (GCA#.#)
+  output_folder  give name for output folder to be created
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -f, --faa      protein faa file from GenBank
+  -c, --contigs  genomic fna file from GenBank
+  -r, --remove   remove assembly_summary_genbank.txt after done
+```
+## Command line options for WhatsGNU_database_customizer.py
+```
+$WhatsGNU_database_customizer.py -h
+usage: WhatsGNU_database_customizer.py [-h] [-g | -p | -r | -s] [-z]
+                                       [-l LIST_CSV] [-i] [-c]
+                                       prefix_name directory_path
+
+Database_customizer script for WhatsGNU v1.0.
+
+positional arguments:
+  prefix_name           prefix name for the output folder and the one
+                        concatenated modified file
+  directory_path        path to directory of faa, RAST txt or gff files
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -g, --GenBank_RefSeq  faa files from GenBank or RefSeq
+  -p, --prokka          faa files from Prokka
+  -r, --RAST            spreadsheet tab-separated text files from RAST
+  -s, --gff_file        gff file from prokka, needed if planning to run Roary
+  -z, --gzipped         compressed file (.gz)
+  -l LIST_CSV, --list_csv LIST_CSV
+                        a file.csv of 3+ columns: file_name, old locustag, new
+                        locustag and optionally metadata
+  -i, --individual_files
+                        individual modified files
+  -c, --concatenated_file
+                        one concatenated modified file of all input files
+```
 ## Requests for creating a database
 Requests to process a database for a specific species are welcomed and will be considered
 ## Bugs
 Please submit via the GitHub issues page: https://github.com/ahmedmagds/WhatsGNU/issues
 ## Software Licence
 GPLv3: https://github.com/ahmedmagds/WhatsGNU/blob/master/LICENSE
+## Citations
+* Please cite Prokka 'Seemann 2014, Bioinformatics;30(14):2068-9' if you use WhatsGNU1.0.
+* Please also cite Roary 'Page et al. 2015, Bioinformatics;31(22):3691-3693' if you use WhatsGNU1.0.
+* Please also cite BLAST+ 'Camacho et al. 2009, BMC Bioinformatics;10:421' if you use WhatsGNU1.0.
+* Please cite Staphopia 'Petit RA III and Read TD 2018, PeerJ;6:e5261' if you use Staphopia _S. aureus_ Database.
+* Please cite Enterobase 'Alikhan NF et al. 2018, PLoS Genetics;14(4):e1007261' if you use Enterobase _S. enterica_ Database.
 ## Author
 Ahmed M. Moustafa: [ahmedmagds](https://github.com/ahmedmagds)<br/>
 Twitter: [Ahmed_Microbes](https://twitter.com/Ahmed_Microbes)
