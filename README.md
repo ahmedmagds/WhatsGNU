@@ -1,5 +1,8 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Build Status](https://travis-ci.org/ahmedmagds/WhatsGNU.svg?branch=master)](https://travis-ci.org/ahmedmagds/WhatsGNU)
+[![Anaconda-Server Badge](https://anaconda.org/bioconda/whatsgnu/badges/downloads.svg)](https://anaconda.org/bioconda/whatsgnu)
+[![Anaconda-Server Badge](https://anaconda.org/bioconda/whatsgnu/badges/version.svg)](https://anaconda.org/bioconda/whatsgnu)
+[![Anaconda-Server Badge](https://anaconda.org/bioconda/whatsgnu/badges/installer/conda.svg)](https://conda.anaconda.org/bioconda)
 # WhatsGNU
 What's Gene Novelty Unit: A Tool For Identifying Proteomic Novelty.
 ## Introduction
