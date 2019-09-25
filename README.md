@@ -69,7 +69,8 @@ This script plots:
 * SciPy   (required for WhatsGNU_plotter.py)
 * Matplotlib  (required for WhatsGNU_plotter.py)
 ## Installation
-WhatsGNU is a command-line application written in Python3. Simply download and use!
+### Clone the Github repository
+WhatsGNU is a command-line application written in Python3. Simply download and use! **You will have to install all needed dependencies!**
 ```
 $git clone https://github.com/ahmedmagds/WhatsGNU
 $cd WhatsGNU/bin
@@ -79,6 +80,11 @@ $pwd
 $export PATH=$PATH:/path/to/folder/having/WhatsGNU/bin
 ```
 If you need it permanently, you can add this last line to your .bashrc or .bash_profile. 
+### Bioconda
+If you use Conda you can use the Bioconda channel:
+```
+conda install -c bioconda whatsgnu
+```
 ## Test
 * Type WhatsGNU_main.py -h and it should output help screen.
 * Type WhatsGNU_main.py -v and you should see an output like WhatsGNU_main.py 1.0.
