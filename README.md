@@ -44,7 +44,7 @@ $wget -O Sau_Staphopia_basic_43914.pickle https://www.dropbox.com/s/bcs922768tjr
 ```
 **_S. enterica_ Enterobase**
 ```
-$wget -O Senterica_Enterobase_basic_216642.pickle
+$wget -O Senterica_Enterobase_basic_216642.pickle https://www.dropbox.com/s/gbjengikpynxo12/Senterica_Enterobase_basic_216642.pickle?dl=0
 ```
 The three Ortholog databases contain all available genomes for the species from GenBank as per version day. To know the genomes included in each database, download [List of Genomes included](https://www.dropbox.com/s/w7z6htvot8167ep/List_of_genomes_included_092019.xlsx?dl=0). The databases for these 3 Ortholog databases will be updated 3 times per year to include new sequenced genomes.
 
