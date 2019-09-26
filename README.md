@@ -84,10 +84,21 @@ $export PATH=$PATH:/path/to/folder/having/WhatsGNU/bin
 ```
 If you need it permanently, you can add this last line to your .bashrc or .bash_profile. 
 ### Bioconda
-If you use Conda you can use the Bioconda channel:
+If you use Conda you can use the Bioconda channel to install it in the conda base:
 ```
 conda install -c bioconda whatsgnu
 ```
+OR<br/>
+Make a new environment and install WhatsGNU in it (**recommended**)
+```
+conda create -n WhatsGNU -c bioconda whatsgnu
+conda activate WhatsGNU
+```
+The 'conda activate' command is needed to activate the WhatsGNU environment each time you want to use the tool.<br/>
+
+**If you do not have Miniconda or Anaconda installed already, you can install one of them from:**
+1. [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+2. [Anaconda](https://www.anaconda.com/distribution/)
 ## Test
 * Type WhatsGNU_main.py -h and it should output help screen.
 * Type WhatsGNU_main.py -v and you should see an output like WhatsGNU_main.py 1.0.
