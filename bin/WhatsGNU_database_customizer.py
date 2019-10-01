@@ -228,10 +228,10 @@ for file_name in FILES_LIST:
                     function = line_list[7].replace('|','_')
                     strain_name_carrot_separator_function = '>' + strain_name_carrot_separator + ' ' + function
                     sequence = line_list[-1]
-                if ARGS.concatenated_file:
-                    OUTPUT_FILE_OBJECT.write(strain_name_carrot_separator_function+'\n'+sequence+'\n')
-                if ARGS.individual_files:
-                    individual_file_object.write(strain_name_carrot_separator_function+'\n'+sequence+'\n')
+                    if ARGS.concatenated_file:
+                        OUTPUT_FILE_OBJECT.write(strain_name_carrot_separator_function+'\n'+sequence+'\n')
+                    if ARGS.individual_files:
+                        individual_file_object.write(strain_name_carrot_separator_function+'\n'+sequence+'\n')
         else:
             for line in file_object:
                 line_list = []
@@ -244,10 +244,10 @@ for file_name in FILES_LIST:
                     function = line_list[7].replace('|', '_')
                     strain_name_carrot_separator_function = strain_name_carrot_separator + ' ' + function
                     sequence = line_list[-1]
-                if ARGS.concatenated_file:
-                    OUTPUT_FILE_OBJECT.write(strain_name_carrot_separator_function+'\n'+sequence+'\n')
-                if ARGS.individual_files:
-                    individual_file_object.write(strain_name_carrot_separator_function+'\n'+sequence+'\n')
+                    if ARGS.concatenated_file:
+                        OUTPUT_FILE_OBJECT.write(strain_name_carrot_separator_function+'\n'+sequence+'\n')
+                    if ARGS.individual_files:
+                        individual_file_object.write(strain_name_carrot_separator_function+'\n'+sequence+'\n')
     else:
         print("You have to use one of the four options -g, -r, -p or -s")
     if ARGS.individual_files:
