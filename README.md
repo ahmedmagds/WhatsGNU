@@ -8,6 +8,45 @@ What's Gene Novelty Unit: A Tool For Identifying Proteomic Novelty.
 ## Introduction
 WhatsGNU utilizes the natural variation in public databases to rank protein sequences based on the number of observed exact protein matches (the GNU score) in all known genomes of a certain species & can quickly create whole protein reports.<br/>
 WhatsGNU compresses proteins database based on exact match to much fewer number of proteins that differ by at least one amino acid. WhatsGNU will save a copy of the compressed database in two formats; database.txt and database.pickle for faster subsequent uses.<br/>
+
+## Installation
+### Dependencies
+* [Python3.x](https://www.python.org/downloads/)
+* Blastp (optional for WhatsGNU_main.py and required for WhatsGNU_plotter.py)
+* NumPy  (required for WhatsGNU_plotter.py)
+* SciPy   (required for WhatsGNU_plotter.py)
+* Matplotlib  (required for WhatsGNU_plotter.py)
+### Clone the Github repository
+WhatsGNU is a command-line application written in Python3. Simply download and use! **You will have to install all needed dependencies!**
+```
+$git clone https://github.com/ahmedmagds/WhatsGNU
+$cd WhatsGNU/bin
+$chmod +x *.py
+$pwd 
+#pwd will give you a path/to/folder/having/WhatsGNU which you will use in next command
+$export PATH=$PATH:/path/to/folder/having/WhatsGNU/bin
+```
+If you need it permanently, you can add this last line to your .bashrc or .bash_profile. 
+### Bioconda
+If you use Conda you can use the Bioconda channel to install it in the conda base:
+```
+conda install -c bioconda whatsgnu
+```
+OR<br/>
+Make a new environment and install WhatsGNU in it (**recommended**)
+```
+conda create -n WhatsGNU -c bioconda whatsgnu
+conda activate WhatsGNU
+```
+The 'conda activate' command is needed to activate the WhatsGNU environment each time you want to use the tool.<br/>
+
+**If you do not have Miniconda or Anaconda installed already, you can install one of them from:**
+1. [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+2. [Anaconda](https://www.anaconda.com/distribution/)
+### Test
+* Type WhatsGNU_main.py -h and it should output help screen.
+* Type WhatsGNU_main.py -v and you should see an output like WhatsGNU_main.py 1.0.
+
 ## Available Databases
 Five precompressed databases (.pickle) are available to download and use:
 
@@ -64,44 +103,6 @@ This script plots:
 * Metadata distribution bar plot of proteins. 
 * Histogram of the GNU scores of all proteins in a genome.
 * Volcano plot showing proteins with a lower average GNU score in one group (case) compared to the other (control). The x-axis is the delta average GNU score (Average_GNU_score_case – Average_GNU_score_control) in the ortholog group. Lower average GNU score in cases will have a negative value on the x-axis (red dots) while lower average GNU score in the control group will have positive value on the x-axis (green dots). The y-axis could be drawn as a -log10(P value) from Mann–Whitney-Wilcoxon test. In this case, lower average GNU score in one group (upper left for case or upper right for control) would be of interest as shown by a significant P value (-log10( P value) > 1.3). The y-axis can also be the average OVRI in the case group for negative values on the x-axis or average OVRI in the control group for positive values on the x-axis.
-
-## Dependencies
-* [Python3.x](https://www.python.org/downloads/)
-* Blastp (optional for WhatsGNU_main.py and required for WhatsGNU_plotter.py)
-* NumPy  (required for WhatsGNU_plotter.py)
-* SciPy   (required for WhatsGNU_plotter.py)
-* Matplotlib  (required for WhatsGNU_plotter.py)
-## Installation
-### Clone the Github repository
-WhatsGNU is a command-line application written in Python3. Simply download and use! **You will have to install all needed dependencies!**
-```
-$git clone https://github.com/ahmedmagds/WhatsGNU
-$cd WhatsGNU/bin
-$chmod +x *.py
-$pwd 
-#pwd will give you a path/to/folder/having/WhatsGNU which you will use in next command
-$export PATH=$PATH:/path/to/folder/having/WhatsGNU/bin
-```
-If you need it permanently, you can add this last line to your .bashrc or .bash_profile. 
-### Bioconda
-If you use Conda you can use the Bioconda channel to install it in the conda base:
-```
-conda install -c bioconda whatsgnu
-```
-OR<br/>
-Make a new environment and install WhatsGNU in it (**recommended**)
-```
-conda create -n WhatsGNU -c bioconda whatsgnu
-conda activate WhatsGNU
-```
-The 'conda activate' command is needed to activate the WhatsGNU environment each time you want to use the tool.<br/>
-
-**If you do not have Miniconda or Anaconda installed already, you can install one of them from:**
-1. [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
-2. [Anaconda](https://www.anaconda.com/distribution/)
-## Test
-* Type WhatsGNU_main.py -h and it should output help screen.
-* Type WhatsGNU_main.py -v and you should see an output like WhatsGNU_main.py 1.0.
 
 ## Usage for WhatsGNU_main.py
 ### Input
