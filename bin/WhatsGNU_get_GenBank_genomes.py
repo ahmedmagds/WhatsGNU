@@ -80,11 +80,11 @@ if len(sys.argv) == 1:
     PARSER.print_help()
     sys.exit(0)
 ARGS = PARSER.parse_args()
-
+OS_SEPARATOR = os.sep
 #####create results folder######
 try:
     os.mkdir(ARGS.output_folder)
-    RESULTS_FOLDER = ARGS.output_folder + "/"
+    RESULTS_FOLDER = ARGS.output_folder + OS_SEPARATOR
     print("created folder ({}) as requested".format(RESULTS_FOLDER))
 except:
     PARSER.exit(
@@ -103,13 +103,13 @@ with closing(request.urlopen(
     shutil.copyfileobj(file_link, TXT_FILE_NAME_OBJECT)
 TXT_FILE_NAME_OBJECT.close()
 print("Downloaded the assembly_summary_genbank.txt")
-TXT_FILE_NAME_OBJECT = open(TXT_FILE_NAME, "r")
+TXT_FILE_NAME_OBJECT = open(TXT_FILE_NAME, "r", encoding='utf-8')
 GCA_DICT = {}
 for line in TXT_FILE_NAME_OBJECT:
     if line.startswith("#"):
         continue
     GCA_DICT[line.split("\t")[0]] = line.split("\t")[19] #folder ftp url
-
+TXT_FILE_NAME_OBJECT.close()
 ##############GCA list#################
 LIST_FILE_OBJECT = open(ARGS.list, 'r')
 GCA_LIST = []
@@ -139,13 +139,13 @@ for GCA in GCA_LIST:
                 shutil.copyfileobj(file_link, contigs_file_object)
             contigs_file_object.close()
         if ARGS.faa and ARGS.contigs:
-            faa_file = PROTEINS_FOLDER + '/' + GCA_acc + '.faa.gz'
+            faa_file = PROTEINS_FOLDER + OS_SEPARATOR + GCA_acc + '.faa.gz'
             faa_url = GCA_file_url + '_protein.faa.gz'
             faa_file_object = open(faa_file, 'wb')
             with closing(request.urlopen(faa_url)) as file_link:
                 shutil.copyfileobj(file_link, faa_file_object)
             faa_file_object.close()
-            contigs_file = CONTIGS_FOLDER + '/' + GCA_acc + '.fna.gz'
+            contigs_file = CONTIGS_FOLDER + OS_SEPARATOR + GCA_acc + '.fna.gz'
             contigs_url = GCA_file_url + '_genomic.fna.gz'
             contigs_file_object = open(contigs_file, 'wb')
             with closing(request.urlopen(contigs_url)) as file_link:

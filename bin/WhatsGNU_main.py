@@ -229,6 +229,7 @@ if bool(vars(ARGS)["percent_identity"]) and not bool(vars(ARGS)["blastp"]):
     PARSER.exit(status=0, message="Error: You have to use -b with -w\n")
 if bool(vars(ARGS)["percent_coverage"]) and not bool(vars(ARGS)["blastp"]):
     PARSER.exit(status=0, message="Error: You have to use -b with -c\n")
+OS_SEPARATOR = os.sep
 if ARGS.rarity_index:
     RARITY_INDEX_CUTOFF = ARGS.rarity_index
 else:
@@ -258,19 +259,19 @@ TIMESTR = time.strftime("%Y%m%d_%H%M%S")
 if ARGS.output_folder:
     try:
         os.mkdir(ARGS.output_folder)
-        RESULTS_FOLDER = ARGS.output_folder + "/"
+        RESULTS_FOLDER = ARGS.output_folder + OS_SEPARATOR
     except:
         if ARGS.force:
             rmt(ARGS.output_folder)
             os.mkdir(ARGS.output_folder)
-            RESULTS_FOLDER = ARGS.output_folder + "/"
+            RESULTS_FOLDER = ARGS.output_folder + OS_SEPARATOR
         else:
             PARSER.exit(
                 status=0,
                 message="Folder exists, Please change --output_folder or use --force\n")
 else:
     os.mkdir("WhatsGNU_results_{}".format(TIMESTR))
-    RESULTS_FOLDER = "./WhatsGNU_results_{}/".format(TIMESTR)
+    RESULTS_FOLDER = "WhatsGNU_results_{}{}".format(TIMESTR,OS_SEPARATOR)
 
 ###############Logging##################
 LOG_FILE = 'WhatsGNU_'+ TIMESTR
@@ -749,76 +750,76 @@ for QUERYFILE in QUERY_LIST:
     QUERYFILE_OBJECT.seek(0)
     file_hits = (
         RESULTS_FOLDER
-        + (QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0]
+        + (QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0]
         + "_WhatsGNU_hits.txt"
     )
     if ARGS.blastp:
         GNU_report_tmp = tempfile.NamedTemporaryFile(mode='w+')
         file_report = (
             RESULTS_FOLDER
-            + (QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0]
+            + (QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0]
             + "_WhatsGNU_report.txt"
         )
         output_file_report = open(file_report, "w")
         if ARGS.output_blastp:
             blast_report = (
                 RESULTS_FOLDER
-                + (QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0]
+                + (QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0]
                 + "_WhatsGNU_zeros_blast_report.txt"
             )
             logging.info(
                 "opened blast output file for {}".format(
-                    (QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0]
+                    (QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0]
                 )
             )
         else:
             blast_report_tmp = tempfile.NamedTemporaryFile(mode='w+')
             logging.info(
                 "opened temporary file for blast results for {}".format(
-                    (QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0]
+                    (QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0]
                 )
             )
         if ARGS.faa_GNU_0:
             ZEROS_file_hits = (
                 RESULTS_FOLDER
-                + (QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0]
+                + (QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0]
                 + "_WhatsGNU_zeros.faa"
             )
             OUTPUT_FILE_Zeros = open(ZEROS_file_hits, "w")
             logging.info(
                 "opened fasta file for proteins with GNU_score of zero for {}".format(
-                    (QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0]
+                    (QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0]
                 )
             )
         else:
             OUTPUT_FILE_Zeros = tempfile.NamedTemporaryFile(mode='w+')
             logging.info(
                 "opened temporary fasta file for proteins with GNU_score of zero for {}".format(
-                    (QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0]
+                    (QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0]
                 )
             )
     else:
         file_report = (
             RESULTS_FOLDER
-            + (QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0]
+            + (QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0]
             + "_WhatsGNU_report.txt"
         )
         output_file_report = open(file_report, "w")
         if ARGS.faa_GNU_0:
             ZEROS_file_hits = (
                 RESULTS_FOLDER
-                + (QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0]
+                + (QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0]
                 + "_WhatsGNU_zeros.faa"
             )
             OUTPUT_FILE_Zeros = open(ZEROS_file_hits, "w")
             logging.info(
                 "opened fasta file for proteins with GNU_score of zero for {}".format(
-                    (QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0]
+                    (QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0]
                 )
             )
     logging.info(
         "opened report file for {}".format(
-            (QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0]
+            (QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0]
         )
     )
     if (ARGS.roary_clustered_proteins) or (ARGS.database_mode == 'ortholog'):
@@ -852,7 +853,7 @@ for QUERYFILE in QUERY_LIST:
         output_file_hits.write("{}\t{}\n".format("protein_query", "hits"))
         logging.info(
             "opened hits file for {} as per your request of -i".format(
-                (QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0]
+                (QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0]
             )
         )
     processed_counter = 0
@@ -1017,7 +1018,7 @@ for QUERYFILE in QUERY_LIST:
                         logging.info(
                             "processed protein {} of {} in {:.3F}".format(
                                 processed_counter,
-                                (QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0],
+                                (QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0],
                                 time.time() - START_TIME,
                             )
                         )
@@ -1171,7 +1172,7 @@ for QUERYFILE in QUERY_LIST:
     logging.info(
         "processed {} proteins of {} in {:.3F}".format(
             processed_counter,
-            (QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0],
+            (QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0],
             time.time() - START_TIME,
         )
     )
@@ -1179,14 +1180,14 @@ for QUERYFILE in QUERY_LIST:
     if ARGS.blastp:
         OUTPUT_FILE_Zeros.seek(0)
         logging.info("Running blast for proteins with GNU score of Zero for {}".format((
-            QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0]))
+            QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0]))
         if ARGS.output_blastp:
             if ARGS.faa_GNU_0:
                 blast_results = os.system("blastp -query {} -subject {} -evalue 1e-06 -max_target_seqs 5 -max_hsps 1 -outfmt '6 qseqid sacc evalue qcovs pident' -out {}".format(ZEROS_file_hits, ORTHOLOG_FILE_NAME, blast_report))
-                logging.info("Saving the blast output as {}".format(blast_report.rsplit("/", 1)[-1]))
+                logging.info("Saving the blast output as {}".format(blast_report.rsplit(OS_SEPARATOR, 1)[-1]))
             else:
                 blast_results = os.system("blastp -query {} -subject {} -evalue 1e-06 -max_target_seqs 5 -max_hsps 1 -outfmt '6 qseqid sacc evalue qcovs pident' -out {}".format(OUTPUT_FILE_Zeros.name, ORTHOLOG_FILE_NAME, blast_report))
-                logging.info("Saving the blast output as {}".format(blast_report.rsplit("/", 1)[-1]))
+                logging.info("Saving the blast output as {}".format(blast_report.rsplit(OS_SEPARATOR, 1)[-1]))
         else:
             if ARGS.faa_GNU_0:
                 blast_results = os.system("blastp -query {} -subject {} -evalue 1e-06 -max_target_seqs 5 -max_hsps 1 -outfmt '6 qseqid sacc evalue qcovs pident' -out {}".format(ZEROS_file_hits, ORTHOLOG_FILE_NAME, blast_report_tmp.name))
@@ -1263,7 +1264,7 @@ for QUERYFILE in QUERY_LIST:
     if ARGS.topgenomes:  # get top 10 genomes with hits
         file_topgenomes = (
             RESULTS_FOLDER
-            + (QUERYFILE.rsplit("/", 1)[-1]).split(".faa")[0]
+            + (QUERYFILE.rsplit(OS_SEPARATOR, 1)[-1]).split(".faa")[0]
             + "_WhatsGNU_topgenomes.txt"
         )
         C = Counter(strain_name_list)

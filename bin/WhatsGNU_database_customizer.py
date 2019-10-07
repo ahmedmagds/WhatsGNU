@@ -64,6 +64,7 @@ if len(sys.argv) == 1:
 ARGS = PARSER.parse_args()
 if not (bool(vars(ARGS)["individual_files"]) or bool(vars(ARGS)["concatenated_file"])):
     PARSER.exit(status=0, message="Error: You have to use either -i or/and -c\n")
+OS_SEPARATOR = os.sep
 #########process files in a directory to a list########
 DIRECTORY_PATH = ARGS.directory_path
 FILES_LIST = []
@@ -130,9 +131,9 @@ if ARGS.list_csv:
         FILE_NAME_DICT[csv_line_list[0]] = locustags_list
     ORDERED_CNT = OrderedDict(CNT.most_common())
 ####################OUTPUT_FILE_NAME##################
-FOLDER_PATH = os.path.abspath(DIRECTORY_PATH).rsplit("/", 1)[0] + '/'
+FOLDER_PATH = os.path.abspath(DIRECTORY_PATH).rsplit(OS_SEPARATOR, 1)[0] + OS_SEPARATOR
 FILE_EXTENSION = '.faa'
-OUTPUT_FOLDER = FOLDER_PATH + ARGS.prefix_name + '/'
+OUTPUT_FOLDER = FOLDER_PATH + ARGS.prefix_name + OS_SEPARATOR
 try:
     os.mkdir(OUTPUT_FOLDER)
 except:
@@ -153,7 +154,7 @@ for file_name in FILES_LIST:
         file_object = gzip.open(file_name, 'rt')
     else:
         file_object = open(file_name, 'r')
-    file_name_stripped = file_name.rsplit("/", 1)[-1]
+    file_name_stripped = file_name.rsplit(OS_SEPARATOR, 1)[-1]
     if " " in file_name_stripped:
         file_name_stripped = file_name_stripped.replace(' ', '_')
     if "|" in file_name_stripped:

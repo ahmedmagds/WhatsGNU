@@ -118,7 +118,7 @@ if bool(vars(ARGS)["cutoff_volcano"]) and not bool(vars(ARGS)["strains_tag_volca
     PARSER.exit(status=0, message="Error: You have to use -c with -st\n")
 if bool(vars(ARGS)["case_control_name"]) and not bool(vars(ARGS)["strains_tag_volcano"]):
     PARSER.exit(status=0, message="Error: You have to use -cc with -st\n")
-
+OS_SEPARATOR = os.sep
 ################################
 if ARGS.fasta:
     try:
@@ -149,8 +149,8 @@ for file in os.listdir(DIRECTORY_PATH):
     if file.endswith("WhatsGNU_report.txt"):
         FILES_LIST.append(DIRECTORY_PATH + file)
 ####################OUTPUT_FOLDER_name##################
-FOLDER_PATH = os.path.abspath(DIRECTORY_PATH).rsplit("/", 1)[0] + '/'
-OUTPUT_FOLDER = FOLDER_PATH + ARGS.prefix_name + '/'
+FOLDER_PATH = os.path.abspath(DIRECTORY_PATH).rsplit(OS_SEPARATOR, 1)[0] + OS_SEPARATOR
+OUTPUT_FOLDER = FOLDER_PATH + ARGS.prefix_name + OS_SEPARATOR
 try:
     os.mkdir(OUTPUT_FOLDER)
 except:
@@ -166,7 +166,7 @@ if ARGS.heatmap:
             STRAINS_LIST.append(line)
     else:
         for file_name in FILES_LIST:
-            strain_name = (file_name.rsplit("/", 1)[-1]).split("_WhatsGNU_report.txt")[0]
+            strain_name = (file_name.rsplit(OS_SEPARATOR, 1)[-1]).split("_WhatsGNU_report.txt")[0]
             STRAINS_LIST.append(strain_name)
     ###########fasta#############
     if ARGS.fasta:
@@ -185,7 +185,7 @@ if ARGS.heatmap:
         for file_name in FILES_LIST:
             novel = []
             conserved = []
-            strain_name = (file_name.rsplit("/", 1)[-1]).split("_WhatsGNU_report.txt")[0]
+            strain_name = (file_name.rsplit(OS_SEPARATOR, 1)[-1]).split("_WhatsGNU_report.txt")[0]
             file_object = open(file_name, 'r')
             if ARGS.heatmap == 'ortholog':
                 if ((file_object.readline().rstrip()).split('\t'))[5] != 'ortholog_group':
@@ -193,8 +193,8 @@ if ARGS.heatmap:
             else:
                 file_object.readline()
             if ARGS.output_blastp:
-                blast_report = (DIRECTORY_PATH +
-                    (file_name.rsplit("/", 1)[-1]).split("_WhatsGNU_report.txt")[0]
+                blast_report = (OUTPUT_FOLDER +
+                    (file_name.rsplit(OS_SEPARATOR, 1)[-1]).split("_WhatsGNU_report.txt")[0]
                     + "_WhatsGNU_plotter_blast_report.txt"
                 )
             else:
@@ -274,7 +274,7 @@ if ARGS.heatmap:
     if ARGS.list_genes:
         HISTOGRAM_DICT = {}
         for file_name in FILES_LIST:
-            strain_name = (file_name.rsplit("/", 1)[-1]).split("_WhatsGNU_report.txt")[0]
+            strain_name = (file_name.rsplit(OS_SEPARATOR, 1)[-1]).split("_WhatsGNU_report.txt")[0]
             file_object = open(file_name, 'r')
             if ((file_object.readline().rstrip()).split('\t'))[5] != 'ortholog_group':
                 PARSER.exit(status=0, message="Error: This report '{}' was created in WhatsGNU basic mode\nUse -l for reports that were created with the ortholog mode\n".format(strain_name))
@@ -298,7 +298,7 @@ if ARGS.heatmap:
         for i in GENES_LIST:
             GENES_DICT[i] = {}
             for file_name in FILES_LIST:
-                strain_name = (file_name.rsplit("/", 1)[-1]).split("_WhatsGNU_report.txt")[0]
+                strain_name = (file_name.rsplit(OS_SEPARATOR, 1)[-1]).split("_WhatsGNU_report.txt")[0]
                 file_object = open(file_name, 'r')
                 file_object.readline()
                 for line in file_object:
@@ -430,7 +430,7 @@ if ARGS.metadata_barplot:
             SELECT_FILE.close()
         for file_name in FILES_LIST:
             metadata_blast_dict = {}
-            strain_name = (file_name.rsplit("/", 1)[-1]).split("_WhatsGNU_report.txt")[0]
+            strain_name = (file_name.rsplit(OS_SEPARATOR, 1)[-1]).split("_WhatsGNU_report.txt")[0]
             file_object = open(file_name, 'r')
             if ARGS.select_metadata:#get the index of each metadata
                 metadata_index = []
@@ -466,7 +466,7 @@ if ARGS.metadata_barplot:
                     HEADER_LINE.append('Others')
             if ARGS.output_blastp:
                 blast_report = (OUTPUT_FOLDER +
-                    (file_name.rsplit("/", 1)[-1]).split("_WhatsGNU_report.txt")[0]
+                    (file_name.rsplit(OS_SEPARATOR, 1)[-1]).split("_WhatsGNU_report.txt")[0]
                     + "_WhatsGNU_barplot_blast_report.txt"
                 )
             else:
@@ -549,7 +549,7 @@ if ARGS.histogram:
         NOVEL_DICT = {}
         CONSERVED_DICT = {}
         for file_name in FILES_LIST:
-            strain_name = (file_name.rsplit("/", 1)[-1]).split("_WhatsGNU_report.txt")[0]
+            strain_name = (file_name.rsplit(OS_SEPARATOR, 1)[-1]).split("_WhatsGNU_report.txt")[0]
             STRAINS_LIST.append(strain_name)
             file_object = open(file_name, 'r')
             file_object.readline()
@@ -603,7 +603,7 @@ if ARGS.histogram:
         plt.xlabel('GNU score')
         plt.ylabel('Number of Proteins')
         plt.title('Histogram of GNU scores of {}'.format(strain_name))
-        histogram_file_name = OUTPUT_FOLDER + strain_name +'WhatsGNU_histogram.pdf'
+        histogram_file_name = OUTPUT_FOLDER + strain_name +'_WhatsGNU_histogram.pdf'
         plt.savefig(histogram_file_name, dpi=300, bbox_inches='tight')
 ####################################Volcano###########################################
 if ARGS.strains_tag_volcano:
@@ -631,7 +631,7 @@ if ARGS.strains_tag_volcano:
     ORTHO_STRAIN_FUNCTION = {}
     for file_name in FILES_LIST:
         logp_list = []
-        strain_name = file_name.rsplit("/", 1)[-1]
+        strain_name = file_name.rsplit(OS_SEPARATOR, 1)[-1]
         file_object = open(file_name, 'r')
         if ((file_object.readline().rstrip()).split('\t'))[5] != 'ortholog_group':
             PARSER.exit(status=0, message="Error: This report '{}' was created in WhatsGNU basic mode\nVolcano plot works for reports that were created with the ortholog mode\n".format(strain_name))
@@ -652,6 +652,8 @@ if ARGS.strains_tag_volcano:
     #################################################
     OUTPUT_FILE_NAME4 = OUTPUT_FOLDER + ARGS.prefix_name + '_WhatsGNU_volcano' + '.txt'
     OUTPUT_FILE_OBJECT4 = open(OUTPUT_FILE_NAME4, 'w')
+    OUTPUT_FILE_NAME5 = OUTPUT_FOLDER + ARGS.prefix_name + '_ptns_present_in_one_gp' + '.txt'
+    OUTPUT_FILE_OBJECT5 = open(OUTPUT_FILE_NAME5, 'w')
     if ARGS.cutoff_volcano:
         CUTOFF_VALUE = ARGS.cutoff_volcano
         CASE_CUTOFF = int((CUTOFF_VALUE * CASE_COUNTER)/100)
@@ -664,10 +666,12 @@ if ARGS.strains_tag_volcano:
         CASE_NAME = 'Lower GNU in {}'.format(ARGS.case_control_name[0])
         CONTROL_NAME = 'Lower GNU in {}'.format(ARGS.case_control_name[1])
         OUTPUT_FILE_OBJECT4.write('ortho_group\tfunction\tDELTA_AVG_GNU\tAVG_OVRI\tMann-Whitney U statistic\tMann–Whitney–Wilcoxon pvalue\t-log10 pvalue\t{}\t{}\n'.format(ARGS.case_control_name[0], ARGS.case_control_name[1]))
+        OUTPUT_FILE_OBJECT5.write('ortho_group\tfunction\tAVG_GNU\tAVG_OVRI\t{}\t{}\n'.format(ARGS.case_control_name[0], ARGS.case_control_name[1]))
     else:
         CASE_NAME = 'Lower GNU in case'
         CONTROL_NAME = 'Lower GNU in control'
         OUTPUT_FILE_OBJECT4.write('ortho_group\tfunction\tDELTA_AVG_GNU\tAVG_OVRI\tMann-Whitney U statistic\tMann–Whitney–Wilcoxon pvalue\t-log10 pvalue\tcase\tcontrol\n')
+        OUTPUT_FILE_OBJECT5.write('ortho_group\tfunction\tDELTA_AVG_GNU\tAVG_OVRI\tcase\tcontrol\n')
     VOLCANO = {}
     DELTA_AVG_GNU_LIST = []
     for record in UNTARGETED:
@@ -692,21 +696,13 @@ if ARGS.strains_tag_volcano:
                 PARSER.exit(status=0, message="You are using tag other than case and control (case-sensitive)\n")
         if CD_list.count('case') >= CASE_CUTOFF or CD_list.count('control') >= CONTROL_CUTOFF:
             if len(GNU_case) == 0:
-                DELTA_AVG_GNU = 0 - (sum(GNU_control)/len(GNU_control))
-                try:
-                    wtstatistics, pvalue = st.mannwhitneyu(GNU_case, GNU_control, alternative='two-sided')
-                except:
-                    pvalue = 0.0
-                    logp = 8.0
-                    wtstatistics = 0.0
+                DELTA_AVG_GNU = (sum(GNU_control)/len(GNU_control))
+                AVG_RI = sum(OVRI_control)/len(OVRI_control)
+                OUTPUT_FILE_OBJECT5.write(record+'\t'+function+'\t'+str(DELTA_AVG_GNU)+'\t'+str(AVG_RI)+'\t'+str(CD_list.count('case'))+'\t'+str(CD_list.count('control'))+'\n')
             elif len(GNU_control) == 0:
-                DELTA_AVG_GNU = (sum(GNU_case)/len(GNU_case)) - 0
-                try:
-                    wtstatistics, pvalue = st.mannwhitneyu(GNU_case, GNU_control, alternative='two-sided')
-                except:
-                    pvalue = 0.0
-                    logp = 8.0
-                    wtstatistics = 0.0
+                DELTA_AVG_GNU = (sum(GNU_case)/len(GNU_case))
+                AVG_RI = sum(OVRI_case)/len(OVRI_case)
+                OUTPUT_FILE_OBJECT5.write(record+'\t'+function+'\t'+str(DELTA_AVG_GNU)+'\t'+str(AVG_RI)+'\t'+str(CD_list.count('case'))+'\t'+str(CD_list.count('control'))+'\n')
             else:
                 DELTA_AVG_GNU = (sum(GNU_case)/len(GNU_case)) - (sum(GNU_control)/len(GNU_control))
                 try:
@@ -716,23 +712,24 @@ if ARGS.strains_tag_volcano:
                     pvalue = 1.0
                     logp = 0.0
                     wtstatistics = CASE_COUNTER * CONTROL_COUNTER
-            if DELTA_AVG_GNU < 0:
-                AVG_RI = sum(OVRI_case)/len(OVRI_case)
-            elif DELTA_AVG_GNU > 0:
-                AVG_RI = sum(OVRI_control)/len(OVRI_control)
-            else:
-                AVG_RI = (sum(OVRI_case)+sum(OVRI_control))/(len(OVRI_control)+len(OVRI_case))
-            DELTA_AVG_GNU_LIST.append(DELTA_AVG_GNU)
-            logp_list.append(logp)
-            VOLCANO[record] = (DELTA_AVG_GNU, AVG_RI, pvalue, logp)
-            OUTPUT_FILE_OBJECT4.write(record+'\t'+function+'\t'+str(DELTA_AVG_GNU)+'\t'+str(AVG_RI)+'\t'+str(wtstatistics)+'\t'+str(pvalue)+'\t'+str(logp)+'\t'+str(CD_list.count('case'))+'\t'+str(CD_list.count('control'))+'\n')
+                if DELTA_AVG_GNU < 0:
+                    AVG_RI = sum(OVRI_case)/len(OVRI_case)
+                elif DELTA_AVG_GNU > 0:
+                    AVG_RI = sum(OVRI_control)/len(OVRI_control)
+                else:
+                    AVG_RI = (sum(OVRI_case)+sum(OVRI_control))/(len(OVRI_control)+len(OVRI_case))
+                DELTA_AVG_GNU_LIST.append(DELTA_AVG_GNU)
+                logp_list.append(logp)
+                VOLCANO[record] = (DELTA_AVG_GNU, AVG_RI, pvalue, logp)
+                OUTPUT_FILE_OBJECT4.write(record+'\t'+function+'\t'+str(DELTA_AVG_GNU)+'\t'+str(AVG_RI)+'\t'+str(wtstatistics)+'\t'+str(pvalue)+'\t'+str(logp)+'\t'+str(CD_list.count('case'))+'\t'+str(CD_list.count('control'))+'\n')
     BORDER_LINE = (max(DELTA_AVG_GNU_LIST)-min(DELTA_AVG_GNU_LIST))/4
     OUTPUT_FILE_OBJECT4.close()
+    OUTPUT_FILE_OBJECT5.close()
     #############DELTA_AVG_GNU and AVG_OVRI##############
     VOLCANO_OVRI_FILE_NAME = OUTPUT_FOLDER + ARGS.prefix_name + '_WhatsGNU_volcano_OVRI' + '.png'
     fig, ax = plt.subplots()
-    LINE_LOCATION = -0.2
-    WORD_LOCATION = -0.25
+    LINE_LOCATION = -0.22
+    WORD_LOCATION = -0.27
     for record in VOLCANO:
         DELTA_AVG_GNU, AVG_RI, pvalue, logp = VOLCANO[record]
         if DELTA_AVG_GNU > BORDER_LINE: #capture dots above -log10 pvalue and borderline
