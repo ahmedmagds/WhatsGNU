@@ -43,6 +43,30 @@ The 'conda activate' command is needed to activate the WhatsGNU environment each
 **If you do not have Miniconda or Anaconda installed already, you can install one of them from:**
 1. [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 2. [Anaconda](https://www.anaconda.com/distribution/)
+### Windows
+Follow instructions for installing Windows Subsystem for Linux (WSL) on https://docs.microsoft.com/en-us/windows/wsl/install-win10<br/>
+Briefly:
+1. Open PowerShell as Administrator and run:
+```
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+```
+2. Install Linux distribution app from Microsoft Store (tested on Ubuntu 18.04 LTS).
+3. Set up username and password.
+4. Update the system and install dependencies:
+```
+$sudo apt update && sudo apt upgrade
+$sudo apt install python3-pip
+$pip3 install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
+$sudo apt install unzip
+$sudo apt install ncbi-blast+
+$git clone https://github.com/ahmedmagds/WhatsGNU.git
+$export PATH=$PATH:/home/user_name/WhatsGNU/bin
+```
+Note: Your Windows C:\Users\ gets mapped to /mnt/c/Users/ in WSL. You can copy between the two directories using a command like: 
+```
+cp /mnt/c/Users/Windows_username/Desktop/file.fasta /home/Ubuntu_user_name/
+```
+
 ### Test
 * Type WhatsGNU_main.py -h and it should output help screen.
 * Type WhatsGNU_main.py -v and you should see an output like WhatsGNU_main.py 1.0.
