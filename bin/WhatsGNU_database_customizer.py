@@ -32,10 +32,9 @@
 # Abramson Pediatric Research Center, University of Pennsylvania, Philadelphia,
 # Pennsylvania, 19104, USA
 
-# CITATION1: WhatsGNU, https://github.com/ahmedmagds/WhatsGNU
-# CITATION2: Ahmed M Moustafa and Paul J Planet (2019)
+# CITATION1: Ahmed M Moustafa and Paul J Planet
 # WhatsGNU: a tool for identifying proteomic novelty
-# TBD TBD(TBD):TBD-TBD, doi: TBD.
+# Genome Biology(2020)21:58, doi: https://doi.org/10.1186/s13059-020-01965-w.
 
 import sys
 import os

@@ -32,10 +32,9 @@
 # Abramson Pediatric Research Center, University of Pennsylvania, Philadelphia,
 # Pennsylvania, 19104, USA
 
-# CITATION1: WhatsGNU, https://github.com/ahmedmagds/WhatsGNU
-# CITATION2: Ahmed M Moustafa and Paul J Planet (2019)
+# CITATION1: Ahmed M Moustafa and Paul J Planet
 # WhatsGNU: a tool for identifying proteomic novelty
-# TBD TBD(TBD):TBD-TBD, doi: TBD.
+# Genome Biology(2020)21:58, doi: https://doi.org/10.1186/s13059-020-01965-w.
 
 import os
 import sys
@@ -1289,10 +1288,11 @@ for QUERYFILE in QUERY_LIST:
         OUTPUT_FILE_Zeros.close()
     QUERYFILE_OBJECT.close()
 logging.info("Done in --- {:.3f} seconds ---".format(time.time() - START_TIME))
-logging.info("""Thanks for using WhatsGNU1.0, I hope you found it useful.
-Please cite Prokka 'Seemann 2014, Bioinformatics;30(14):2068-9' if you use WhatsGNU1.0.
-Please also cite Roary 'Page et al. 2015, Bioinformatics;31(22):3691-3693' if you use WhatsGNU1.0.
-Please also cite BLAST+ 'Camacho et al. 2009, BMC Bioinformatics;10:421' if you use WhatsGNU1.0.
+logging.info("""Thanks for using WhatsGNU1.1, I hope you found it useful.
+Please cite WhatsGNU 'Moustafa AM and Planet PJ 2020, Genome Biology;21:58'.
+Please cite Prokka 'Seemann 2014, Bioinformatics;30(14):2068-9' if you use WhatsGNU.
+Please also cite Roary 'Page et al. 2015, Bioinformatics;31(22):3691-3693' if you use WhatsGNU.
+Please also cite BLAST+ 'Camacho et al. 2009, BMC Bioinformatics;10:421' if you use WhatsGNU.
 Please cite Staphopia 'Petit RA III and Read TD 2018, PeerJ;6:e5261' if you use Staphopia S. aureus Database.
 Please cite Enterobase 'Alikhan NF et al. 2018, PLoS Genetics;14(4):e1007261' if you use Enterobase S. enterica Database.
 The manual is extensive and available to read at https://github.com/ahmedmagds/WhatsGNU
