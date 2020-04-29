@@ -72,18 +72,25 @@ cp /mnt/c/Users/Windows_username/Desktop/file.fasta /home/Ubuntu_user_name/
 * Type WhatsGNU_main.py -v and you should see an output like WhatsGNU_main.py 1.0.
 
 ## Available Databases
-Five precompressed databases (.pickle) are available to download and use:
+Six precompressed databases (.pickle) are available to download and use:
 
 ### Ortholog Mode:
-1. [_Mycobacterium tuberculosis_](https://www.dropbox.com/sh/8nqowtd4fcf7dgs/AAAdXiqcxTsEqfIAyNE9TWwRa?dl=0) Version: 07/09/2019 (compressed 26,794,006 proteins in 6563 genomes to 434,725 protein variants).
-2. [_Pseudomonas aeruginosa_](https://www.dropbox.com/sh/r0wvoig3alsz7xg/AABPoNu6FdN7zG2PP9BFezQYa?dl=0) Version: 07/06/2019 (compressed 14,475,742 proteins in 4712 genomes to 1,288,892 protein variants).
-3. [_Staphylococcus aureus_](https://www.dropbox.com/sh/p292mia4oc99hx6/AACPuv7uoYUkZ1WCBDX0XPSVa?dl=0) Version: 06/14/2019 (compressed 27,213,667 proteins in 10350 genomes to 571,848 protein variants).<br/>
+1. [_Klebsiella pneumoniae_](https://zenodo.org/record/3774324/files/WhatsGNU_Kp_Ortholog.zip?download=1) Version: 04/17/2020 (compressed 46,072,343 proteins in 8752 genomes to 1,466,934 protein variants).
+2. [_Mycobacterium tuberculosis_](https://www.dropbox.com/sh/8nqowtd4fcf7dgs/AAAdXiqcxTsEqfIAyNE9TWwRa?dl=0) Version: 07/09/2019 (compressed 26,794,006 proteins in 6563 genomes to 434,725 protein variants).
+3. [_Pseudomonas aeruginosa_](https://www.dropbox.com/sh/r0wvoig3alsz7xg/AABPoNu6FdN7zG2PP9BFezQYa?dl=0) Version: 07/06/2019 (compressed 14,475,742 proteins in 4712 genomes to 1,288,892 protein variants).
+4. [_Staphylococcus aureus_](https://www.dropbox.com/sh/p292mia4oc99hx6/AACPuv7uoYUkZ1WCBDX0XPSVa?dl=0) Version: 06/14/2019 (compressed 27,213,667 proteins in 10350 genomes to 571,848 protein variants).<br/>
 
 ### Big Data basic Mode:
 1. [_Salmonella enterica_](https://www.dropbox.com/s/gbjengikpynxo12/Senterica_Enterobase_basic_216642.pickle?dl=0) Enterobase Version: 08/29/2019 (compressed 975,262,506 proteins in 216,642 genomes to 5,056,335 protein variants).
 2. [_Staphylococcus aureus_](https://www.dropbox.com/s/bcs922768tjrwwg/Sau_Staphopia_basic_43914.pickle?dl=0) Staphopia Version: 06/27/2019 (compressed 115,178,200 proteins in 43,914 genomes to 2,228,761 protein variants).
 
-**The five databases are available to download by visiting the link or using the wget command as follows:**
+**The Six databases are available to download by visiting the link or using the wget command as follows:**
+
+**_K. pneumoniae_ Ortholog**
+```
+$wget -O Kp.zip https://zenodo.org/record/3774324/files/WhatsGNU_Kp_Ortholog.zip?download=1
+$unzip Kp.zip -d WhatsGNU_Kp_Ortholog
+```
 
 **_S. aureus_ Ortholog**
 ```
@@ -524,7 +531,8 @@ Please submit via the GitHub issues page: https://github.com/ahmedmagds/WhatsGNU
 GPLv3: https://github.com/ahmedmagds/WhatsGNU/blob/master/LICENSE
 ## Citations
 ### WhatsGNU
-Please cite WhatsGNU 'Moustafa AM and Planet PJ 2020, Genome Biology;21:58'<br/>
+WhatsGNU: a tool for identifying proteomic novelty<br/>
+[Moustafa AM and Planet PJ 2020, Genome Biology;21:58](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-01965-w)<br/>
 ### Other tools
 * Please cite Prokka 'Seemann 2014, Bioinformatics;30(14):2068-9' if you use WhatsGNU.
 * Please also cite Roary 'Page et al. 2015, Bioinformatics;31(22):3691-3693' if you use WhatsGNU.
