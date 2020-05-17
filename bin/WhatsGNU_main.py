@@ -358,9 +358,9 @@ PROTEIN_COUNTER = 0
 FILE_COUNTER = 0
 if ARGS.mkdatabase:
     SEQUENCES_DICT_DB = defaultdict(list)
-    DB_SEQUENCE_STRING = ""
-    DB_SEQUENCE_INFO = ""
     for DATABASE_FILE in DATABASE_FILES_LIST:
+        DB_SEQUENCE_STRING = ""
+        DB_SEQUENCE_INFO = ""
         if DATABASE_FILE.endswith(".faa"):
             DATABASEFILE_OBJECT = open(DATABASE_FILE, "r")
             DB_LINE_CHECK = DATABASEFILE_OBJECT.readline()
