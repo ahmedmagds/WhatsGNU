@@ -128,8 +128,14 @@ PARSER.add_argument(
 PARSER.add_argument(
     "-t",
     "--topgenomes",
-    help="create a file of top 10 genomes with hits",
+    help="create a file of top N genomes with most number of exact matches to query [Default top 10 genomes]",
     action="store_true",
+)
+PARSER.add_argument(
+    "-tn",
+    "--topgenomes_count",
+    type=int,
+    help="select number of closest top genomes to show [Default top 10 genomes]",
 )
 PARSER.add_argument(
     "-s",
@@ -206,6 +212,8 @@ if len(sys.argv) == 1:
 ARGS = PARSER.parse_args()
 if bool(vars(ARGS)["strainhits"]) and not bool(vars(ARGS)["topgenomes"]):
     PARSER.exit(status=0, message="Error: You have to use -s with -t\n")
+if bool(vars(ARGS)["topgenomes_count"]) and not bool(vars(ARGS)["topgenomes"]):
+    PARSER.exit(status=0, message="Error: You have to use -tn with -t\n")
 if bool(vars(ARGS)["database"]) and bool(vars(ARGS)["roary_clustered_proteins"]):
     PARSER.exit(status=0, message="Error: You cannot use -r with -d\n")
 if bool(vars(ARGS)["database"]) and not bool(vars(ARGS)["database_mode"]):
@@ -235,6 +243,11 @@ else:
     RARITY_INDEX_CUTOFF = 0.045
 if RARITY_INDEX_CUTOFF < 0.0 or RARITY_INDEX_CUTOFF > 1.0:
     PARSER.exit(status=0, message="Error: rarity_index cutoff values should be in range [0-1]\n")
+if ARGS.topgenomes:
+    if ARGS.topgenomes_count:
+        top_count = ARGS.topgenomes_count
+    else:
+        top_count = 10
 ##########blastp check##############
 if ARGS.blastp:
     try:
@@ -1267,7 +1280,7 @@ for QUERYFILE in QUERY_LIST:
             + "_WhatsGNU_topgenomes.txt"
         )
         C = Counter(strain_name_list)
-        most_occur = C.most_common(10)
+        most_occur = C.most_common(top_count)
         with open(file_topgenomes, "w") as output_file_topgenomes:
             output_file_topgenomes.write(
                 "WhatsGNU found {} total hits from the database in --- {:.3f} seconds ---\n".format(
