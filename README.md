@@ -19,14 +19,14 @@ WhatsGNU compresses proteins database based on exact match to much fewer number 
 ### Clone the Github repository
 WhatsGNU is a command-line application written in Python3. Simply download and use! **You will have to install all needed dependencies!**
 ```
-$git clone https://github.com/ahmedmagds/WhatsGNU
-$cd WhatsGNU/bin
-$chmod +x *.py
-$pwd 
+git clone https://github.com/ahmedmagds/WhatsGNU
+cd WhatsGNU/bin
+chmod +x *.py
+pwd
 #pwd will give you a path/to/folder/having/WhatsGNU which you will use in next command
-$export PATH=$PATH:/path/to/folder/having/WhatsGNU/bin
+export PATH=$PATH:/path/to/folder/having/WhatsGNU/bin
 ```
-If you need it permanently, you can add this last line to your .bashrc or .bash_profile. 
+If you need it permanently, you can add this last line to your .bashrc or .bash_profile.
 ### Bioconda
 If you use Conda you can use the Bioconda channel to install it in the conda base:
 ```
@@ -54,15 +54,15 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 3. Set up username and password.
 4. Update the system and install dependencies:
 ```
-$sudo apt update && sudo apt upgrade
-$sudo apt install python3-pip
-$pip3 install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
-$sudo apt install unzip
-$sudo apt install ncbi-blast+
-$git clone https://github.com/ahmedmagds/WhatsGNU.git
-$export PATH=$PATH:/home/user_name/WhatsGNU/bin
+sudo apt update && sudo apt upgrade
+sudo apt install python3-pip
+pip3 install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
+sudo apt install unzip
+sudo apt install ncbi-blast+
+git clone https://github.com/ahmedmagds/WhatsGNU.git
+export PATH=$PATH:/home/user_name/WhatsGNU/bin
 ```
-Note: Your Windows C:\Users\ gets mapped to /mnt/c/Users/ in WSL. You can copy between the two directories using a command like: 
+Note: Your Windows C:\Users\ gets mapped to /mnt/c/Users/ in WSL. You can copy between the two directories using a command like:
 ```
 cp /mnt/c/Users/Windows_username/Desktop/file.fasta /home/Ubuntu_user_name/
 ```
@@ -88,33 +88,33 @@ Six precompressed databases (.pickle) are available to download and use:
 
 **_K. pneumoniae_ Ortholog**
 ```
-$wget -O Kp.zip https://zenodo.org/record/3774324/files/WhatsGNU_Kp_Ortholog.zip?download=1
-$unzip Kp.zip -d WhatsGNU_Kp_Ortholog
+wget -O Kp.zip https://zenodo.org/record/7812697/files/Kp.zip?download=1
+unzip Kp.zip -d WhatsGNU_Kp_Ortholog
 ```
 
 **_S. aureus_ Ortholog**
 ```
-$wget -O Sau.zip https://www.dropbox.com/sh/p292mia4oc99hx6/AACPuv7uoYUkZ1WCBDX0XPSVa?dl=0
-$unzip Sau.zip -d WhatsGNU_Sau_Ortholog
+wget -O Sau.zip https://www.dropbox.com/sh/p292mia4oc99hx6/AACPuv7uoYUkZ1WCBDX0XPSVa?dl=0
+unzip Sau.zip -d WhatsGNU_Sau_Ortholog
 ```
 
 **_Mycobacterium tuberculosis_ Ortholog**
 ```
-$wget -O TB.zip https://www.dropbox.com/sh/8nqowtd4fcf7dgs/AAAdXiqcxTsEqfIAyNE9TWwRa?dl=0
-$unzip TB.zip -d WhatsGNU_TB_Ortholog
+wget -O TB.zip https://www.dropbox.com/sh/8nqowtd4fcf7dgs/AAAdXiqcxTsEqfIAyNE9TWwRa?dl=0
+unzip TB.zip -d WhatsGNU_TB_Ortholog
 ```
 **_Pseudomonas aeruginosa_ Ortholog**
 ```
-$wget -O Pa.zip https://www.dropbox.com/sh/r0wvoig3alsz7xg/AABPoNu6FdN7zG2PP9BFezQYa?dl=0
-$unzip Pa.zip -d WhatsGNU_Pa_Ortholog
+wget -O Pa.zip https://www.dropbox.com/sh/r0wvoig3alsz7xg/AABPoNu6FdN7zG2PP9BFezQYa?dl=0
+unzip Pa.zip -d WhatsGNU_Pa_Ortholog
 ```
 **_S. aureus_ Staphopia**
 ```
-$wget -O Sau_Staphopia_basic_43914.pickle https://www.dropbox.com/s/bcs922768tjrwwg/Sau_Staphopia_basic_43914.pickle?dl=0
+wget -O Sau_Staphopia_basic_43914.pickle https://www.dropbox.com/s/bcs922768tjrwwg/Sau_Staphopia_basic_43914.pickle?dl=0
 ```
 **_S. enterica_ Enterobase**
 ```
-$wget -O Senterica_Enterobase_basic_216642.pickle https://www.dropbox.com/s/gbjengikpynxo12/Senterica_Enterobase_basic_216642.pickle?dl=0
+wget -O Senterica_Enterobase_basic_216642.pickle https://www.dropbox.com/s/gbjengikpynxo12/Senterica_Enterobase_basic_216642.pickle?dl=0
 ```
 The three Ortholog databases contain all available genomes for the species from GenBank as per version day. To know the genomes included in each database, download [List of Genomes included](https://www.dropbox.com/s/w7z6htvot8167ep/List_of_genomes_included_092019.xlsx?dl=0). The databases for these 3 Ortholog databases will be updated 3 times per year to include new sequenced genomes.
 
@@ -125,15 +125,25 @@ This script downloads genomic fna files or protein faa files from GenBank.
 2. ### WhatsGNU_database_customizer.py
 This script customizes the protein faa files from GenBank, RefSeq, Prokka and RAST by adding a strain name to the start of each protein. This script can also customize the strain names for gff file to be used in Roary for pangenome analysis, if the Ortholog mode is going to be used in WhatsGNU.
 
-3. ### WhatsGNU_main.py
+3. ### WhatsGNU_db_download.py
+This script will download databases for WhatsGNU. You can check all databases available for WhatsGNU in the file databases_available.csv.
+
+4. ### WhatsGNU_main.py
 In basic mode, this script ranks protein sequences based on the number of observed exact protein matches (the GNU score) in all known genomes of a particular species. It generates a report for all the proteins in your query in seconds using exact match compression technique. In ortholog mode, the script will additionally link the different alleles of an ortholog group using the clustered proteins output file from Roary or similar pangenome analysis tools. In this mode, WhatsGNU will calculate Ortholog Variant Rarity Index (OVRI) (scale 0-1). This metric is calculated as the number of alleles in an orthologous group that have a GNU score less than or equal to the GNU score of any given allele divided by the sum of GNU scores in the orthologous group. This index represents how unusual a given GNU score is within an ortholog group by measuring how many other protein alleles in the ortholog group have that GNU score or lower. For instance, an allele of GNU=8 in an ortholog group that has 6 alleles with this distribution of GNU scores [300,20,15,8,2,1] will get an OVRI of (8+2+1)/346= 0.03. On the other hand, the allele with GNU=300 will get an OVRI of (300+20+15+8+2+1)/346= 1. An allele with an OVRI of 1 is relatively common regardless of the magnitude of the GNU score, while an allele with OVRI of 0.03 is relatively rare. This index helps distinguish between ortholog groups with high levels of diversity and ortholog groups that are highly conserved.   
 
-4. ### WhatsGNU_plotter.py
+5. ### WhatsGNU_plotter.py
 This script plots:
 * Heatmap of GNU scores of orthologous genes in different isolates.
 * Metadata distribution bar plot of proteins.
 * Histogram of the GNU scores of all proteins in a genome.
 * Volcano plot showing proteins with a lower average GNU score in one group (case) compared to the other (control). The x-axis is the delta average GNU score (Average_GNU_score_case – Average_GNU_score_control) in the ortholog group. Lower average GNU score in cases will have a negative value on the x-axis (red dots) while lower average GNU score in the control group will have positive value on the x-axis (green dots). The y-axis could be drawn as a -log10(P value) from Mann–Whitney-Wilcoxon test. In this case, lower average GNU score in one group (upper left for case or upper right for control) would be of interest as shown by a significant P value (-log10( P value) > 1.3). The y-axis can also be the average OVRI in the case group for negative values on the x-axis or average OVRI in the control group for positive values on the x-axis.
+
+## Usage for WhatsGNU_db_download.py
+### Input
+1. database name (e.g. Sau, Kp, TB, Pa, Staphopia, S.enterica or all)
+```
+WhatsGNU_db_download.py Sau
+```
 
 ## Usage for WhatsGNU_main.py
 ### Input
@@ -144,66 +154,66 @@ Optional for _S. aureus_:
 The CSV file of Metadata (CC/ST) frequencies for the _S. aureus_ database.
 ### Use precompressed databases
 ```
-$WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog query.faa
+WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog query.faa
 or
-$WhatsGNU_main.py -d Senterica_Enterobase_basic_216642.pickle -dm basic query.faa
+WhatsGNU_main.py -d Senterica_Enterobase_basic_216642.pickle -dm basic query.faa
 ```
 You can also use a folder of multiple .faa query files as input (e.g. folder_faa/ has all .faa files to be processed)
 ```
-$WhatsGNU.py -d TB_Ortholog_6563.pickle -dm ortholog folder_faa/
+WhatsGNU.py -d TB_Ortholog_6563.pickle -dm ortholog folder_faa/
 ```
 ### Use precompressed databases with more features
 You can assign output folder name using -o instead of default (WhatsGNU_results_timestamp)
 ```
-$WhatsGNU_main.py -d Sau_Staphopia_basic_43914.pickle -dm basic -o output_results_folder query.faa
+WhatsGNU_main.py -d Sau_Staphopia_basic_43914.pickle -dm basic -o output_results_folder query.faa
 ```
 Create a file of each protein with all associated ids from the database (Note: large file (~ 1 Gb for 3000 proteins))
 ```
-$WhatsGNU_main.py -d Pa_Ortholog_4713.pickle -dm ortholog -i -o output_results_folder query.faa
+WhatsGNU_main.py -d Pa_Ortholog_4713.pickle -dm ortholog -i -o output_results_folder query.faa
 ```
 Create a file of top 10 genomes with hits
 ```
-$WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -t query.faa
+WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -t query.faa
 ```
 Check how many hits you get from a particular genome in the database (**It has to be used with -t**). The names of the different strains in the databases and their corresponding Genbank strain name and GCA number are available from [List of Genomes included](https://www.dropbox.com/s/w7z6htvot8167ep/List_of_genomes_included_092019.xlsx?dl=0)
 ```
-$WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -t -s FDAARGOS_31_GCA_001019015.2_CC8_ query.faa
+WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -t -s FDAARGOS_31_GCA_001019015.2_CC8_ query.faa
 ```
 Get Metadata (CC/ST) composition of your hits in the report (**Only for _S. aureus_ and you will need to use the metadata_frequencies.csv file (available to download with the database) with -e**)
 ```
-$WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -e metadata_frequencies.csv query.faa
+WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -e metadata_frequencies.csv query.faa
 ```
 Get a fasta (.faa) file of all proteins with GNU score of zero.
 ```
-$WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -f query.faa
+WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -f query.faa
 ```
 ### The following options work with -dm ortholog
 
 Run blastp on the proteins with GNU score of zero and modify the report with ortholog information.
 ```
-$WhatsGNU_main.py -d Pa_Ortholog_4713.pickle -dm ortholog -b query.faa
+WhatsGNU_main.py -d Pa_Ortholog_4713.pickle -dm ortholog -b query.faa
 ```
 **Note:** If -b is used, WhatsGNU will search for compressed_db_orthologs.faa and compressed_db_orthologs_info.txt in the same path for the compressed database as they are needed for the blastp run.
 
 Get the output report of blastp run (works with -b).
 ```
-$WhatsGNU_main.py -d Pa_Ortholog_4713.pickle -dm ortholog -b -op query.faa
+WhatsGNU_main.py -d Pa_Ortholog_4713.pickle -dm ortholog -b -op query.faa
 ```
 Select a blastp percent identity and coverage cutoff values [Default 80], range(0,100).
 ```
-$WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -b –w 90 –c 50 query.faa
+WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -b –w 90 –c 50 query.faa
 ```
 Select an OVRI cutoff value [Default 0.045], range (0-1).
 ```
-$WhatsGNU_main.py -d TB_Ortholog_6563.pickle -dm ortholog -ri 0.09 query.faa
+WhatsGNU_main.py -d TB_Ortholog_6563.pickle -dm ortholog -ri 0.09 query.faa
 ```
 ### Use all features together
 ```
-$WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -o output_results_folder -i -t -s strain_name -e metadata_frequencies.csv -f -b -op –w 95 –c 40 -ri 0.09 query.faa
+WhatsGNU_main.py -d Sau_Ortholog_10350.pickle -dm ortholog -o output_results_folder -i -t -s strain_name -e metadata_frequencies.csv -f -b -op –w 95 –c 40 -ri 0.09 query.faa
 ```
 ### Command line options
 ```
-$WhatsGNU_main.py -h
+WhatsGNU_main.py -h
 usage: WhatsGNU_main.py [-h] [-m MKDATABASE | -d DATABASE] [-a] [-j]
                         [-r [ROARY_CLUSTERED_PROTEINS]] [-dm {ortholog,basic}]
                         [-ri [RARITY_INDEX]] [-o OUTPUT_FOLDER] [--force]
@@ -357,7 +367,7 @@ WhatsGNU_plotter.py -hp ortholog -q proteins.faa -d strains_order.txt -t title -
 ```
 ### Command line options
 ```
-$WhatsGNU_plotter.py -h
+WhatsGNU_plotter.py -h
 usage: WhatsGNU_plotter.py [-h] [-hp {ortholog,basic}] [-l LIST_GENES]
                            [-q FASTA] [-op] [-d STRAINS_ORDER] [-r]
                            [-rc RARITY_COLOR] [-fs FIGURE_SIZE FIGURE_SIZE]
@@ -434,51 +444,62 @@ optional arguments:
 A heatmap, metadata percentage distribution bar plot, histogram and two volcano plots and summary statistics files.
 
 ## Instructions for creating a database
-### Simple
+### Simple (GenBank)
 1. Download proteomes of a species (.faa) in a Directory from GenBank
 ```
-$WhatsGNU_get_GenBank_genomes.py -f GCAs.txt Species_faa
+WhatsGNU_get_GenBank_genomes.py -f GCAs.txt Species_faa
 ```
 2. Modify the faa files to have the strains' names
 ```
-$WhatsGNU_database_customizer.py -c -g Species_modified Species_faa/
+WhatsGNU_database_customizer.py -c -g Species_modified Species_faa/
 ```
 3. Run WhatsGNU_main.py in basic mode
 ```
-$WhatsGNU_main.py -m Species_modified_concatenated.faa query.faa
+WhatsGNU_main.py -m Species_modified_concatenated.faa query.faa
 ```
+### Simple (Prokka-annotated faa files)
+1. **Annotate your genomes with Prokka and put all faa files in one folder**
+2. Modify the faa files to have the strains' names
+```
+WhatsGNU_database_customizer.py -c -p Species_modified Species_faa/
+```
+3. Run WhatsGNU_main.py in basic mode
+```
+WhatsGNU_main.py -m Species_modified_concatenated.faa query.faa
+```
+**query.faa should be any faa file. It won't matter at this step**
 ### Advanced (e.g. _S. aureus_)
 1. Download genomes of a species (.fna) in a Directory from GenBank  
 ```
-$WhatsGNU_get_GenBank_genomes.py -c GCAs.txt Sau_fna
-$gunzip Sau_fna/*
+WhatsGNU_get_GenBank_genomes.py -c GCAs.txt Sau_fna
+gunzip Sau_fna/*
 ```
 2. Annotate the genomes using [Prokka](https://github.com/tseemann/prokka)
 **An example command for _S. aureus_ is given, change it or use any other options from Prokka**
 ```
-$for i in `cat file_names.list`;do prokka --kingdom Bacteria --outdir prokka_$i --gcode 11 --genus Staphylococcus --species aureus --strain $i --prefix $i --locustag $i Species_fna/$i*.fna; done
-$find ./ -name '*.faa' -exec cp -prv '{}' '/Sau_faa/' ';'
-$find ./ -name '*.gff' -exec cp -prv '{}' '/Sau_gff/' ';'
+for i in `cat file_names.list`;do prokka --kingdom Bacteria --outdir prokka_$i --gcode 11 --genus Staphylococcus --species aureus --strain $i --prefix $i --locustag $i Species_fna/$i*.fna; done
+find ./ -name '*.faa' -exec cp -prv '{}' '/Sau_faa/' ';'
+find ./ -name '*.gff' -exec cp -prv '{}' '/Sau_gff/' ';'
 ```
 3. Modify the faa and gff files to have the strains' names
 ```
-$WhatsGNU_database_customizer.py -c -p -l strain_name_list.csv Sau_modified_faa Sau_faa/
-$WhatsGNU_database_customizer.py -i -s -l strain_name_list.csv -g Sau_modified_gff Sau_gff/
+WhatsGNU_database_customizer.py -c -p -l strain_name_list.csv Sau_modified_faa Sau_faa/
+WhatsGNU_database_customizer.py -i -s -l strain_name_list.csv -g Sau_modified_gff Sau_gff/
 ```
 The strain_name_list.csv is a comma-separated list of 3+ columns: file_name, old locustag, new locustag and optionally metadata. If metadata are provided, the script will concatenate the new locustag with metadata using ‘_’ as a separator. The new locustag in this case will be:  new_locustag_metadata_. In case of GenBank, RefSeq and RAST, use NA for the old locustag column in the list.csv file.
 
 4. Run [Roary](https://sanger-pathogens.github.io/Roary/) for pangenome analysis
 **An example command for Roary is given, change it or use any other options from Roary**
 ```
-$roary Sau_modified_gff/*.gff
+roary Sau_modified_gff/*.gff
 ```
 5.Run WhatsGNU_main.py in Ortholog mode using clustered_proteins output file from Roary
 ```
-$WhatsGNU_main.py -m Sau_modified_concatenated.faa -r clustered_proteins query.faa
+WhatsGNU_main.py -m Sau_modified_concatenated.faa -r clustered_proteins query.faa
 ```
 ## Command line options for WhatsGNU_get_GenBank_genomes.py
 ```
-$WhatsGNU_get_GenBank_genomes.py -h
+WhatsGNU_get_GenBank_genomes.py -h
 usage: WhatsGNU_get_GenBank_assemblies.py [-h] [-f] [-c] [-r]
                                           list output_folder
 
@@ -496,7 +517,7 @@ optional arguments:
 ```
 ## Command line options for WhatsGNU_database_customizer.py
 ```
-$WhatsGNU_database_customizer.py -h
+WhatsGNU_database_customizer.py -h
 usage: WhatsGNU_database_customizer.py [-h] [-g | -p | -r | -s] [-z]
                                        [-l LIST_CSV] [-i] [-c]
                                        prefix_name directory_path
@@ -542,4 +563,3 @@ WhatsGNU: a tool for identifying proteomic novelty<br/>
 ## Author
 Ahmed M. Moustafa: [ahmedmagds](https://github.com/ahmedmagds)<br/>
 Twitter: [Ahmed_Microbes](https://twitter.com/Ahmed_Microbes)
-

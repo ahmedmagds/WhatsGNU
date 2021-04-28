@@ -44,7 +44,7 @@ from collections import Counter
 from collections import OrderedDict
 
 PARSER = argparse.ArgumentParser(
-    prog="WhatsGNU_database_customizer.py", description="Database_customizer script for WhatsGNU v1.0.",)
+    prog="WhatsGNU_database_customizer.py", description="Database_customizer script for WhatsGNU v1.4.",)
 GROUP = PARSER.add_mutually_exclusive_group()
 GROUP.add_argument("-g", "--GenBank_RefSeq", help="faa files from GenBank or RefSeq", action="store_true",)
 GROUP.add_argument("-p", "--prokka", help="faa files from Prokka", action="store_true",)

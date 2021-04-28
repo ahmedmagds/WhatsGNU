@@ -38,6 +38,7 @@
 
 import os
 import sys
+import ssl
 import shutil
 import urllib.request as request
 from contextlib import closing
@@ -45,7 +46,7 @@ import argparse
 
 PARSER = argparse.ArgumentParser(
     prog="WhatsGNU_get_GenBank_assemblies.py",
-    description="Get GenBank assemblies (faa or/and fna) for WhatsGNU v1.0",
+    description="Get GenBank assemblies (faa or/and fna) for WhatsGNU v1.4",
 )
 PARSER.add_argument(
     "-f",
@@ -117,6 +118,9 @@ for line in LIST_FILE_OBJECT:
     GCA_LIST.append(line)
 
 ########################################
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
 for GCA in GCA_LIST:
     try:
         GCA_ftp_url = GCA_DICT[GCA] #url from assembly_summary_genbank.txt
@@ -127,27 +131,27 @@ for GCA in GCA_LIST:
             faa_file = RESULTS_FOLDER + GCA_acc + '.faa.gz'
             faa_url = GCA_file_url + '_protein.faa.gz'
             faa_file_object = open(faa_file, 'wb')
-            with closing(request.urlopen(faa_url)) as file_link:
+            with closing(request.urlopen(faa_url, context=ctx)) as file_link:
                 shutil.copyfileobj(file_link, faa_file_object)
             faa_file_object.close()
         if ARGS.contigs and not ARGS.faa:
             contigs_file = RESULTS_FOLDER + GCA_acc + '.fna.gz'
             contigs_url = GCA_file_url + '_genomic.fna.gz'
             contigs_file_object = open(contigs_file, 'wb')
-            with closing(request.urlopen(contigs_url)) as file_link:
+            with closing(request.urlopen(contigs_url, context=ctx)) as file_link:
                 shutil.copyfileobj(file_link, contigs_file_object)
             contigs_file_object.close()
         if ARGS.faa and ARGS.contigs:
             faa_file = PROTEINS_FOLDER + OS_SEPARATOR + GCA_acc + '.faa.gz'
             faa_url = GCA_file_url + '_protein.faa.gz'
             faa_file_object = open(faa_file, 'wb')
-            with closing(request.urlopen(faa_url)) as file_link:
+            with closing(request.urlopen(faa_url, context=ctx)) as file_link:
                 shutil.copyfileobj(file_link, faa_file_object)
             faa_file_object.close()
             contigs_file = CONTIGS_FOLDER + OS_SEPARATOR + GCA_acc + '.fna.gz'
             contigs_url = GCA_file_url + '_genomic.fna.gz'
             contigs_file_object = open(contigs_file, 'wb')
-            with closing(request.urlopen(contigs_url)) as file_link:
+            with closing(request.urlopen(contigs_url, context=ctx)) as file_link:
                 shutil.copyfileobj(file_link, contigs_file_object)
             contigs_file_object.close()
     except:

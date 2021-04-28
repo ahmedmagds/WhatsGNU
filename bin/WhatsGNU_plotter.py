@@ -49,7 +49,7 @@ from scipy import stats as st
 
 
 PARSER = argparse.ArgumentParser(
-    prog="WhatsGNU_plotter.py", description="WhatsGNU_plotter script for WhatsGNU v1.0.",)
+    prog="WhatsGNU_plotter.py", description="WhatsGNU_plotter script for WhatsGNU v1.4.",)
 PARSER.add_argument("-hp", "--heatmap", type=str,
 choices=['ortholog', 'basic'], help="heatmap of GNU scores for orthologous genes in multiple isolates",)
 PARSER.add_argument("-l", "--list_genes", type=str, help="a txt file of ortholog group names from one of the WhatsGNU reports for heatmap",)
