@@ -68,24 +68,3 @@ else:
             zip_ref.extractall(DB_DIRECTORY)
         os.remove(COMP_DB_file)
         print("Downloaded and decompressed database {}".format(DB_FILE_Name))
-
-
-
-"""
-if ARGS.db_name == 'Sau':
-    wget -O Sau.zip https://zenodo.org/record/3633425/files/WhatsGNU_Sau_Ortholog.zip?download=1
-    unzip Sau.zip -d WhatsGNU_Sau_Ortholog
-elif ARGS.db_name == 'Kp':
-    wget -O Kp.zip https://zenodo.org/record/3774324/files/WhatsGNU_Kp_Ortholog.zip?download=1
-    unzip Kp.zip -d WhatsGNU_Kp_Ortholog
-elif ARGS.db_name == 'TB':
-    wget -O TB.zip https://zenodo.org/record/3633425/files/WhatsGNU_TB_Ortholog.zip?download=1
-    unzip TB.zip -d WhatsGNU_TB_Ortholog
-elif ARGS.db_name == 'Pa':
-    wget -O Pa.zip https://zenodo.org/record/3633425/files/WhatsGNU_Pa_Ortholog.zip?download=1
-    unzip Pa.zip -d WhatsGNU_Pa_Ortholog
-elif ARGS.db_name == 'Staphopia':
-    wget -O Sau_Staphopia_basic_43914.pickle https://zenodo.org/record/3633425/files/Sau_Staphopia_basic_43914.pickle?download=1
-elif ARGS.db_name == 'S.enterica':
-    wget -O Senterica_Enterobase_basic_216642.pickle https://zenodo.org/record/3633425/files/Senterica_Enterobase_basic_216642.pickle.gz?download=1
-"""
