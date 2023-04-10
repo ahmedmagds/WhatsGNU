@@ -118,9 +118,6 @@ for line in LIST_FILE_OBJECT:
     GCA_LIST.append(line)
 
 ########################################
-ctx = ssl.create_default_context()
-ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE
 for GCA in GCA_LIST:
     try:
         GCA_ftp_url = GCA_DICT[GCA] #url from assembly_summary_genbank.txt
@@ -130,30 +127,18 @@ for GCA in GCA_LIST:
         if ARGS.faa and not ARGS.contigs:
             faa_file = RESULTS_FOLDER + GCA_acc + '.faa.gz'
             faa_url = GCA_file_url + '_protein.faa.gz'
-            faa_file_object = open(faa_file, 'wb')
-            with closing(request.urlopen(faa_url, context=ctx)) as file_link:
-                shutil.copyfileobj(file_link, faa_file_object)
-            faa_file_object.close()
+            request.urlretrieve(faa_url, faa_file)
         if ARGS.contigs and not ARGS.faa:
             contigs_file = RESULTS_FOLDER + GCA_acc + '.fna.gz'
             contigs_url = GCA_file_url + '_genomic.fna.gz'
-            contigs_file_object = open(contigs_file, 'wb')
-            with closing(request.urlopen(contigs_url, context=ctx)) as file_link:
-                shutil.copyfileobj(file_link, contigs_file_object)
-            contigs_file_object.close()
+            request.urlretrieve(contigs_url, contigs_file)
         if ARGS.faa and ARGS.contigs:
-            faa_file = PROTEINS_FOLDER + OS_SEPARATOR + GCA_acc + '.faa.gz'
+            faa_file = RESULTS_FOLDER + GCA_acc + '.faa.gz'
             faa_url = GCA_file_url + '_protein.faa.gz'
-            faa_file_object = open(faa_file, 'wb')
-            with closing(request.urlopen(faa_url, context=ctx)) as file_link:
-                shutil.copyfileobj(file_link, faa_file_object)
-            faa_file_object.close()
-            contigs_file = CONTIGS_FOLDER + OS_SEPARATOR + GCA_acc + '.fna.gz'
+            request.urlretrieve(faa_url, faa_file)
+            contigs_file = RESULTS_FOLDER + GCA_acc + '.fna.gz'
             contigs_url = GCA_file_url + '_genomic.fna.gz'
-            contigs_file_object = open(contigs_file, 'wb')
-            with closing(request.urlopen(contigs_url, context=ctx)) as file_link:
-                shutil.copyfileobj(file_link, contigs_file_object)
-            contigs_file_object.close()
+            request.urlretrieve(contigs_url, contigs_file)
     except:
         print("Could not get the ftp url for {} from assembly_summary_genbank.txt".format(GCA))
 if ARGS.remove:
