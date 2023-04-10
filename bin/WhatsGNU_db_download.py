@@ -28,6 +28,10 @@ def download_url(url, output_path):
 #################################
 Script_Path = os.path.realpath(__file__)
 DB_Folder_Path = os.path.join(Script_Path.rsplit(OS_SEPARATOR,2)[0], "db")
+if os.path.exists(DB_Folder_Path):
+    print("Found database Folder in {}".format(DB_Folder_Path))
+else:
+    os.mkdir(DB_Folder_Path)
 DB_Dict = {}
 DB_file = os.path.join(Script_Path.rsplit(OS_SEPARATOR,2)[0], "databases_available.csv")
 DB_file_obj = open(DB_file, 'r')
