@@ -2,7 +2,6 @@
 [![Build Status](https://travis-ci.org/ahmedmagds/WhatsGNU.svg?branch=master)](https://travis-ci.org/ahmedmagds/WhatsGNU)
 [![Anaconda-Server Badge](https://anaconda.org/bioconda/whatsgnu/badges/downloads.svg)](https://anaconda.org/bioconda/whatsgnu)
 [![Anaconda-Server Badge](https://anaconda.org/bioconda/whatsgnu/badges/version.svg)](https://anaconda.org/bioconda/whatsgnu)
-[![Anaconda-Server Badge](https://anaconda.org/bioconda/whatsgnu/badges/installer/conda.svg)](https://conda.anaconda.org/bioconda)
 # WhatsGNU
 What's Gene Novelty Unit: A Tool For Identifying Proteomic Novelty.
 ## Introduction
@@ -75,7 +74,7 @@ cp /mnt/c/Users/Windows_username/Desktop/file.fasta /home/Ubuntu_user_name/
 Six precompressed databases (.pickle) are available to download and use:
 
 ### Ortholog Mode:
-1. [_Klebsiella pneumoniae_](https://zenodo.org/record/3774324/files/WhatsGNU_Kp_Ortholog.zip?download=1) Version: 04/17/2020 (compressed 46,072,343 proteins in 8752 genomes to 1,466,934 protein variants).
+1. [_Klebsiella pneumoniae_](https://zenodo.org/record/7812697/files/Kp.zip?download=1) Version: 04/17/2020 (compressed 46,072,343 proteins in 8752 genomes to 1,466,934 protein variants). Updated April 2023.
 2. [_Mycobacterium tuberculosis_](https://www.dropbox.com/sh/8nqowtd4fcf7dgs/AAAdXiqcxTsEqfIAyNE9TWwRa?dl=0) Version: 07/09/2019 (compressed 26,794,006 proteins in 6563 genomes to 434,725 protein variants).
 3. [_Pseudomonas aeruginosa_](https://www.dropbox.com/sh/r0wvoig3alsz7xg/AABPoNu6FdN7zG2PP9BFezQYa?dl=0) Version: 07/06/2019 (compressed 14,475,742 proteins in 4712 genomes to 1,288,892 protein variants).
 4. [_Staphylococcus aureus_](https://www.dropbox.com/sh/p292mia4oc99hx6/AACPuv7uoYUkZ1WCBDX0XPSVa?dl=0) Version: 06/14/2019 (compressed 27,213,667 proteins in 10350 genomes to 571,848 protein variants).<br/>
