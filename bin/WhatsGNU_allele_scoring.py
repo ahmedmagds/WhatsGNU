@@ -109,15 +109,22 @@ for f in FILES_LIST:
         #gnu score, length, function, ortho group
         ptn_gnu = allele_lst[1]+'__'+allele_lst[2]+'__'+(allele_lst[3]).replace(',','_')+'__'+allele_lst[5]
         ptn_seq = allele_lst[4]
+
+        # keeps track of whether strain is being added to alleles_dict[ptn_seq] for the first time
+        newstrain=False
         if ptn_seq in alleles_dict:
             alleles_dict[ptn_seq]['genes'].append(ptn_name)
-            alleles_dict[ptn_seq]['isolates'].append(strain_name)
+            if not(strain_name in alleles_dict[ptn_seq]['isolates']):
+                newstrain=True
+                alleles_dict[ptn_seq]['isolates'].append(strain_name)
         else:
+            newstrain=True
             alleles_dict[ptn_seq] = {'genes':[ptn_name],'isolates':[strain_name],'gnu':ptn_gnu}
+            # here it also iterates through the traits (so like InClade, OutOfClade in my case)
+            # and then it adds another item to the alleles_dict[ptn_seq] entry that's an empty list.
             for trait in traits_header:
                 alleles_dict[ptn_seq][trait] = []
-        for trait in traits_header:
-            alleles_dict[ptn_seq][trait].append((trait_dict[trait][strain_name]))
+
 ################################
 FOLDER_PATH = os.path.abspath(DIRECTORY_PATH).rsplit(OS_SEPARATOR, 1)[0] + OS_SEPARATOR
 fisher_values = {}
@@ -148,11 +155,9 @@ for trait in trait_dict:#(tpap,tpan,tnap,tnan)
         tnan_isolates = ' '.join(list(negatives - ptn_isolates))#t-a-
         isolates_results = [tpap_isolates,tpan_isolates,tnap_isolates,tnan_isolates, (' '.join(ptn_names).replace(',','_'))]
         alleles_dict[allele]['isolates_results'] = isolates_results
-        if tpan < 0:
-            tpan = 0
+
         tnan = tn - tnap
-        if tnan < 0:
-            tnan = 0
+
         try:
             sen = (float(tpap) / tp * 100)
         except:
