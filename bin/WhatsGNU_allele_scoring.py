@@ -159,11 +159,11 @@ for trait in trait_dict:#(tpap,tpan,tnap,tnan)
         tnan_isolates = ' '.join(list(negatives - ptn_isolates))#t-a-
         isolates_results = [tpap_isolates,tpan_isolates,tnap_isolates,tnan_isolates, (' '.join(ptn_names).replace(',','_'))]
         alleles_dict[allele]['isolates_results'] = isolates_results
-        if tpan < 0:
-            tpan = 0
+        #if tpan < 0:
+        #    tpan = 0
         tnan = tn - tnap
-        if tnan < 0:
-            tnan = 0
+        #if tnan < 0:
+        #    tnan = 0
         try:
             sen = (float(tpap) / tp * 100)
         except:
