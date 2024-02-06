@@ -110,7 +110,7 @@ for f in FILES_LIST:
         ptn_gnu = allele_lst[1]+'__'+allele_lst[2]+'__'+(allele_lst[3]).replace(',','_')+'__'+allele_lst[5]
         ptn_seq = allele_lst[4]
 
-        # keeps track of whether strain is being added to alleles_dict[ptn_seq]
+        # keeps track of whether strain is being added to alleles_dict[ptn_seq] for the first time
         newstrain=False
         if ptn_seq in alleles_dict:
             alleles_dict[ptn_seq]['genes'].append(ptn_name)
@@ -120,11 +120,12 @@ for f in FILES_LIST:
         else:
             newstrain=True
             alleles_dict[ptn_seq] = {'genes':[ptn_name],'isolates':[strain_name],'gnu':ptn_gnu}
-            # here it also iterates through the traits (so like InClade, OutOfClade in my case)
-            # and then it adds another item to the alleles_dict[ptn_seq] entry that's an empty list.
+
             for trait in traits_header:
                 alleles_dict[ptn_seq][trait] = []
 
+        # Only add trait info for a strain if it's the first time we're adding to
+        # alleles_dict[ptn_seq][trait] on behalf of that strain
         if newstrain:
             for trait in traits_header:
                 alleles_dict[ptn_seq][trait].append((trait_dict[trait][strain_name]))
