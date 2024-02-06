@@ -125,6 +125,10 @@ for f in FILES_LIST:
             for trait in traits_header:
                 alleles_dict[ptn_seq][trait] = []
 
+        if newstrain:
+            for trait in traits_header:
+                alleles_dict[ptn_seq][trait].append((trait_dict[trait][strain_name]))
+
 ################################
 FOLDER_PATH = os.path.abspath(DIRECTORY_PATH).rsplit(OS_SEPARATOR, 1)[0] + OS_SEPARATOR
 fisher_values = {}
