@@ -71,31 +71,33 @@ cp /mnt/c/Users/Windows_username/Desktop/file.fasta /home/Ubuntu_user_name/
 * Type WhatsGNU_main.py -v and you should see an output like WhatsGNU_main.py 1.0.
 
 ## Available Databases
-Six precompressed databases (.pickle) are available to download and use:
+
+There are three different types of databases available to use: basic, ortholog, or hashed basic databases. At this time, hashed ortholog databases are not available for use, but will be in the future. 
+For more information on the uses and limitations of hashed databases, skip to the *WhatsGNU_main_hashes.py* section under **WhatsGNU toolbox**. 
+
+The following databases are available to download and use:
 
 ### Ortholog Mode:
 1. [_Klebsiella pneumoniae_](https://zenodo.org/record/7812697/files/Kp.zip?download=1) Version: 04/17/2020 (compressed 46,072,343 proteins in 8752 genomes to 1,466,934 protein variants). Updated April 2023.
-2. [_Mycobacterium tuberculosis_](https://www.dropbox.com/sh/8nqowtd4fcf7dgs/AAAdXiqcxTsEqfIAyNE9TWwRa?dl=0) Version: 07/09/2019 (compressed 26,794,006 proteins in 6563 genomes to 434,725 protein variants).
-3. [_Pseudomonas aeruginosa_](https://www.dropbox.com/sh/r0wvoig3alsz7xg/AABPoNu6FdN7zG2PP9BFezQYa?dl=0) Version: 07/06/2019 (compressed 14,475,742 proteins in 4712 genomes to 1,288,892 protein variants).
-4. [_Staphylococcus aureus_](https://www.dropbox.com/sh/p292mia4oc99hx6/AACPuv7uoYUkZ1WCBDX0XPSVa?dl=0) Version: 06/14/2019 (compressed 27,213,667 proteins in 10350 genomes to 571,848 protein variants).<br/>
+2. [_Pseudomonas aeruginosa_](https://www.dropbox.com/sh/r0wvoig3alsz7xg/AABPoNu6FdN7zG2PP9BFezQYa?dl=0) Version: 07/06/2019 (compressed 14,475,742 proteins in 4712 genomes to 1,288,892 protein variants)
+3. [_Mycobacterium tuberculosis_](https://www.dropbox.com/sh/8nqowtd4fcf7dgs/AAAdXiqcxTsEqfIAyNE9TWwRa?dl=0) Version: 07/09/2019 (compressed 26,794,006 proteins in 6563 genomes to 434,725 protein variants).
+4. [_Staphylococcus aureus_](https://zenodo.org/api/records/13388052/files/Saureus.tar.gz) Version: April 2024, Size: 14GB  (compressed 188,965,356 proteins in 68,299 genomes to 2,702,458 protein variants)
+5. [C.difficile](https://zenodo.org/api/records/13387715/files/Cdiff.tar.gz) Version: July 2024, Size: 3.8GB (compressed 55,048,119 proteins in 14,186 genomes to 617,095 protein variants)
+   
+### Basic Mode:
+1. [_Salmonella enterica_](https://www.dropbox.com/s/gbjengikpynxo12/Senterica_Enterobase_basic_216642.pickle?dl=0) Enterobase Version: 08/29/2019 (compressed 975,262,506 proteins in 216,642 genomes to 5,056,335 protein variants)
+2. [_Pseudomonas aeruginosa_](https://zenodo.org/api/records/13385380/files/PA_basic.tar.gz) Version: June 2024, Size: 19GB (compressed 198,278,793 proteins in 31,832 genomes to 3,537,663 protein variants) 
+3. [_Klebsiella pnuemoniae_](https://zenodo.org/api/records/13384718/files/Kp_basic.tar.gz) Version: June 2024, Size: 37GB (compressed 405,201,811 proteins in 75,246 genomes to 4,425,185 protein variants) 
 
-### Big Data basic Mode:
-1. [_Salmonella enterica_](https://www.dropbox.com/s/gbjengikpynxo12/Senterica_Enterobase_basic_216642.pickle?dl=0) Enterobase Version: 08/29/2019 (compressed 975,262,506 proteins in 216,642 genomes to 5,056,335 protein variants).
-2. [_Staphylococcus aureus_](https://www.dropbox.com/s/bcs922768tjrwwg/Sau_Staphopia_basic_43914.pickle?dl=0) Staphopia Version: 06/27/2019 (compressed 115,178,200 proteins in 43,914 genomes to 2,228,761 protein variants).
+### Hashed Databases:
+*Note*: Metadata (i.e. number of genomes, protein variants, etc) is the same as above for each of the following species. 
+1. [_Escherichia coli_](https://zenodo.org/api/records/13388488/files/Ecoli_hashed.tar.gz) Size: 7.5GB
+2. [_Pseudomonas aeruginosa_](https://zenodo.org/api/records/13386015/files/PA_hashed.tar.gz) Size: 1.4GB
+3. [_Klebsiella pnuemoniae_](https://zenodo.org/api/records/13384893/files/Kp_hashed.tar.gz) Size: 2.6GB
 
-**The Six databases are available to download by visiting the link or using the wget command as follows:**
-
-**_K. pneumoniae_ Ortholog**
-```
-wget -O Kp.zip https://zenodo.org/record/7812697/files/Kp.zip?download=1
-unzip Kp.zip -d WhatsGNU_Kp_Ortholog
-```
+**The databases are available to download by visiting the link or using the wget command. Examples of how to use the wget command as follows:**
 
 **_S. aureus_ Ortholog**
-```
-wget -O Sau.zip https://www.dropbox.com/sh/p292mia4oc99hx6/AACPuv7uoYUkZ1WCBDX0XPSVa?dl=0
-unzip Sau.zip -d WhatsGNU_Sau_Ortholog
-```
 
 **_Mycobacterium tuberculosis_ Ortholog**
 ```
@@ -107,15 +109,15 @@ unzip TB.zip -d WhatsGNU_TB_Ortholog
 wget -O Pa.zip https://www.dropbox.com/sh/r0wvoig3alsz7xg/AABPoNu6FdN7zG2PP9BFezQYa?dl=0
 unzip Pa.zip -d WhatsGNU_Pa_Ortholog
 ```
-**_S. aureus_ Staphopia**
-```
-wget -O Sau_Staphopia_basic_43914.pickle https://www.dropbox.com/s/bcs922768tjrwwg/Sau_Staphopia_basic_43914.pickle?dl=0
-```
 **_S. enterica_ Enterobase**
 ```
 wget -O Senterica_Enterobase_basic_216642.pickle https://www.dropbox.com/s/gbjengikpynxo12/Senterica_Enterobase_basic_216642.pickle?dl=0
 ```
-The three Ortholog databases contain all available genomes for the species from GenBank as per version day. To know the genomes included in each database, download [List of Genomes included](https://www.dropbox.com/s/w7z6htvot8167ep/List_of_genomes_included_092019.xlsx?dl=0). The databases for these 3 Ortholog databases will be updated 3 times per year to include new sequenced genomes.
+**_Klebsiella pneumoniae_ hashed**
+```
+wget https://zenodo.org/records/13384718/files/Kp_basic.tar.gz
+tar xvfz Kp_basic.tar.gz
+```
 
 ## WhatsGNU toolbox
 1. ### WhatsGNU_get_GenBank_genomes.py
@@ -136,6 +138,9 @@ This script plots:
 * Metadata distribution bar plot of proteins.
 * Histogram of the GNU scores of all proteins in a genome.
 * Volcano plot showing proteins with a lower average GNU score in one group (case) compared to the other (control). The x-axis is the delta average GNU score (Average_GNU_score_case – Average_GNU_score_control) in the ortholog group. Lower average GNU score in cases will have a negative value on the x-axis (red dots) while lower average GNU score in the control group will have positive value on the x-axis (green dots). The y-axis could be drawn as a -log10(P value) from Mann–Whitney-Wilcoxon test. In this case, lower average GNU score in one group (upper left for case or upper right for control) would be of interest as shown by a significant P value (-log10( P value) > 1.3). The y-axis can also be the average OVRI in the case group for negative values on the x-axis or average OVRI in the control group for positive values on the x-axis.
+
+6. ### WhatsGNU_main_hashes.py
+This script is compatible only with the hashed versions of the databases. Each hashed database comes with a CSV file that is necessary to be able to run this script. The corresponding CSV for each hashed database can be found in the respective gzipped tarball. Functions available in this version of the script include generating a basic WhatsGNU report (see below for formatting of report), creating a file of each protein with all associated ids from the database (*-i*) and creating a file with the top genomes (*-t/-tn*). With this script, you **cannot** run blastp on the proteins with GNU score of zero (i.e. *-b, --blastp* option is not available with this script) at this time. 
 
 ## Usage for WhatsGNU_db_download.py
 ### Input
@@ -543,6 +548,53 @@ optional arguments:
   -c, --concatenated_file
                         one concatenated modified file of all input files
 ```
+## Example usage for WhatsGNU_main_hashes.py 
+Using the hashed database to generate basic WhatsGNU reports
+```
+WhatsGNU_main_hashes.py -d Kp_basic_db_hashed_str.pickle -csv Kp_basic_db_hashed.csv -o WhatsGNU_Kp_op faa/
+```
+Finding the top 10 genomes closest genomes to your genomes of interest 
+```
+WhatsGNU_main_hashes.py -d PA_basic_db_hashed_str.pickle -csv PA_basic_db_hashed.csv -t -o WhatsGNU_PA_op faa/
+```
+By default, when using *-i/--ids_hits* the output report will report the hashed values of the hits. To get the accession numbers instead, use the *--accession-names* option
+```
+WhatsGNU_main_hashes.py -d basic_Ecoli_db_hashed_str.pickle -csv basic_Ecoli_db_hashed.csv -i --accession-names -o WhatsGNU_Ecoli_op faa/
+```
+## Command line options for WhatsGNU_main_hashes.py
+```
+usage: WhatsGNU_main.py [-h] [-d DATABASE] [-o OUTPUT_FOLDER] [--force] [-p PREFIX] [-t] [-csv CSV] [-tn TOPGENOMES_COUNT] [-s STRAINHITS] [-i] [--accession_names] [--hash_values] [-q]
+                        [-v]
+                        query_faa
+
+WhatsGNU v1.4 utilizes the natural variation in public databases to rank protein sequences based on the number of observed exact protein matches (the GNU score) in all known genomes of a
+particular species. It generates a report for all the proteins in your query in seconds.
+
+positional arguments:
+  query_faa             Query protein FASTA file/s to analyze (.faa)
+
+options:
+  -h, --help            show this help message and exit
+  -d DATABASE, --database DATABASE
+                        you have to provide path to your compressed database
+  -o OUTPUT_FOLDER, --output_folder OUTPUT_FOLDER
+                        Database output prefix to be created for results (default: timestamped WhatsGNU_results in the current directory)
+  --force               Force overwriting existing results folder assigned with -o (default: off)
+  -p PREFIX, --prefix PREFIX
+                        Prefix for output compressed database (default: WhatsGNU_compressed_database)
+  -t, --topgenomes      create a file of top N genomes with most number of exact matches to query [Default top 10 genomes]
+  -csv CSV              csv file of hashed inputs
+  -tn TOPGENOMES_COUNT, --topgenomes_count TOPGENOMES_COUNT
+                        select number of closest top genomes to show [Default top 10 genomes]
+  -s STRAINHITS, --strainhits STRAINHITS
+                        check how many hits you get from a particular strain,it has to be used with -t
+  -i, --ids_hits        create a file of each protein with locus_tags (ids) of all hits from the database, large file (~ 1 Gb for 3000 pts)
+  --accession_names     to be used with --ids_hits. If this option is selected, writes the id_hits file with the accession names.
+  --hash_values         to be used with --ids_hits. Default option. This options writes the id_hits file with the hashed values.
+  -q, --quiet           No screen output [default OFF]
+  -v, --version         print version and exit
+```
+
 ## Requests for creating a database
 Requests to process a database for a specific species are welcomed and will be considered
 ## Bugs
