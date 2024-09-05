@@ -82,12 +82,13 @@ The following databases are available to download and use:
 2. [_Pseudomonas aeruginosa_](https://www.dropbox.com/sh/r0wvoig3alsz7xg/AABPoNu6FdN7zG2PP9BFezQYa?dl=0) Version: 07/06/2019 (compressed 14,475,742 proteins in 4712 genomes to 1,288,892 protein variants)
 3. [_Mycobacterium tuberculosis_](https://www.dropbox.com/sh/8nqowtd4fcf7dgs/AAAdXiqcxTsEqfIAyNE9TWwRa?dl=0) Version: 07/09/2019 (compressed 26,794,006 proteins in 6563 genomes to 434,725 protein variants).
 4. [_Staphylococcus aureus_](https://zenodo.org/api/records/13388052/files/Saureus.tar.gz) Version: April 2024, Size: 14GB  (compressed 188,965,356 proteins in 68,299 genomes to 2,702,458 protein variants)
-5. [C.difficile](https://zenodo.org/api/records/13387715/files/Cdiff.tar.gz) Version: July 2024, Size: 3.8GB (compressed 55,048,119 proteins in 14,186 genomes to 617,095 protein variants)
+5. [_C.difficile_](https://zenodo.org/api/records/13387715/files/Cdiff.tar.gz) Version: July 2024, Size: 3.8GB (compressed 55,048,119 proteins in 14,186 genomes to 617,095 protein variants)
    
 ### Basic Mode:
 1. [_Salmonella enterica_](https://www.dropbox.com/s/gbjengikpynxo12/Senterica_Enterobase_basic_216642.pickle?dl=0) Enterobase Version: 08/29/2019 (compressed 975,262,506 proteins in 216,642 genomes to 5,056,335 protein variants)
 2. [_Pseudomonas aeruginosa_](https://zenodo.org/api/records/13385380/files/PA_basic.tar.gz) Version: June 2024, Size: 19GB (compressed 198,278,793 proteins in 31,832 genomes to 3,537,663 protein variants) 
-3. [_Klebsiella pnuemoniae_](https://zenodo.org/api/records/13384718/files/Kp_basic.tar.gz) Version: June 2024, Size: 37GB (compressed 405,201,811 proteins in 75,246 genomes to 4,425,185 protein variants) 
+3. [_Klebsiella pnuemoniae_](https://zenodo.org/api/records/13384718/files/Kp_basic.tar.gz) Version: June 2024, Size: 37GB (compressed 405,201,811 proteins in 75,246 genomes to 4,425,185 protein variants)
+4. [_Escherichia coli_](https://zenodo.org/api/records/13693568/files/Ecoli_basic.tar.gz) Version: June 2024, Size: 90 GB (compressed 1,044,408,936 proteins in 211,942 genomes to 15,220,801 protein variants)
 
 ### Hashed Databases:
 *Note*: Metadata (i.e. number of genomes, protein variants, etc) is the same as above for each of the following species. 
