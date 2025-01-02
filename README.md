@@ -81,21 +81,21 @@ The following databases are available to download and use:
 1. [_Klebsiella pneumoniae_](https://zenodo.org/record/7812697/files/Kp.zip?download=1) Version: 04/17/2020 (compressed 46,072,343 proteins in 8752 genomes to 1,466,934 protein variants). Updated April 2023.
 2. [_Pseudomonas aeruginosa_](https://www.dropbox.com/sh/r0wvoig3alsz7xg/AABPoNu6FdN7zG2PP9BFezQYa?dl=0) Version: 07/06/2019 (compressed 14,475,742 proteins in 4712 genomes to 1,288,892 protein variants)
 3. [_Mycobacterium tuberculosis_](https://www.dropbox.com/sh/8nqowtd4fcf7dgs/AAAdXiqcxTsEqfIAyNE9TWwRa?dl=0) Version: 07/09/2019 (compressed 26,794,006 proteins in 6563 genomes to 434,725 protein variants).
-4. [_Staphylococcus aureus_](https://zenodo.org/api/records/13388052/files/Saureus.tar.gz) Version: April 2024, Size: 14GB  (compressed 188,965,356 proteins in 68,299 genomes to 2,702,458 protein variants)
-5. [_C.difficile_](https://zenodo.org/api/records/13387715/files/Cdiff.tar.gz) Version: July 2024, Size: 3.8GB (compressed 55,048,119 proteins in 14,186 genomes to 617,095 protein variants)
+4. [_Staphylococcus aureus_](https://zenodo.org/records/13388052/files/Saureus.tar.gz?download=1) Version: April 2024, Size: 14GB  (compressed 188,965,356 proteins in 68,299 genomes to 2,702,458 protein variants)
+5. [_C.difficile_](https://zenodo.org/records/13387715/files/Cdiff.tar.gz?download=1) Version: July 2024, Size: 3.8GB (compressed 55,048,119 proteins in 14,186 genomes to 617,095 protein variants)
    
 ### Basic Mode:
 1. [_Salmonella enterica_](https://www.dropbox.com/s/gbjengikpynxo12/Senterica_Enterobase_basic_216642.pickle?dl=0) Enterobase Version: 08/29/2019 (compressed 975,262,506 proteins in 216,642 genomes to 5,056,335 protein variants)
-2. [_Pseudomonas aeruginosa_](https://zenodo.org/api/records/13385380/files/PA_basic.tar.gz) Version: June 2024, Size: 19GB (compressed 198,278,793 proteins in 31,832 genomes to 3,537,663 protein variants) 
-3. [_Klebsiella pnuemoniae_](https://zenodo.org/api/records/13384718/files/Kp_basic.tar.gz) Version: June 2024, Size: 37GB (compressed 405,201,811 proteins in 75,246 genomes to 4,425,185 protein variants)
-4. [_Escherichia coli_](https://zenodo.org/api/records/13693568/files/Ecoli_basic.tar.gz) Version: March 2024, Size: 90 GB (compressed 1,044,408,936 proteins in 211,942 genomes to 15,220,801 protein variants)
+2. [_Pseudomonas aeruginosa_](https://zenodo.org/records/13385380/files/PA_basic.tar.gz?download=1) Version: June 2024, Size: 19GB (compressed 198,278,793 proteins in 31,832 genomes to 3,537,663 protein variants) 
+3. [_Klebsiella pnuemoniae_](https://zenodo.org/records/13384718/files/Kp_basic.tar.gz?download=1) Version: June 2024, Size: 37GB (compressed 405,201,811 proteins in 75,246 genomes to 4,425,185 protein variants)
+4. [_Escherichia coli_](https://zenodo.org/records/13693568/files/Ecoli_basic.tar.gz?download=1) Version: March 2024, Size: 90 GB (compressed 1,044,408,936 proteins in 211,942 genomes to 15,220,801 protein variants)
 
 ### Hashed Databases:
 *Note*: Metadata (i.e. number of genomes, protein variants, etc) is the same as above for each of the following species. 
-1. [_Escherichia coli_](https://zenodo.org/api/records/13388488/files/Ecoli_hashed.tar.gz) Size: 7.5GB
-2. [_Pseudomonas aeruginosa_](https://zenodo.org/api/records/13386015/files/PA_hashed.tar.gz) Size: 1.4GB
-3. [_Klebsiella pnuemoniae_](https://zenodo.org/api/records/13384893/files/Kp_hashed.tar.gz) Size: 2.6GB
-4. [_RefSeq_](https://zenodo.org/api/records/13695585/files/RefSeq_hashed.tar.gz) Version: July 2023, Size: 27 GB (compressed 1,166,846,405 proteins in 306,326 genomes to 229,663,320 protein variants)
+1. [_Escherichia coli_](https://zenodo.org/records/13388488/files/Ecoli_hashed.tar.gz?download=1) Size: 7.5GB
+2. [_Pseudomonas aeruginosa_](https://zenodo.org/records/13386015/files/PA_hashed.tar.gz?download=1) Size: 1.4GB
+3. [_Klebsiella pnuemoniae_](https://zenodo.org/records/13384893/files/Kp_hashed.tar.gz?download=1) Size: 2.6GB
+4. [_RefSeq_](https://zenodo.org/records/13695585/files/RefSeq_hashed.tar.gz?download=1) Version: July 2023, Size: 27 GB (compressed 1,166,846,405 proteins in 306,326 genomes to 229,663,320 protein variants)
 
 **The databases are available to download by visiting the link or using the wget command. Examples of how to use the wget command as follows:**
 
