@@ -89,6 +89,7 @@ The following databases are available to download and use:
 2. [_Pseudomonas aeruginosa_](https://zenodo.org/records/13385380/files/PA_basic.tar.gz?download=1) Version: June 2024, Size: 19GB (compressed 198,278,793 proteins in 31,832 genomes to 3,537,663 protein variants) 
 3. [_Klebsiella pnuemoniae_](https://zenodo.org/records/13384718/files/Kp_basic.tar.gz?download=1) Version: June 2024, Size: 37GB (compressed 405,201,811 proteins in 75,246 genomes to 4,425,185 protein variants)
 4. [_Escherichia coli_](https://zenodo.org/records/13693568/files/Ecoli_basic.tar.gz?download=1) Version: March 2024, Size: 90 GB (compressed 1,044,408,936 proteins in 211,942 genomes to 15,220,801 protein variants)
+5. [_Staphylococcus epidermidis_](https://zenodo.org/records/14751549/files/Sepi_WhatsGNU_basic.txt.gz?download=1) Version: January 2025, Size: 779 MB (compressed 11,569,977 proteins in 4,981 genomes to 376,025 protein variants)
 
 ### Hashed Databases:
 *Note*: Metadata (i.e. number of genomes, protein variants, etc) is the same as above for each of the following species. 
