@@ -83,6 +83,7 @@ The following databases are available to download and use:
 3. [_Mycobacterium tuberculosis_](https://www.dropbox.com/sh/8nqowtd4fcf7dgs/AAAdXiqcxTsEqfIAyNE9TWwRa?dl=0) Version: 07/09/2019 (compressed 26,794,006 proteins in 6563 genomes to 434,725 protein variants).
 4. [_Staphylococcus aureus_](https://zenodo.org/records/13388052/files/Saureus.tar.gz?download=1) Version: April 2024, Size: 14GB  (compressed 188,965,356 proteins in 68,299 genomes to 2,702,458 protein variants)
 5. [_C.difficile_](https://zenodo.org/records/13387715/files/Cdiff.tar.gz?download=1) Version: July 2024, Size: 3.8GB (compressed 55,048,119 proteins in 14,186 genomes to 617,095 protein variants)
+
    
 ### Basic Mode:
 1. [_Salmonella enterica_](https://www.dropbox.com/s/gbjengikpynxo12/Senterica_Enterobase_basic_216642.pickle?dl=0) Enterobase Version: 08/29/2019 (compressed 975,262,506 proteins in 216,642 genomes to 5,056,335 protein variants)
@@ -90,6 +91,7 @@ The following databases are available to download and use:
 3. [_Klebsiella pnuemoniae_](https://zenodo.org/records/13384718/files/Kp_basic.tar.gz?download=1) Version: June 2024, Size: 37GB (compressed 405,201,811 proteins in 75,246 genomes to 4,425,185 protein variants)
 4. [_Escherichia coli_](https://zenodo.org/records/13693568/files/Ecoli_basic.tar.gz?download=1) Version: March 2024, Size: 90 GB (compressed 1,044,408,936 proteins in 211,942 genomes to 15,220,801 protein variants)
 5. [_Staphylococcus epidermidis_](https://zenodo.org/records/14751549/files/Sepi_WhatsGNU_basic.txt.gz?download=1) Version: January 2025, Size: 779 MB (compressed 11,569,977 proteins in 4,981 genomes to 376,025 protein variants)
+6. [_GBS_](https://zenodo.org/records/15724449/files/GBS_WhatsGNU_basic_database.txt.gz?download=1) Version: June 2025, Size: 4.1GB (compressed 42,330,909 proteins in 20,995 genomes to 655,916 variants)
 
 ### Hashed Databases:
 *Note*: Metadata (i.e. number of genomes, protein variants, etc) is the same as above for each of the following species. 
